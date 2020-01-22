@@ -1,4 +1,6 @@
-
+<?php
+require 'Header.php';
+?>
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -26,3 +28,7 @@
 
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
+<?php
+
+require 'Footer.php';
+?>
