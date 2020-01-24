@@ -23,7 +23,7 @@ function EjecutarConsulta($Sql){
     return $Query;
 }
 
-function EjecutaConsultaSimpleFila($Sql){
+function EjecutarConsultaSimpleFila($Sql){
 
     global $Conexion;
     $Query = $Conexion->query($Sql);

@@ -1,8 +1,9 @@
-var Tabla;
+var tabla;
 
 function init(){
 
-
+MostrarForm(false);
+Listar();
 
 }
 function limpiar(){
@@ -26,7 +27,7 @@ $("#BtnGuardar").prop("disabled",false);
 }else{
 
     $("#ListadoRegistros").show();
-    $("#Formularioregistros").hide();
+    $("#FormularioRegistros").hide();
 
 }
 
@@ -36,13 +37,14 @@ $("#BtnGuardar").prop("disabled",false);
 function cancelarForm(){
 
     limpiar();
-    MostrarForm(flase);
+    MostrarForm(false);
 }
 
 function Listar(){
 
-Tabla=$('#tbllistado').dataTable({
-
+tabla=$("#tbllistado").dataTable(
+    
+    {
     "aProcessing": true,
     "aServerSide": true,
     dom: 'Bfrtip',
@@ -57,14 +59,17 @@ Tabla=$('#tbllistado').dataTable({
 
     "ajax":{
 
-        url: '../Ajax/TipoProducto.php?Op=L',
+        url: '../Ajax/ATipoProducto.php?Op=Listar',
         type : "get",
         dataType :"json",
         error: function(e){
             console.log(e.responseText);
         }
 
-    }
+    },
+    "bDestroy":true,
+    "iDisplayLength":5,
+    "order":[[0,"desc"]]
 
 }).DataTable();
 

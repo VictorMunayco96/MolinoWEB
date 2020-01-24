@@ -18,6 +18,10 @@
     <link rel="apple-touch-icon" href="../Public/img/apple-touch-icon.png">
     <link rel="shortcut icon" href="../Public/img/favicon.ico">
 
+  <link rel="stylesheet" type="text/css" href="../Public/datatables/jquery.dataTables.min.css">
+  <link href="../Public/datatables/buttons.dataTables.min.css" rel="stylesheet"/>
+  <link href="../Public/datatables/responsive.dataTables.min.css" rel="stylesheet"/>
+
   </head>
   <body class="hold-transition skin-green-light sidebar-mini">
     <div class="wrapper">
