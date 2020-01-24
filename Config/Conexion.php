@@ -44,7 +44,7 @@ function LimpiarCadena($Str){
 
     global $Conexion;
     $Str = $mysqli_real_escape_string($Conexion,trim($Str));
-    return htmlspecialchars($Str)
+    return htmlspecialchars($Str);
 }
 
 
