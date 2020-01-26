@@ -5,12 +5,19 @@ function init(){
 MostrarForm(false);
 Listar();
 
+$("#Formulario").on("submit",function(e){
+
+    GuardaryEditar(e);
+
+})
+
+
 }
 function limpiar(){
 
-    $("IdTipoProducto").val("");
-$("TipoProducto").val("");
-$("CodTipoProducto").val("");
+    $("#IdTipoProducto").val("");
+$("#TipoProducto").val("");
+$("#CodTipoProducto").val("");
 
 }
 
@@ -20,7 +27,7 @@ limpiar();
 if (flag){
 
 $("#ListadoRegistros").hide();
-$("#Formularioregistros").show();
+$("#FormularioRegistros").show();
 $("#BtnGuardar").prop("disabled",false);
 
 
@@ -34,7 +41,7 @@ $("#BtnGuardar").prop("disabled",false);
 
 }
 
-function cancelarForm(){
+function CancelarForm(){
 
     limpiar();
     MostrarForm(false);
@@ -73,6 +80,34 @@ tabla=$("#tbllistado").dataTable(
 
 }).DataTable();
 
+}
+
+function GuardaryEditar(e){
+
+e.preventDefault();
+$("#BtnGuardar").prop("disabled",true);
+var formData= new FormData($("#Formulario")[0]);
+
+$.ajax({
+
+url: "../Ajax/ATipoProducto.php?Op=GuardaryEditar",
+type: "POST",
+data: formData,
+contentType: false,
+processData: false,
+
+success: function(datos){
+
+    alert(datos);
+    MostrarForm(false);
+    tabla.ajax.reload();
+
+}
+
+
+});
+
+limpiar();
 }
 
 init();

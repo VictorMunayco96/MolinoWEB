@@ -1,6 +1,7 @@
 <?php 
 
 define("DB_HOST","192.168.104.124");
+//define("DB_HOST","192.168.0.12");
 define("DB_NAME","DBMolino");
 define("DB_USERNAME","Visit");
 define("DB_PASSWORD","Paco123");

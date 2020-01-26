@@ -12,8 +12,7 @@ require "../Config/Conexion.php";
 
         public function Insertar($TipoProducto,$CodTipoProducto){
 
-            $Sql="Insert into TipoProducto (TipoProducto,CodTipoProducto,Estado) 
-            values('$TipoProducto','$CodTipoProducto','1')";
+            $Sql="Insert into TipoProducto (TipoProducto,CodTipoProducto,Estado) values('$TipoProducto','$CodTipoProducto','1')";
 
             return EjecutarConsulta($Sql);
 

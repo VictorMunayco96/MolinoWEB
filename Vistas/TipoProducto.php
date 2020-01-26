@@ -51,7 +51,36 @@ require 'Header.php';
                     </div>
 
                     <div class="panel-body" style="height: 400px;" id="FormularioRegistros">
-                        aqui va el form
+                    
+                    <form name="Formulario" id="Formulario" method="POST">
+
+                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>Tipo Producto:</label>
+                    <input type="hidden" name="IdTipoProducto" id="IdTipoProducto">
+                    <input type="text" class="form-control" placeholder="Tipo Producto" name="TipoProducto" id="TipoProducto" required>
+                    </div>
+
+
+
+                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>CodTipoProducto:</label>
+                    <input type="text" name="CodTipoProducto" class="form-control" id="CodTipoProducto" placeholder="Codigo Producto" maxlength="15">
+                    </div>
+
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <button class="btn btn-primary" type="submit" name="BtnGuardar" id="BtnGuardar" ><i class="fa fa-save"></i> Guardar</button>
+
+
+                      <button class="btn btn-danger" onclick="CancelarForm()" type="button"><i class="fa fa-arrow-circle-left"></i>
+                    Cancelar</button>
+
+
+                    </div>
+
+
+                    </form>
+
+
                         </div>
 
 
