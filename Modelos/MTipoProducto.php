@@ -29,7 +29,7 @@ require "../Config/Conexion.php";
 
         public function Desactivar ($IdTipoProducto){
 
-            $Sql=" Update Estado=0 where IdTipoProducto='$IdTipoProducto';";
+            $Sql=" Update TipoProducto set Estado=0 where IdTipoProducto='$IdTipoProducto';";
             
             return EjecutarConsulta($Sql);
 
@@ -38,7 +38,7 @@ require "../Config/Conexion.php";
 
         public function Activar ($IdTipoProducto){
 
-            $Sql=" Update Estado=1 where IdTipoProducto='$IdTipoProducto';";
+            $Sql=" Update TipoProducto set  Estado=1 where IdTipoProducto='$IdTipoProducto';";
             
             return EjecutarConsulta($Sql);
 

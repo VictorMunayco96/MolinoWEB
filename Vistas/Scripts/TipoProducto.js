@@ -98,7 +98,7 @@ processData: false,
 
 success: function(datos){
 
-    alert(datos);
+    bootbox.alert(datos);
     MostrarForm(false);
     tabla.ajax.reload();
 
@@ -110,4 +110,30 @@ success: function(datos){
 limpiar();
 }
 
+function Mostrar(IdTipoProducto)
+{
+
+    
+    $.post("../Ajax/ATipoProducto.php?Op=Mostrar",{IdTipoProducto : IdTipoProducto}, function(data,status)
+        {
+            data =JSON.parse(data);
+            
+            MostrarForm(true);
+
+            $("#TipoProducto").val(data.TipoProducto);
+            $("#CodTipoProducto").val(data.CodTipoProducto);
+            $("#IdTipoProducto").val(data.IdTipoProducto);
+        
+
+         
+
+
+
+
+})
+
+
+}
+
 init();
+

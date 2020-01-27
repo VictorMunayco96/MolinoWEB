@@ -4,9 +4,9 @@ require_once "../Modelos/MTipoProducto.php";
 
 $MTipoProducto= new MTipoProducto();
 
-$IdTipoProducto=isset($_POST["IdTipoProducto"])? LimpiarCadena($_POST["IdTipoProducto"]):"";
-$TipoProducto=isset($_POST["TipoProducto"])? LimpiarCadena($_POST["TipoProducto"]):"";
-$CodTipoProducto=isset($_POST["CodTipoProducto"])? LimpiarCadena($_POST["CodTipoProducto"]):"";
+$IdTipoProducto=isset($_POST["IdTipoProducto"]) ? limpiarCadena($_POST["IdTipoProducto"]):"" ;
+$TipoProducto=isset($_POST["TipoProducto"]) ? limpiarCadena($_POST["TipoProducto"]):"";
+$CodTipoProducto=isset($_POST["CodTipoProducto"]) ? limpiarCadena($_POST["CodTipoProducto"]):"";
 
 switch ($_GET["Op"]){
 
@@ -57,7 +57,7 @@ case 'Listar':
 
         $Data[]=array(
 
-            "0"=>$Reg->IdTipoProducto,
+            "0"=>'<button class="btn btn-warning" onclick="Mostrar('.$Reg->IdTipoProducto.')"><i class="fa fa-pencil"></i></button>',
             "1"=>$Reg->TipoProducto,
             "2"=>$Reg->CodTipoProducto,
             "3"=>$Reg->Estado

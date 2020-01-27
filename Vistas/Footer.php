@@ -21,7 +21,7 @@
     <script src="../Public/datatables/jszip.min.js"></script>
     <script src="../Public/datatables/pdfmake.min.js"></script>
     <script src="../Public/datatables/vfs_fonts.js"></script>
-  
+    <script src="../Public/js/bootbox.min.js"></script>
   
   </body>
 </html>

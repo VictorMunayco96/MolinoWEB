@@ -40,11 +40,11 @@ function EjecutarConsulta_RetornarID($Sql){
 }
 
 
-function LimpiarCadena($Str){
+function limpiarCadena($Str){
 
     global $Conexion;
-    $Str = $mysqli_real_escape_string($Conexion,trim($Str));
-    return htmlspecialchars($Str);
+    $Str = rtrim(strtoupper($Str));
+    return $Str;
 }
 
 
