@@ -4,10 +4,10 @@ require_once "../Modelos/MCategoriaProd.php";
 
 $MCategoriaProd= new MCategoriaProd();
 
-$IdCategoriaProd=isset($_POST["IdCategoriaProd"]) ? limpiarCadena($_POST["IdTipoProducto"]):"" ;
-$CategoriaProd=isset($_POST["CategoriaProd"]) ? limpiarCadena($_POST["TipoProducto"]):"";
-$CodCategoriaProd=isset($_POST["CodCategoriaProd"]) ? limpiarCadena($_POST["CodTipoProducto"]):"";
-$IdTipoProducto=isset($_POST["IdTipoProducto"]) ? limpiarCadena($_POST["CodTipoProducto"]):"";
+$IdCategoriaProd=isset($_POST["IdCategoriaProd"]) ? limpiarCadena($_POST["IdCategoriaProd"]):"" ;
+$CategoriaProd=isset($_POST["CategoriaProd"]) ? limpiarCadena($_POST["CategoriaProd"]):"";
+$CodCategoria=isset($_POST["CodCategoria"]) ? limpiarCadena($_POST["CodCategoria"]):"";
+$IdTipoProducto=isset($_POST["IdTipoProducto"]) ? limpiarCadena($_POST["IdTipoProducto"]):"";
 
 
 
@@ -60,7 +60,7 @@ case 'Listar':
 
         $Data[]=array(
 
-            "0"=>($Reg->Estado)?'<button class="btn btn-warning" onclick="Mostrar('.$Reg->IdCategoriaProd.')"><i class="fa fa-pencil"></i></button>'.
+            "0"=> ($Reg->Estado)?'<button class="btn btn-warning" onclick="Mostrar('.$Reg->IdCategoriaProd.')"><i class="fa fa-pencil"></i></button>'.
             ' <button class="btn btn-danger" onclick="Desactivar('.$Reg->IdCategoriaProd.')"><i class="fa fa-close"></i></button>':
             '<button class="btn btn-warning" onclick="Mostrar('.$Reg->IdCategoriaProd.')"><i class="fa fa-pencil"></i></button>'.
             ' <button class="btn btn-success" onclick="Activar('.$Reg->IdCategoriaProd.')"><i class="fa fa-check"></i></button>',
@@ -86,7 +86,21 @@ case 'Listar':
 
 break;
 
+case "SelectTipoProducto":
 
+    require_once "../Modelos/MTipoProducto.php";
+    $MTipoProducto = new MTipoProducto();
+
+    $Rspta=$MTipoProducto->Select();
+
+    while($Reg = $Rspta->fetch_object()){
+
+        echo '<option value=' .$Reg->IdTipoProducto.'>'.$Reg->TipoProducto.'</option>';
+
+    }
+
+
+break;
 
 }
 

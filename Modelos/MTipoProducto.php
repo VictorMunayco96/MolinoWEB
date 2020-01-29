@@ -59,6 +59,17 @@ require "../Config/Conexion.php";
 
         }
 
+
+        public function Select (){
+
+            $Sql="Select * from TipoProducto where Estado=1;";
+            
+            return EjecutarConsulta($Sql);
+
+        }
+
+
+
 }
 
 

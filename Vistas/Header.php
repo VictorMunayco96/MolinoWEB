@@ -22,6 +22,9 @@
   <link href="../Public/datatables/buttons.dataTables.min.css" rel="stylesheet"/>
   <link href="../Public/datatables/responsive.dataTables.min.css" rel="stylesheet"/>
 
+
+  <link rel="stylesheet" type="text/css" href="../Public/css/bootstrap-select.min.css">
+
   </head>
   <body class="hold-transition skin-green-light sidebar-mini">
     <div class="wrapper">

@@ -12,6 +12,19 @@ $("#Formulario").on("submit",function(e){
 })
 
 
+
+$.post("../Ajax/ACategoriaProd.php?Op=SelectTipoProducto", function(r){
+
+$("#IdTipoProducto").html(r);
+$('#IdTipoProducto').selectpicker('refresh');
+
+
+
+});
+
+
+
+
 }
 function limpiar(){
 
@@ -122,6 +135,7 @@ function Mostrar(IdCategoriaProd)
             MostrarForm(true);
 
             $("#IdTipoProducto").val(data.IdTipoProducto);
+            $("#IdTipoProducto").selectpicker('refresh');
             $("#CategoriaProd").val(data.CategoriaProd);
             $("#CodCategoria").val(data.CodCategoria);
             $("#IdCategoriaProd").val(data.IdCategoriaProd);
@@ -143,7 +157,7 @@ bootbox.confirm("¿ESTA SEGURO DE DESACTIVAR LA CATEGORIA PRODUCTO?", function(r
 
 if(result){
 
-    $.post("../Ajax/ACagoriaProd.php?Op=Desactivar",{IdCategoriaProd : IdCategoriaProd}, function(e){
+    $.post("../Ajax/ACategoriaProd.php?Op=Desactivar",{IdCategoriaProd : IdCategoriaProd}, function(e){
 
         bootbox.alert(e);
         tabla.ajax.reload();

@@ -57,16 +57,21 @@ require 'Header.php';
                     <form name="Formulario" id="Formulario" method="POST">
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Tipo Producto:</label>
+                    <label>Categoria:</label>
                     <input type="hidden" name="IdCategoriaProd" id="IdCategoriaProd">
-                    <input type="text" class="form-control" placeholder="Tipo Producto" name="TipoProducto" id="TipoProducto" required>
+                    <input type="text" class="form-control" placeholder="Categoria" name="CategoriaProd" id="CategoriaProd" maxlength="50" required>
                     </div>
 
+                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>Tipo Producto:</label>
+                    <select id="IdTipoProducto" name ="IdTipoProducto" class="form-control selectpicker" data-live-search="true" required> </select>
+                    </div>
 
+                  
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>CodTipoProducto:</label>
-                    <input type="text" name="CodTipoProducto" class="form-control" id="CodTipoProducto" placeholder="Codigo Producto" maxlength="15">
+                    <label>Codigo:</label>
+                    <input type="text" name="CodCategoria" class="form-control" id="CodCategoria" placeholder="Codigo" maxlength="15" required>
                     </div>
 
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

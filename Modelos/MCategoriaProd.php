@@ -36,7 +36,7 @@ require "../Config/Conexion.php";
         }
 
 
-        public function Activar ($IdTipoProducto){
+        public function Activar ($IdCategoriaProd){
 
             $Sql=" Update CategoriaProd set Estado=1 where IdCategoriaProd='$IdCategoriaProd';";
             
@@ -44,7 +44,7 @@ require "../Config/Conexion.php";
 
         }
 
-        public function Mostrar($IdTipoProducto){
+        public function Mostrar($IdCategoriaProd){
 
             $Sql="Select * from CategoriaProd 
             where IdCategoriaProd='$IdCategoriaProd'";
