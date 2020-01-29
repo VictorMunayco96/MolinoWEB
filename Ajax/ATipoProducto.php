@@ -57,10 +57,14 @@ case 'Listar':
 
         $Data[]=array(
 
-            "0"=>'<button class="btn btn-warning" onclick="Mostrar('.$Reg->IdTipoProducto.')"><i class="fa fa-pencil"></i></button>',
+            "0"=>($Reg->Estado)?'<button class="btn btn-warning" onclick="Mostrar('.$Reg->IdTipoProducto.')"><i class="fa fa-pencil"></i></button>'.
+            ' <button class="btn btn-danger" onclick="Desactivar('.$Reg->IdTipoProducto.')"><i class="fa fa-close"></i></button>':
+            '<button class="btn btn-warning" onclick="Mostrar('.$Reg->IdTipoProducto.')"><i class="fa fa-pencil"></i></button>'.
+            ' <button class="btn btn-success" onclick="Activar('.$Reg->IdTipoProducto.')"><i class="fa fa-check"></i></button>',
             "1"=>$Reg->TipoProducto,
             "2"=>$Reg->CodTipoProducto,
-            "3"=>$Reg->Estado
+            "3"=>($Reg->Estado)?'<span class="label bg-green">Activado</span>':
+            '<span class="label bg-red">Desactivado</span>'
         
         );
     }

@@ -15,9 +15,10 @@ $("#Formulario").on("submit",function(e){
 }
 function limpiar(){
 
-    $("#IdTipoProducto").val("");
-$("#TipoProducto").val("");
-$("#CodTipoProducto").val("");
+    $("#IdCategoriaProd").val("");
+$("#CategoriaProd").val("");
+$("#CodCategoria").val("");
+
 
 }
 
@@ -66,7 +67,7 @@ tabla=$("#tbllistado").dataTable(
 
     "ajax":{
 
-        url: '../Ajax/ATipoProducto.php?Op=Listar',
+        url: '../Ajax/ACategoriaProd.php?Op=Listar',
         type : "get",
         dataType :"json",
         error: function(e){
@@ -90,7 +91,7 @@ var formData= new FormData($("#Formulario")[0]);
 
 $.ajax({
 
-url: "../Ajax/ATipoProducto.php?Op=GuardaryEditar",
+url: "../Ajax/ACategoriaProd.php?Op=GuardaryEditar",
 type: "POST",
 data: formData,
 contentType: false,
@@ -110,19 +111,20 @@ success: function(datos){
 limpiar();
 }
 
-function Mostrar(IdTipoProducto)
+function Mostrar(IdCategoriaProd)
 {
 
     
-    $.post("../Ajax/ATipoProducto.php?Op=Mostrar",{IdTipoProducto : IdTipoProducto}, function(data,status)
+    $.post("../Ajax/ACategoriaProd.php?Op=Mostrar",{IdCategoriaProd : IdCategoriaProd}, function(data,status)
         {
             data =JSON.parse(data);
             
             MostrarForm(true);
 
-            $("#TipoProducto").val(data.TipoProducto);
-            $("#CodTipoProducto").val(data.CodTipoProducto);
             $("#IdTipoProducto").val(data.IdTipoProducto);
+            $("#CategoriaProd").val(data.CategoriaProd);
+            $("#CodCategoria").val(data.CodCategoria);
+            $("#IdCategoriaProd").val(data.IdCategoriaProd);
         
 
          
@@ -135,13 +137,13 @@ function Mostrar(IdTipoProducto)
 
 }
 
-function Desactivar(IdTipoProducto){
+function Desactivar(IdCategoriaProd){
 
-bootbox.confirm("¿ESTA SEGURO DE DESACTIVAR EL TIPO DE PRODUCTO?", function(result){
+bootbox.confirm("¿ESTA SEGURO DE DESACTIVAR LA CATEGORIA PRODUCTO?", function(result){
 
 if(result){
 
-    $.post("../Ajax/ATipoProducto.php?Op=Desactivar",{IdTipoProducto : IdTipoProducto}, function(e){
+    $.post("../Ajax/ACagoriaProd.php?Op=Desactivar",{IdCategoriaProd : IdCategoriaProd}, function(e){
 
         bootbox.alert(e);
         tabla.ajax.reload();
@@ -159,13 +161,13 @@ if(result){
 
 
 
-function Activar(IdTipoProducto){
+function Activar(IdCategoriaProd){
 
-    bootbox.confirm("¿ESTA SEGURO DE ACTIVAR EL TIPO DE PRODUCTO?", function(result){
+    bootbox.confirm("¿ESTA SEGURO DE ACTIVAR LA CATEGORIA PRODUCTO?", function(result){
     
     if(result){
     
-        $.post("../Ajax/ATipoProducto.php?Op=Activar",{IdTipoProducto : IdTipoProducto}, function(e){
+        $.post("../Ajax/ACategoriaProd.php?Op=Activar",{IdCategoriaProd : IdCategoriaProd}, function(e){
     
             bootbox.alert(e);
             tabla.ajax.reload();
@@ -182,4 +184,3 @@ function Activar(IdTipoProducto){
 
 
 init();
-
