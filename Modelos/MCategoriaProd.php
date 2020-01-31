@@ -61,6 +61,17 @@ require "../Config/Conexion.php";
 
         }
 
+
+        public function Select (){
+
+            $Sql="Select * from CategoriaProd where Estado=1;";
+            
+            return EjecutarConsulta($Sql);
+
+        }
+
+
+
 }
 
 
