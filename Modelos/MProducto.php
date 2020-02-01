@@ -21,7 +21,7 @@ require "../Config/Conexion.php";
         public function Editar($IdProducto,$Producto,$CodProducto,$IdCategoriaProd,$NombreGuia){
 
             $Sql=" Update Producto set Producto='$Producto', 
-            CodProducto='$CodProducto',IdCategoriaProd='$IdCategoriaProd', NombreGuia='$NombreGuia' where IdPRoducto='$IdCategoriaProd';";
+            CodProducto='$CodProducto',IdCategoriaProd='$IdCategoriaProd', NombreGuia='$NombreGuia' where IdProducto='$IdProducto';";
             
             return EjecutarConsulta($Sql);
 
@@ -60,6 +60,16 @@ require "../Config/Conexion.php";
             return EjecutarConsulta($Sql);
 
         }
+
+
+        public function Select (){
+
+            $Sql="Select * from Producto where Estado=1;";
+            
+            return EjecutarConsulta($Sql);
+
+        }
+
 
 }
 

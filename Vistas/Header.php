@@ -34,7 +34,7 @@
         <!-- Logo -->
         <a href="index2.html" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini">CALERA</span>
+          <span class="logo-mini">C</span>
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg"><b>LA CALERA</b></span>
         </a>
@@ -105,6 +105,23 @@
               </ul>
             </li>
             
+<!--PRUEBA -->
+            <li class="treeview">
+              <a href="#">
+              <i class="fa fa-leaf"></i>
+                <span>Producto</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="TipoProducto.php"><i class="fa fa-circle-o"></i> Tipo Producto</a></li>
+                <li><a href="CategoriaProd.php"><i class="fa fa-circle-o"></i> Categoria </a></li>
+                <li><a href="Producto.php"><i class="fa fa-circle-o"></i> Producto </a></li>
+                <li><a href="DescProd.php"><i class="fa fa-circle-o"></i> Descripcion Producto </a></li>
+              </ul>
+            </li>
+
+<!--PRUEBA -->
+
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-th"></i>
