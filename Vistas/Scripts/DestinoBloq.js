@@ -80,7 +80,7 @@ tabla=$("#tbllistado").dataTable(
 
     "ajax":{
 
-        url: '../Ajax/ADestinoDesc.php?Op=Listar',
+        url: '../Ajax/ADestinoBloq.php?Op=Listar',
         type : "get",
         dataType :"json",
         error: function(e){

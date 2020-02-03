@@ -54,7 +54,7 @@ require "../Config/Conexion.php";
 
         public function Listar (){
 
-            $Sql="Select DB.IdDestinoBloq, DB.DestinoBloq, DB.CodDestinoBloq, DB.IdDestinoDesc, DD.DestinoDes from DestinoBloq DB 
+            $Sql="Select DB.IdDestinoBloq, DB.DestinoBloq, DB.CodDestinoBloq, DB.IdDestinoDesc, DD.DestinoDes, DB.Estado from DestinoBloq DB 
             inner join DestinoDesc DD on DB.IdDestinoDesc=DD.IdDestinoDesc";
             
             return EjecutarConsulta($Sql);
