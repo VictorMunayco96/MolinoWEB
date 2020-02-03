@@ -80,7 +80,7 @@ require 'Header.php';
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Nombre Guia:</label>
-                    <input type="text" name="NombreGuia" class="form-control" id="NombreGuia" placeholder="Codigo" maxlength="15" required>
+                    <input type="text" name="NombreGuia" class="form-control" id="NombreGuia" placeholder="Codigo" maxlength="150" required>
                     </div>
 
 

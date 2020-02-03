@@ -14,7 +14,7 @@ $IdProducto=isset($_POST["IdProducto"]) ? limpiarCadena($_POST["IdProducto"]):""
 switch ($_GET["Op"]){
 
 case 'GuardaryEditar':
-if(empty($IdProducto)){
+if(empty($IdDescProd)){
 $Rspta=$MDescProd->Insertar($DescProd,$CodDescProd,$IdProducto);
 echo $Rspta ? "REGISTRADO" : "NO SE PUDO REGISTRAR";
 
