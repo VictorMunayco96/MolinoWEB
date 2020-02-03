@@ -26,7 +26,7 @@ require 'Header.php';
                         <th>Opciones</th>
                         <th>Descripcion Producto</th>
                         <th>Codigo</th>
-                        <th>Producto</th>
+                        <th>Destino</th>
                         <th>Estado</th>
 
                         </thead>
@@ -39,7 +39,7 @@ require 'Header.php';
                       <th>Opciones</th>
                         <th>Descripcion Producto</th>
                         <th>Codigo</th>
-                        <th>Producto</th>
+                        <th>Destino</th>
                         <th>Estado</th>
 
 
@@ -57,7 +57,7 @@ require 'Header.php';
                     <form name="Formulario" id="Formulario" method="POST">
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Producto:</label>
+                    <label>Descripcion Producto:</label>
                     <input type="hidden"  name="IdDescProd" id="IdDescProd" >
                      <input type="text" class="form-control" placeholder="Descripcion" name="DescProd" id="DescProd" maxlength="50" required>
                     </div>

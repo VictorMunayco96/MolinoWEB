@@ -24,9 +24,9 @@ require 'Header.php';
                         <thead>
 
                         <th>Opciones</th>
-                        <th>Destino</th>
+                        <th>Descripcion Destino</th>
                         <th>Codigo</th>
-                        <th>Tipo Destino</th>
+                        <th>Destino</th>
                         <th>Estado</th>
 
                         </thead>
@@ -37,11 +37,10 @@ require 'Header.php';
                       <tfoot>
 
                       <th>Opciones</th>
-                        <th>Destino</th>
+                        <th>Descripcion Destino</th>
                         <th>Codigo</th>
-                        <th>Tipo Destino</th>
+                        <th>Destino</th>
                         <th>Estado</th>
-
 
 
 
@@ -60,21 +59,21 @@ require 'Header.php';
                     <form name="Formulario" id="Formulario" method="POST">
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Destino:</label>
-                    <input type="hidden" name="IdDestino" id="IdDestino">
-                    <input type="text" class="form-control" placeholder="Destino" name="Destino" id="Destino" maxlength="50" required>
+                    <label>Descripcion Destino:</label>
+                    <input type="hidden" name="IdDestinoDesc" id="IdDestinoDesc">
+                    <input type="text" class="form-control" placeholder="Descripcion Destino" name="DestinoDes" id="DestinoDes" maxlength="50" required>
                     </div>
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Tipo Destino:</label>
-                    <select id="IdTipoDestino" name ="IdTipoDestino" class="form-control selectpicker" data-live-search="true" required> </select>
+                    <label>Destino:</label>
+                    <select id="IdDestino" name ="IdDestino" class="form-control selectpicker" data-live-search="true" required> </select>
                     </div>
 
                   
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Codigo:</label>
-                    <input type="text" name="CodDestino" class="form-control" id="CodDestino" placeholder="Codigo" maxlength="15" required>
+                    <input type="text" name="CodDestinoDesc" class="form-control" id="CodDestinoDesc" placeholder="Codigo" maxlength="15" required>
                     </div>
 
 
@@ -110,4 +109,4 @@ require 'Header.php';
 require 'Footer.php';
 ?>
 
-<script type="text/javascript" src="Scripts/Destino.js"></script>
+<script type="text/javascript" src="Scripts/DestinoDesc.js"></script>
