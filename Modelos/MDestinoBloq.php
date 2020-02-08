@@ -64,7 +64,7 @@ require "../Config/Conexion.php";
 
         public function Select (){
 
-            $Sql="Select * from DestinoDesc where Estado=1;";
+            $Sql="Select * from DestinoBloq where Estado=1;";
             
             return EjecutarConsulta($Sql);
 

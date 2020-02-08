@@ -122,6 +122,36 @@
 
 <!--PRUEBA -->
 
+
+
+<!--PRUEBA -->
+<li class="treeview">
+              <a href="#">
+              <i class="fa fa-map"></i>
+                <span>Destino</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="TipoDestino.php"><i class="fa fa-circle-o"></i> Tipo Destino</a></li>
+                <li><a href="Destino.php"><i class="fa fa-circle-o"></i> Destino </a></li>
+                <li><a href="DestinoDesc.php"><i class="fa fa-circle-o"></i> Descripcion </a></li>
+                <li><a href="DestinoBloq.php"><i class="fa fa-circle-o"></i> Bloque </a></li>
+                <li><a href="Galpon.php"><i class="fa fa-circle-o"></i> Galpon </a></li>
+              </ul>
+            </li>
+
+<!--PRUEBA -->
+
+
+
+
+
+
+
+
+
+
+
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-th"></i>
