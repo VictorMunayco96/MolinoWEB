@@ -65,9 +65,9 @@ case 'Listar':
             ' <button class="btn btn-success" onclick="Activar('.$Reg->IdConductorVehiculo.')"><i class="fa fa-check"></i></button>',
             "1"=>$Reg->Fecha,
             "2"=>$Reg->Placa,
-            "3"=>$Reg->RazonSocial,
-            "3"=>$Reg->Nombre." ".$Reg->Apellidos,
-            "4"=>($Reg->Estado)?'<span class="label bg-green">Activado</span>':
+            "3"=>$Reg->Razon_Social,
+            "4"=>$Reg->Nombre." ".$Reg->Apellidos,
+            "5"=>($Reg->Estado)?'<span class="label bg-green">Activado</span>':
             '<span class="label bg-red">Desactivado</span>'
         
         );
@@ -94,23 +94,23 @@ case "SelectConductor":
 
     while($Reg = $Rspta->fetch_object()){
 
-        echo '<option value=' .$Reg->IdConductor.'>'.$Reg->Nombre." ".$Reg->Apellidos.'</option>';
+        echo '<option value='.$Reg->IdConductor.'>'.$Reg->Nombre." ".$Reg->Apellidos.'</option>';
 
     }
 
 
 break;
 
-case "SelectPlaca":
+case "SelectVehiculo":
 
     require_once "../Modelos/MVehiculo.php";
     $MVehiculo = new MVehiculo();
 
-    $Rspta=$MTipoDestino->Select();
+    $Rspta=$MVehiculo->Select();
 
     while($Reg = $Rspta->fetch_object()){
 
-        echo '<option value=' .$Reg->IdPlaca.'>'.$Reg->Placa.'</option>';
+        echo '<option value='.$Reg->IdPlaca.'>'.$Reg->Placa.'</option>';
 
     }
 

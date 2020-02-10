@@ -80,7 +80,7 @@ ENGINE = InnoDB;
 -- Table `DBMolino`.`ConductorVehiculo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `DBMolino`.`ConductorVehiculo` (
-  `IdConductorVehiculo` INT NOT NULL,
+  `IdConductorVehiculo` INT NOT NULL AUTO_INCREMENT,
   `Fecha` DATETIME NULL,
   `IdPlaca` INT NOT NULL,
   `IdConductor` INT NOT NULL,

@@ -54,8 +54,9 @@ require "../Config/Conexion.php";
 
         public function Listar (){
 
-            $Sql="Select CV.IdConductorVehiculo, CV.Fecha, CV.IdPlaca, V.Placa, ET.RazonSocial, CV.IdConductor, C.Nombre, C.Apellidos, CV.Estado   from Conductor C 
-            inner join (ConductorVehiculo CV inner join (Vehiculo V inner join EmpreTrans ET on V.IdEmpreTrans=ET.IdEmpreTrans) on CV.IdPlaca=V.IdPlaca) on C.IdConductor=CV.IdConductor; ";
+            $Sql="Select CV.IdConductorVehiculo, CV.Fecha, CV.IdPlaca, V.Placa, ET.RazonSocial as Razon_Social, CV.IdConductor, C.Nombre, C.Apellidos, CV.Estado   from Conductor C 
+            inner join (ConductorVehiculo CV inner join (Vehiculo V 
+            inner join EmpreTrans ET on V.IdEmpreTrans=ET.IdEmpreTrans) on CV.IdPlaca=V.IdPlaca) on C.IdConductor=CV.IdConductor; ";
             
             return EjecutarConsulta($Sql);
 

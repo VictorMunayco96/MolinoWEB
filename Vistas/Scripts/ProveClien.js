@@ -12,35 +12,13 @@ $("#Formulario").on("submit",function(e){
 })
 
 
-
-$.post("../Ajax/AConductorVehiculo.php?Op=SelectVehiculo", function(r){
-
-$("#IdPlaca").html(r);
-$('#IdPlaca').selectpicker('refresh');
-
-
-
-});
-
-
-$.post("../Ajax/AConductorVehiculo.php?Op=SelectConductor", function(r){
-
-    $("#IdConductor").html(r);
-    $('#IdConductor').selectpicker('refresh');
-    
-    
-    
-    });
-
-
 }
-
-
-
 function limpiar(){
 
-    $("#IdConductorVehiculo").val("");
-    
+    $("#IdProveClien").val("");
+$("#RazonSocial").val("");
+$("#Ruc").val("");
+
 
 }
 
@@ -89,7 +67,7 @@ tabla=$("#tbllistado").dataTable(
 
     "ajax":{
 
-        url: '../Ajax/AConductorVehiculo.php?Op=Listar',
+        url: '../Ajax/AProveClien.php?Op=Listar',
         type : "get",
         dataType :"json",
         error: function(e){
@@ -113,7 +91,7 @@ var formData= new FormData($("#Formulario")[0]);
 
 $.ajax({
 
-url: "../Ajax/AConductorVehiculo.php?Op=GuardaryEditar",
+url: "../Ajax/AProveClien.php?Op=GuardaryEditar",
 type: "POST",
 data: formData,
 contentType: false,
@@ -133,25 +111,19 @@ success: function(datos){
 limpiar();
 }
 
-function Mostrar(IdConductorVehiculo)
+function Mostrar(IdProveClien)
 {
 
     
-    $.post("../Ajax/AConductorVehiculo.php?Op=Mostrar",{IdConductorVehiculo : IdConductorVehiculo}, function(data,status)
+    $.post("../Ajax/AProveClien.php?Op=Mostrar",{IdProveClien : IdProveClien}, function(data,status)
         {
             data =JSON.parse(data);
             
             MostrarForm(true);
 
-            $("#IdPlaca").val(data.IdPlaca);
-            $("#IdPlaca").selectpicker('refresh');
-            
-            $("#IdConductor").val(data.IdConductor);
-            $("#IdConductor").selectpicker('refresh');
-            
-            
-            
-           
+            $("#IdProveClien").val(data.IdProveClien);
+            $("#RazonSocial").val(data.RazonSocial);
+            $("#Ruc").val(data.Ruc);
             
 
          
@@ -164,13 +136,13 @@ function Mostrar(IdConductorVehiculo)
 
 }
 
-function Desactivar(IdConductorVehiculo){
+function Desactivar(IdProveClien){
 
-bootbox.confirm("¿ESTA SEGURO DE DESACTIVAR?", function(result){
+bootbox.confirm("¿ESTA SEGURO DE DESACTIVAR EL REGISTRO?", function(result){
 
 if(result){
 
-    $.post("../Ajax/AConductorVehiculo.php?Op=Desactivar",{IdConductorVehiculo : IdConductorVehiculo}, function(e){
+    $.post("../Ajax/AProveClien.php?Op=Desactivar",{IdProveClien : IdProveClien}, function(e){
 
         bootbox.alert(e);
         tabla.ajax.reload();
@@ -188,13 +160,13 @@ if(result){
 
 
 
-function Activar(IdConductorVehiculo){
+function Activar(IdProveClien){
 
-    bootbox.confirm("¿ESTA SEGURO DE ACTIVAR?", function(result){
+    bootbox.confirm("¿ESTA SEGURO DE ACTIVAR EL REGISTRO?", function(result){
     
     if(result){
     
-        $.post("../Ajax/AConductorVehiculo.php?Op=Activar",{IdConductorVehiculo : IdConductorVehiculo}, function(e){
+        $.post("../Ajax/AProveClien.php?Op=Activar",{IdProveClien : IdProveClien}, function(e){
     
             bootbox.alert(e);
             tabla.ajax.reload();

@@ -91,18 +91,18 @@ require 'Header.php';
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Domicilio:</label>
-                    <input type="text" name="Domicilio" class="form-control" id="Domicilio" placeholder="Domicilio" maxlength="90" required>
+                    <input type="text" name="Domicilio" class="form-control" id="Domicilio" placeholder="Domicilio" maxlength="90" >
                     </div>
 
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Correo</label>
-                    <input type="email" name="Correo" class="form-control" id="Correo" placeholder="Correo" required>
+                    <input type="email" name="Correo" class="form-control" id="Correo" placeholder="Correo" >
                     </div>
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Celular</label>
-                    <input type="number" name="NumCel" class="form-control" id="NumCel" placeholder="Celular" required>
+                    <input type="number" name="NumCel" class="form-control" id="NumCel" placeholder="Celular" >
                     </div>
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">

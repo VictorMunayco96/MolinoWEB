@@ -127,6 +127,27 @@
 <!--PRUEBA -->
 <li class="treeview">
               <a href="#">
+              <i class="fa fa-truck"></i>
+                <span>Transporte</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="ConductorVehiculo.php"><i class="fa fa-circle-o"></i> Conductor y Vehiculo</a></li>
+                <li><a href="Conductor.php"><i class="fa fa-circle-o"></i> Conductor </a></li>
+                <li><a href="Vehiculo.php"><i class="fa fa-circle-o"></i> Vehiculo </a></li>
+               
+                <li><a href="EmpreTrans.php"><i class="fa fa-circle-o"></i> Empresa Transportista </a></li>
+              </ul>
+            </li>
+
+<!--PRUEBA -->
+
+
+
+
+<!--PRUEBA -->
+<li class="treeview">
+              <a href="#">
               <i class="fa fa-map"></i>
                 <span>Destino</span>
                 <i class="fa fa-angle-left pull-right"></i>
