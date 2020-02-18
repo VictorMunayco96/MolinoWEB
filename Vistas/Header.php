@@ -16,7 +16,7 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../Public/css/_all-skins.min.css">
     <link rel="apple-touch-icon" href="../Public/img/apple-touch-icon.png">
-    <link rel="shortcut icon" href="../Public/img/favicon.ico">
+    <link rel="shortcut icon" href="https://images.squarespace-cdn.com/content/v1/5d4c75052f957a000169e9fe/1565291925889-TA1LVIHVUXNXYQIG6YUF/ke17ZwdGBToddI8pDm48kHP-EVIlrjiNaxi7lPtCjh1Zw-zPPgdn4jUwVcJE1ZvWhcwhEtWJXoshNdA9f1qD7UnCxNA8dHvmd7460Z7fbKFbFapufuf3KvMkaY525fM3blhAjVv6POBWHrxoABZaPQ/favicon.ico">
 
   <link rel="stylesheet" type="text/css" href="../Public/datatables/jquery.dataTables.min.css">
   <link href="../Public/datatables/buttons.dataTables.min.css" rel="stylesheet"/>
