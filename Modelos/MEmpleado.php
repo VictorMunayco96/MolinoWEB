@@ -38,22 +38,22 @@ require "../Config/Conexion.php";
 
         public function Activar ($IdEmpleado){
 
-            $Sql=" Update Emplead set  Estado=1 where IdTipoDestino='$IdTipoDestino';";
+            $Sql=" Update Empleado set  Estado=1 where IdEmpleado='$IdEmpleado';";
             
             return EjecutarConsulta($Sql);
 
         }
 
-        public function Mostrar($IdTipoDestino){
+        public function Mostrar($IdEmpleado){
 
-            $Sql="Select * from TipoDestino where IdTipoDestino='$IdTipoDestino'";
+            $Sql="Select * from Empleado where IdEmpleado='$IdEmpleado'";
             return EjecutarConsultaSImpleFila($Sql);
 
         }
 
         public function Listar (){
 
-            $Sql="Select * from TipoDestino;";
+            $Sql="Select * from Empleado;";
             
             return EjecutarConsulta($Sql);
 
@@ -62,7 +62,7 @@ require "../Config/Conexion.php";
 
         public function Select (){
 
-            $Sql="Select * from TipoDestino where Estado=1;";
+            $Sql="Select * from Empleado where Estado=1;";
             
             return EjecutarConsulta($Sql);
 

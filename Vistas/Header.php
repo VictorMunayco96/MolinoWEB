@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>LA CALERA - MOLINO</title>
+    <title>LA CALERA</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -53,13 +53,13 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="../Public/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                  <img src="../Public/dist/img/Logouser.jpg" class="user-image" alt="User Image">
                   <span class="hidden-xs">Victor Hugo Munayco Morales</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="../Public/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="../Public/dist/img/Logouser.jpg" class="img-circle" alt="User Image">
                     <p>
                       www.incanatoit.com - Desarrollando Software
                       <small>www.youtube.com/jcarlosad7</small>
@@ -164,6 +164,21 @@
 <!--PRUEBA -->
 
 
+            
+<!--PRUEBA -->
+<li class="treeview">
+              <a href="#">
+              <i class="fa fa-leaf"></i>
+                <span>Personal</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="Empleado.php"><i class="fa fa-circle-o"></i> Empleado</a></li>
+              
+              </ul>
+            </li>
+
+<!--PRUEBA -->
 
 
 
@@ -201,8 +216,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-                <li><a href="permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li>
+                <li><a href="Usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+                <li><a href="Permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li>
                 
               </ul>
             </li>
