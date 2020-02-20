@@ -10,20 +10,61 @@ require "../Config/Conexion.php";
 
         }
 
-        public function Insertar($Usuario, $Contrasena, $TipoUsuario, $IdEmpleado){
+        public function Insertar($Usuario, $Contrasena, $TipoUsuario, $IdEmpleado,$Permiso){
 
             $Sql="Insert into Usuario (Usuario, Contrasena, TipoUsuario, IdEmpleado, Estado) values('$Usuario', '$Contrasena', '$TipoUsuario', '$IdEmpleado',1)";
 
-            return EjecutarConsulta($Sql);
+           // return EjecutarConsulta($Sql);
+           $IdUsuarioNew=EjecutarConsulta_RetornarID($Sql);
+
+           $Num_Elementos=0;
+
+           $Sw=true;
+
+           while($Num_Elementos< count($Permiso)){
+
+            $Sql_Detalle = "Insert into UsuarioPermiso(IdUsuario, IdPermiso) values ('$IdUsuarioNew','$Permiso[$Num_Elementos]')";
+
+            EjecutarConsulta($Sql_Detalle) or $Sw = false;
+
+            $Num_Elementos=$Num_Elementos+1;
+
+           }
+
+           return $Sw;
 
         }       
         
-        public function Editar($IdUsuario,$Usuario, $Contrasena, $TipoUsuario, $IdEmpleado){
+        public function Editar($IdUsuario,$Usuario, $Contrasena, $TipoUsuario, $IdEmpleado,$Permiso){
 
             $Sql=" Update Usuario set Usuario='$Usuario', 
             Contrasena='$Contrasena', TipoUsuario='$TipoUsuario', IdEmpleado='$IdEmpleado' where IdUsuario='$IdUsuario';";
             
-            return EjecutarConsulta($Sql);
+            EjecutarConsulta($Sql);
+
+            //ELIMINAR TODOS REGISTROS ASIGNADOS
+             $SqlDel="delete from UsuarioPermiso where IdUsuario='$IdUsuario'";
+
+             EjecutarConsulta($SqlDel);
+
+             //INGRESAR PERMISOS
+
+             $Num_Elementos=0;
+
+             $Sw=true;
+  
+             while($Num_Elementos< count($Permiso)){
+  
+              $Sql_Detalle = "Insert into UsuarioPermiso(IdUsuario, IdPermiso) values ('$IdUsuario','$Permiso[$Num_Elementos]')";
+  
+              EjecutarConsulta($Sql_Detalle) or $Sw = false;
+  
+              $Num_Elementos=$Num_Elementos+1;
+  
+             }
+  
+             return $Sw;
+
 
         }
 
@@ -61,7 +102,12 @@ require "../Config/Conexion.php";
 
         }
 
+public function ListarMarcados($IdUsuario){
 
+$Sql="Select * from UsuarioPermiso where IdUsuario='$IdUsuario'";
+return EjecutarConsulta($Sql);
+
+}
 
 
 }

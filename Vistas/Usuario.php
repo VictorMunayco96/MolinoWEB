@@ -60,7 +60,7 @@ require 'Header.php';
                     <form name="Formulario" id="Formulario" method="POST">
 
 
-                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-log-12 col-md-12 col-sm-12 col-xs-12">
                     <label>Empleado:</label>
                     <select id="IdEmpleado" name ="IdEmpleado" class="form-control selectpicker" data-live-search="true" required> </select>
                     </div>
@@ -77,16 +77,23 @@ require 'Header.php';
                     <input type="password" name="Contrasena" class="form-control" id="Contrasena" placeholder="Contrasena" maxlength="64" required>
                     </div>
 
+                  
+
+
+                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>Privilegios:</label>
+                    <ul style="list-style: none" id="Permiso">
+                    
+
+                    
+                    </ul>
+                    </div>
+
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Tipo Usuario:</label>
                     <input type="text" name="TipoUsuario" class="form-control" id="TipoUsuario" placeholder="TipoUsuario" maxlength="30" required>
                     </div>
 
-
-
-
-
-                    
 
                   
 

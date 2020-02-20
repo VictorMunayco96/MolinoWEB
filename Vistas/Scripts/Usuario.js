@@ -22,6 +22,16 @@ $('#IdEmpleado').selectpicker('refresh');
 
 });
 
+$.post("../Ajax/AUsuario.php?Op=Permiso&Id=", function(r){
+
+    $("#Permiso").html(r);
+    $('#Permiso').selectpicker('refresh');
+    
+    
+    
+    });
+    
+
 
 
 
@@ -148,7 +158,16 @@ function Mostrar(IdUsuario)
 
 
 
-})
+});
+
+$.post("../Ajax/AUsuario.php?Op=Permiso&Id="+IdUsuario, function(r){
+
+    $("#Permiso").html(r);
+    $('#Permiso').selectpicker('refresh');
+    
+    
+    
+    });
 
 
 }

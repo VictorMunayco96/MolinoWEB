@@ -16,12 +16,13 @@ case 'GuardaryEditar':
 
     $ClaveHash=hash("SHA256",$Contrasena);
 if(empty($IdUsuario)){
-$Rspta=$MUsuario->Insertar($Usuario,$ClaveHash,$TipoUsuario,$IdEmpleado);
+
+$Rspta=$MUsuario->Insertar($Usuario,$ClaveHash,$TipoUsuario,$IdEmpleado,$_POST['Permiso']);
 echo $Rspta ? "REGISTRADO" : "NO SE PUDO REGISTRAR";
 
 }else{
 
-    $Rspta=$MUsuario->Editar($IdUsuario,$Usuario, $ClaveHash, $TipoUsuario, $IdEmpleado);
+    $Rspta=$MUsuario->Editar($IdUsuario,$Usuario, $ClaveHash, $TipoUsuario, $IdEmpleado,$_POST['Permiso']);
     echo $Rspta ? "EDITADO" : "NO SE PUDO EDITAR";
     
 
@@ -102,6 +103,35 @@ case "SelectEmpleado":
 
 
 break;
+
+case "Permiso":
+    require_once "../Modelos/MPermiso.php";
+    $MPermiso = new MPermiso();
+    $Rspta=$MPermiso->Listar();
+
+//obtener permisos asignados
+$Id=$_GET['Id'];
+$Marcados=$MUsuario->ListarMarcados($Id);
+
+$Valores=array();
+
+while($Per = $Marcados->fetch_object()){
+
+array_push($Valores, $Per->IdPermiso);
+
+}
+
+
+
+    while($Reg = $Rspta->fetch_object()){
+
+        
+        $Sw=in_array($Reg->IdPermiso,$Valores)?'checked':'';
+        echo '<li><input type="checkbox" '.$Sw.' name="Permiso[]" value="'.$Reg->IdPermiso.'"> '.$Reg->Nombre.'</li>';
+
+    }
+
+    break;
 
 }
 
