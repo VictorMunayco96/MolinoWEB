@@ -102,12 +102,21 @@ require "../Config/Conexion.php";
 
         }
 
-public function ListarMarcados($IdUsuario){
+        public function ListarMarcados($IdUsuario){
 
-$Sql="Select * from UsuarioPermiso where IdUsuario='$IdUsuario'";
-return EjecutarConsulta($Sql);
+        $Sql="Select * from UsuarioPermiso where IdUsuario='$IdUsuario'";
+        return EjecutarConsulta($Sql);
 
-}
+        }
+
+
+          //Función para verificar el acceso al sistema
+    public function verificar($login,$clave)
+    {
+        $sql="Select U.IdUsuario, U.Usuario, U.Contrasena, U.TipoUsuario,U.IdEmpleado,E.NombreE,E.ApellidosE,U.Estado from Usuario U
+        inner join Empleado E on U.IdEmpleado=E.IdEmpleado WHERE U.Usuario='$login' AND U.Contrasena='$clave' AND U.Estado='1'"; 
+        return ejecutarConsulta($sql);  
+    }
 
 
 }
