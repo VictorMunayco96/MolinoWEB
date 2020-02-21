@@ -178,7 +178,7 @@ array_push($Valores, $Per->IdPermiso);
             in_array(8,$valores)?$_SESSION['Ventas']=1:$_SESSION['Ventas']=0;
             in_array(9,$valores)?$_SESSION['Acceso']=1:$_SESSION['Acceso']=0;
             in_array(10,$valores)?$_SESSION['ConsulCom']=1:$_SESSION['ConsulCom']=0;
-            in_array(11,$valores)?$_SESSION['ComsulVen']=1:$_SESSION['ConsulVen']=0;
+            in_array(11,$valores)?$_SESSION['ConsulVen']=1:$_SESSION['ConsulVen']=0;
   
         }
         echo json_encode($fetch);
