@@ -5,12 +5,18 @@ session_start();
 
 if(!isset($_SESSION["IdUsuario"])){
 
-  header("LOCATION: Login.html");
+  header("LOCATION: Login.php");
 
 }else{
 
 
 require 'Header.php';
+
+if($_SESSION["Destino"]==1){
+
+
+
+
 ?>
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
@@ -116,6 +122,14 @@ require 'Header.php';
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
 <?php
+
+}
+else{
+
+require 'NoAcceso.php';
+
+}
+
 
 require 'Footer.php';
 ?>

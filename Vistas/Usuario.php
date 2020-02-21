@@ -6,7 +6,8 @@ session_start();
 
 if(!isset($_SESSION["IdUsuario"])){
 
-  header("LOCATION: Login.html");
+  header("LOCATION: Login.php");
+
 
 }else{
 
@@ -66,7 +67,7 @@ require 'Header.php';
                         </table>
                     </div>
 
-                    <div class="panel-body" style="height: 400px;" id="FormularioRegistros">
+                    <div class="panel-body" style="height: 600px;" id="FormularioRegistros">
                     
                     <form name="Formulario" id="Formulario" method="POST">
 

@@ -5,9 +5,11 @@ session_start();
 
 if(!isset($_SESSION["IdUsuario"])){
 
-  header("LOCATION: Login.html");
+  header("LOCATION: Login.php");
 
 }else{
+
+  if($_SESSION["Producto"]==1){
 
 
 
@@ -112,7 +114,12 @@ require 'Header.php';
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
 <?php
+}
+else{
 
+require 'NoAcceso.php';
+
+}
 require 'Footer.php';
 ?>
 

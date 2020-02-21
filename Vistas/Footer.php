@@ -1,8 +1,7 @@
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <b>Version</b> 2.3.0
-        </div>
-        <strong>Copyright &copy; 2013-2017 <a href="www.incanatoit.com">IncanatoIT</a>.</strong> All rights reserved.
+          <b>Version</b> 1.0
+        <strong>Copyright &copy; 2020-2021 <a href="www.incanatoit.com">Victor Hugo</a>.</strong> All rights reserved.
     </footer>    
     <!-- jQuery 2.1.4 -->
     <script src="../Public/js/jquery-3.1.1.min.js"></script>

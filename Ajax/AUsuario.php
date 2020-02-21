@@ -135,8 +135,8 @@ array_push($Valores, $Per->IdPermiso);
     break;
 
     case 'verificar':
-        $logina=$_POST['logina'];
-        $clavea=$_POST['clavea'];
+        $logina=limpiarCadena($_POST['logina']);
+        $clavea=limpiarCadena($_POST['clavea']);
  
         //Hash SHA256 en la contraseña
         $clavehash=hash("SHA256",$clavea);
@@ -151,32 +151,48 @@ array_push($Valores, $Per->IdPermiso);
            $_SESSION['IdUsuario']=$fetch->IdUsuario;
            $_SESSION['Nombre']=$fetch->NombreE.' '.$fetch->ApellidosE;
            $_SESSION['Usuario']=$fetch->Usuario;
-          /*  
+        
 
             
             //Obtenemos los permisos del usuario
-           // $marcados = $usuario->listarmarcados($fetch->idusuario);
- 
+            $marcados = $MUsuario->ListarMarcados($fetch->IdUsuario);
+   
             //Declaramos el array para almacenar todos los permisos marcados
-           // $valores=array();
+           $valores=array();
  
             //Almacenamos los permisos marcados en el array
-          /*  while ($per = $marcados->fetch_object())
+           while ($per = $marcados->fetch_object())
                 {
-                    array_push($valores, $per->idpermiso);
-                }*/
+                    array_push($valores, $per->IdPermiso);
+                }
  
             //Determinamos los accesos del usuario
-           /* in_array(1,$valores)?$_SESSION['escritorio']=1:$_SESSION['escritorio']=0;
-            in_array(2,$valores)?$_SESSION['almacen']=1:$_SESSION['almacen']=0;
-            in_array(3,$valores)?$_SESSION['compras']=1:$_SESSION['compras']=0;
-            in_array(4,$valores)?$_SESSION['ventas']=1:$_SESSION['ventas']=0;
-            in_array(5,$valores)?$_SESSION['acceso']=1:$_SESSION['acceso']=0;
-            in_array(6,$valores)?$_SESSION['consultac']=1:$_SESSION['consultac']=0;
-            in_array(7,$valores)?$_SESSION['consultav']=1:$_SESSION['consultav']=0;
- */
+  
+            in_array(1,$valores)?$_SESSION['Escritorio']=1:$_SESSION['Escritorio']=0;
+            in_array(2,$valores)?$_SESSION['Almacen']=1:$_SESSION['Almacen']=0;
+            in_array(3,$valores)?$_SESSION['Producto']=1:$_SESSION['Producto']=0;
+            in_array(4,$valores)?$_SESSION['Transporte']=1:$_SESSION['Transporte']=0;
+            in_array(5,$valores)?$_SESSION['Destino']=1:$_SESSION['Destino']=0;
+            in_array(6,$valores)?$_SESSION['Personal']=1:$_SESSION['Personal']=0;
+            in_array(7,$valores)?$_SESSION['Compras']=1:$_SESSION['Compras']=0;
+            in_array(8,$valores)?$_SESSION['Ventas']=1:$_SESSION['Ventas']=0;
+            in_array(9,$valores)?$_SESSION['Acceso']=1:$_SESSION['Acceso']=0;
+            in_array(10,$valores)?$_SESSION['ConsulCom']=1:$_SESSION['ConsulCom']=0;
+            in_array(11,$valores)?$_SESSION['ComsulVen']=1:$_SESSION['ConsulVen']=0;
+  
         }
         echo json_encode($fetch);
+    break;
+
+
+    case "Salir":
+
+    session_unset();
+
+    session_destroy();
+
+    header("Location: ../index.php");
+    
     break;
 
 }
