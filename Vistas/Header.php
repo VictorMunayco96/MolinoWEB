@@ -168,7 +168,7 @@
 <!--PRUEBA -->
 <li class="treeview">
               <a href="#">
-              <i class="fa fa-leaf"></i>
+              <i class="fa fa-users"></i>
                 <span>Personal</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
