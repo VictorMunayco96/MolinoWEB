@@ -12,7 +12,7 @@ $("#frmAcceso").on('submit',function(e)
        
         if (data!="null")
         {
-            $(location).attr("href","TipoProducto.php");            
+            $(location).attr("href","TipoDestino.php");            
         }
         else
         {

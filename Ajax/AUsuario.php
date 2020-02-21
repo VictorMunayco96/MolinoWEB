@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once "../Modelos/MUsuario.php";
 
@@ -148,11 +149,9 @@ array_push($Valores, $Per->IdPermiso);
         {
             //Declaramos las variables de sesión
            $_SESSION['IdUsuario']=$fetch->IdUsuario;
-          /*   $_SESSION['nombre']=$fetch->nombre;
-            $_SESSION['imagen']=$fetch->imagen;
-            $_SESSION['login']=$fetch->login;*/
- 
-
+           $_SESSION['Nombre']=$fetch->NombreE.' '.$fetch->ApellidosE;
+           $_SESSION['Usuario']=$fetch->Usuario;
+          /*  
 
             
             //Obtenemos los permisos del usuario

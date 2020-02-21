@@ -1,4 +1,15 @@
 <?php
+
+
+ob_start();
+session_start();
+
+if(!isset($_SESSION["IdUsuario"])){
+
+  header("LOCATION: Login.html");
+
+}else{
+
 require 'Header.php';
 ?>
 <!--Contenido-->
@@ -128,3 +139,9 @@ require 'Footer.php';
 ?>
 
 <script type="text/javascript" src="Scripts/Usuario.js"></script>
+
+<?php 
+
+}
+ob_end_flush();
+?>
