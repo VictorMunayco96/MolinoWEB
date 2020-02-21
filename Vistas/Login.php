@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>LA CALERA</title>
     <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="../Public/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../Public/css/font-awesome.css">
-   
+    <link rel="stylesheet" type="text/css" href="../Public/css/style.css">  
     <!-- Theme style -->
     <link rel="stylesheet" href="../Public/css/AdminLTE.min.css">
     <!-- iCheck -->
@@ -23,19 +23,21 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class="hold-transition login-page">
-    <div class="login-box">
-      <div class="login-logo">
-        <a href="../../index2.html"><b>ADVentas</b></a>
-      </div><!-- /.login-logo -->
-      <div class="login-box-body">
-        <p class="login-box-msg">Ingrese sus datos de Acceso</p>
+  <body >
+    <div class="login-box2">
+      
+      <img src="../Public/img/Logo.jpg" class="avatar">
+     
+     
+      <h1>Molino</h1>
         <form method="post" id="frmAcceso">
           <div class="form-group has-feedback">
+          <p>Usuario</p>
             <input type="text" id="logina" name="logina" class="form-control" placeholder="Usuario">
             <span class="fa fa-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
+          <p>Contraseña</p>
             <input type="password" id="clavea" name="clavea" class="form-control" placeholder="Password">
             <span class="fa fa-key form-control-feedback"></span>
           </div>
@@ -43,14 +45,14 @@
             <div class="col-xs-8">
               
             </div><!-- /.col -->
-            <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+            <div >
+              <button type="submit" >Ingresar</button>
             </div><!-- /.col -->
-          </div>
+          
         </form>
 
         
-        <a href="#">Olvidé mi password</a><br>
+   
         
 
       </div><!-- /.login-box-body -->
