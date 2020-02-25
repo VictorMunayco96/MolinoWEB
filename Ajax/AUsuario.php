@@ -177,8 +177,8 @@ array_push($Valores, $Per->IdPermiso);
             in_array(7,$valores)?$_SESSION['Compras']=1:$_SESSION['Compras']=0;
             in_array(8,$valores)?$_SESSION['Ventas']=1:$_SESSION['Ventas']=0;
             in_array(9,$valores)?$_SESSION['Acceso']=1:$_SESSION['Acceso']=0;
-            in_array(10,$valores)?$_SESSION['ConsulCom']=1:$_SESSION['ConsulCom']=0;
-            in_array(11,$valores)?$_SESSION['ConsulVen']=1:$_SESSION['ConsulVen']=0;
+            in_array(10,$valores)?$_SESSION['ConsulProd']=1:$_SESSION['ConsulProd']=0;
+            in_array(11,$valores)?$_SESSION['ConsulProd2']=1:$_SESSION['ConsulProd2']=0;
   
         }
         echo json_encode($fetch);

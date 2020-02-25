@@ -258,21 +258,21 @@ session_start();
             ?>
 
 <?php 
-            if($_SESSION['ConsulCom']==1){ 
+            if($_SESSION['ConsulProd']==1){ 
               echo ' <li class="treeview">
               <a href="#">
-                <i class="fa fa-bar-chart"></i> <span>Consulta Compras</span>
+                <i class="fa fa-bar-chart"></i> <span>Consulta Produccion</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="consultacompras.php"><i class="fa fa-circle-o"></i> Consulta Compras</a></li>                
+                <li><a href="ConsulBalanza.php"><i class="fa fa-circle-o"></i> Consulta Balanza</a></li>                
               </ul>
             </li>';
             }
             ?>
 
 <?php 
-            if($_SESSION['ConsulVen']==1){ 
+            if($_SESSION['ConsulProd2']==1){ 
               echo '<li class="treeview">
               <a href="#">
                 <i class="fa fa-bar-chart"></i> <span>Consulta Ventas</span>
