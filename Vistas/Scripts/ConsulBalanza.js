@@ -3,10 +3,8 @@ var tabla;
 function init(){
 
 
-Listar();
 
-$("#FechaInicio").change(Listar);
-$("#FechaFin").change(Listar);
+
 
 
 
@@ -16,6 +14,9 @@ function Listar(){
 
     var FechaInicio = $("#FechaInicio").val();
     var FechaFin = $("#FechaFin").val();
+
+    var Busqueda = $("#Busqueda").val();
+
 
 
 tabla=$("#tbllistado").dataTable(
@@ -36,7 +37,7 @@ tabla=$("#tbllistado").dataTable(
     "ajax":{
 
         url: '../Ajax/AConsultas.php?Op=SalBalanzaFec',
-        data:{FechaInicio: FechaInicio, FechaFin: FechaFin},
+        data:{FechaInicio: FechaInicio, FechaFin: FechaFin, Busqueda: Busqueda},
         type : "get",
         dataType :"json",
         error: function(e){

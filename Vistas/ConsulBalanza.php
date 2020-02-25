@@ -35,14 +35,30 @@ if($_SESSION["ConsulProd"]==1){
                     <!-- centro -->
                     <div class="panel-body table-responsive" id="ListadoRegistros">
                        
-                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-log-3 col-md-3 col-sm-3 col-xs-6">
                     <label>Fecha Inicio:</label>
                     <input type="Date" name="FechaInicio" class="form-control" id="FechaInicio" value="<?php echo date('Y-m-d'); ?>">
                     </div>
 
-                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-log-3 col-md-3 col-sm-3 col-xs-6s">
                     <label>Fecha Fin:</label>
                     <input type="Date" name="FechaFin" class="form-control" id="FechaFin" value="<?php echo date('Y-m-d'); ?>">
+                    </div>
+                    <div class="form-group col-log-3 col-md-3 col-sm-3 col-xs-6s">
+                    <label>Filtro</label>
+                    <select id="FiltroRev" name ="FiltroRev" class="form-control selectpicker" required> 
+                
+                    <option value="destinodesc.DestinoDes">DESTINO</option>
+                    <option value="DescProd.DescProd">PRODUCTO</option>
+                
+                    
+                    
+                    </select>
+                    <button class="btn btn-success" onclick="Listar()">Mostrar</button>
+                    </div>
+                    <div class="form-group col-log-3 col-md-3 col-sm-3 col-xs-6s">
+                    <label>Busqueda</label>
+                    <input type="text" name="Busqueda" class="form-control" id="Busqueda">
                     </div>
                     
                     <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover" >

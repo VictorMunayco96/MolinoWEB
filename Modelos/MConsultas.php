@@ -14,9 +14,12 @@ require "../Config/Conexion.php";
 
      
 
-        public function SalBalanzaFec($FechaInicio, $FechaFin){
+        public function SalBalanzaFec($FechaInicio, $FechaFin, $Busqueda){
 
-            $Sql="SELECT
+           
+           
+           
+           $Sql="SELECT
              peso.IdPeso, 
              peso.TipoMovimiento,
               peso.NumGuia,
@@ -48,6 +51,7 @@ require "../Config/Conexion.php";
               INNER JOIN Destino destino  ON destinodesc.IdDestino = destino.IdDestino 
                        
               where peso.Estado='D' and DATE(peso.FechaHoraSal)>='$FechaInicio' and DATE(peso.FechaHoraSal)<='$FechaFin' 
+              and  DescProd.DescProd like concat('%','$Busqueda','%') 
               
               order by peso.IdPeso Desc limit 15000;";
             

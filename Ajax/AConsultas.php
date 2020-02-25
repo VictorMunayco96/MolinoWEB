@@ -12,9 +12,11 @@ case 'SalBalanzaFec':
 
     $FechaInicio=$_REQUEST["FechaInicio"];
     $FechaFin=$_REQUEST["FechaFin"];
+    $Busqueda=$_REQUEST["Busqueda"];
+    
 
     
-    $Rspta=$MConsultas->SalBalanzaFec($FechaInicio, $FechaFin);
+    $Rspta=$MConsultas->SalBalanzaFec($FechaInicio, $FechaFin ,$Busqueda);
 
     $Data = Array();
 
@@ -28,7 +30,8 @@ case 'SalBalanzaFec':
             "3"=>$Reg->DescProd,
             "4"=>$Reg->NumGuia,
             "5"=>$Reg->Nombre.' '.$Reg->Apellidos,
-            "6"=>$Reg->Dest.' '.$Reg->DestinoDes.' '.$Reg->DestinoBloq,
+           // "6"=>$Reg->Dest.' '.$Reg->DestinoDes.' '.$Reg->DestinoBloq,
+           "6"=>$Reg->DestinoDes.' '.$Reg->DestinoBloq,
             "7"=>$Reg->FechaHoraEnt,
             "8"=>$Reg->FechaHoraSal,
             "9"=>$Reg->PesoCE,
