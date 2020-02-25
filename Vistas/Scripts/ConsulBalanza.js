@@ -36,7 +36,7 @@ tabla=$("#tbllistado").dataTable(
     "ajax":{
 
         url: '../Ajax/AConsultas.php?Op=SalBalanzaFec',
-        data:{FechaInicio: FechaInicio, Fecha_Fin: FechaFin},
+        data:{FechaInicio: FechaInicio, FechaFin: FechaFin},
         type : "get",
         dataType :"json",
         error: function(e){

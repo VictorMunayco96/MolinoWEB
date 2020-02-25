@@ -18,12 +18,12 @@ case 'GuardaryEditar':
     $ClaveHash=hash("SHA256",$Contrasena);
 if(empty($IdUsuario)){
 
-$Rspta=$MUsuario->Insertar($Usuario,$ClaveHash,$TipoUsuario,$IdEmpleado,$_POST['Permiso']);
+$Rspta=$MUsuario->Insertar($Usuario,$Contrasena,$TipoUsuario,$IdEmpleado,$_POST['Permiso']);
 echo $Rspta ? "REGISTRADO" : "NO SE PUDO REGISTRAR";
 
 }else{
 
-    $Rspta=$MUsuario->Editar($IdUsuario,$Usuario, $ClaveHash, $TipoUsuario, $IdEmpleado,$_POST['Permiso']);
+    $Rspta=$MUsuario->Editar($IdUsuario,$Usuario, $Contrasena, $TipoUsuario, $IdEmpleado,$_POST['Permiso']);
     echo $Rspta ? "EDITADO" : "NO SE PUDO EDITAR";
     
 
@@ -141,7 +141,7 @@ array_push($Valores, $Per->IdPermiso);
         //Hash SHA256 en la contraseña
         $clavehash=hash("SHA256",$clavea);
  
-        $rspta=$MUsuario->verificar($logina, $clavehash);
+        $rspta=$MUsuario->verificar($logina, $clavea);
  
         $fetch=$rspta->fetch_object();
  
