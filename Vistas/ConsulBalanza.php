@@ -46,19 +46,23 @@ if($_SESSION["ConsulProd"]==1){
                     </div>
                     <div class="form-group col-log-3 col-md-3 col-sm-3 col-xs-6s">
                     <label>Filtro</label>
-                    <select id="FiltroRev" name ="FiltroRev" class="form-control selectpicker" required> 
+                    <select id="Filtro" name ="Filtro" class="form-control selectpicker" required> 
                 
-                    <option value="destinodesc.DestinoDes">DESTINO</option>
-                    <option value="DescProd.DescProd">PRODUCTO</option>
+                    <option value="SELECCIONAR">SELECCIONAR</option>
+                    <option value="DESTINO">DESTINO</option>
+                    <option value="PRODUCTO">PRODUCTO</option>
+                    <option value="PROVEEDOR">PROVEEODR</option>
                 
                     
                     
                     </select>
-                    <button class="btn btn-success" onclick="Listar()">Mostrar</button>
+                   
                     </div>
                     <div class="form-group col-log-3 col-md-3 col-sm-3 col-xs-6s">
                     <label>Busqueda</label>
                     <input type="text" name="Busqueda" class="form-control" id="Busqueda">
+                    <BR>
+                    <button class="btn btn-success" onclick="Listar()">Mostrar</button>
                     </div>
                     
                     <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover" >

@@ -13,10 +13,11 @@ case 'SalBalanzaFec':
     $FechaInicio=$_REQUEST["FechaInicio"];
     $FechaFin=$_REQUEST["FechaFin"];
     $Busqueda=$_REQUEST["Busqueda"];
+    $Filtro=$_REQUEST["Filtro"];
     
 
     
-    $Rspta=$MConsultas->SalBalanzaFec($FechaInicio, $FechaFin ,$Busqueda);
+    $Rspta=$MConsultas->SalBalanzaFec($FechaInicio, $FechaFin ,$Busqueda,$Filtro);
 
     $Data = Array();
 
