@@ -1,7 +1,7 @@
 <?php
 
 
-/*ob_start();
+ob_start();
 session_start();
 
 if(!isset($_SESSION["IdUsuario"])){
@@ -9,7 +9,7 @@ if(!isset($_SESSION["IdUsuario"])){
   header("LOCATION: Login.php");
 
 
-}else{*/
+}else{
 
 require 'Header.php';
 ?>
@@ -143,6 +143,6 @@ require 'Footer.php';
 
 <?php 
 
-//}
+}
 ob_end_flush();
 ?>
