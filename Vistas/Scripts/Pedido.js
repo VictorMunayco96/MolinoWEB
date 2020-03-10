@@ -1,4 +1,5 @@
 var tabla;
+var tablaP;
 
 function init(){
 
@@ -129,11 +130,13 @@ success: function(datos){
 limpiar();
 }
 
-function ListarPedido()
+function ListarPedido(IdCabeceraPedido)
 {
+   MostrarForm(2);
 
+var Hola = IdCabeceraPedido;
    
-tabla=$("#tbllistadoP").dataTable(
+tablaP=$("#tbllistadoP").dataTable(
     
     {
     "aProcessing": true,
@@ -150,7 +153,8 @@ tabla=$("#tbllistadoP").dataTable(
 
     "ajax":{
 
-        url: '../Ajax/APedido.php?Op=ListarPedido',
+        url: '../Ajax/APedido.php?Op=ListarPedido&IdCabeceraPedido='+Hola,
+        //data:{IdCabeceraPedido:Hola},
         type : "get",
         dataType :"json",
         error: function(e){
@@ -163,7 +167,7 @@ tabla=$("#tbllistadoP").dataTable(
     "order":[[0,"desc"]]
 
 }).DataTable(); 
-MostrarForm(2);
+
 
 
 }

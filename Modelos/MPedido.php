@@ -54,32 +54,32 @@ require "../Config/Conexion.php";
 
         }
 
-       // public function ListarPedido ($IdCabecera, $NumSemana){
+        public function ListarPedido ($IdCabeceraPedido, $NumSemana){
 
-            public function ListarPedido (){
+        
 
             $Sql="SELECT
-            pedido.`IdPedido` AS IdPedido,
-            pedido.`IdCabeceraPedido` AS IdCabeceraPedido,
-            pedido.`CantidadBatch` AS CantidadBatch,
-            pedido.`Observacion` AS Observacion,
-            pedido.`Fecha` AS Fecha,
-            pedido.`Estado` AS Estado,
-            pedido.`CantidadKG` AS CantidadKG,
-            pedido.`IdUsuario` AS IdUsuario,
-            pedido.`IdDescProd` AS IdDescProd,
-            pedido.`NumSemana` AS NumSemana,
-            cabecerapedido.`IdDestinoDesc` AS IdDestinoDesc,
-            usuario.`Usuario` AS Usuario,
-            descprod.`DescProd` AS DescProd,
-            destinodesc.`DestinoDes` AS DestinoDes,
-            cabecerapedido.`TipoTransporte` AS TipoTransporte
-       FROM
-            `cabecerapedido` cabecerapedido INNER JOIN `pedido` pedido ON cabecerapedido.`IdCabeceraPedido` = pedido.`IdCabeceraPedido`
-            INNER JOIN `usuario` usuario ON pedido.`IdUsuario` = usuario.`IdUsuario`
-            INNER JOIN `descprod` descprod ON pedido.`IdDescProd` = descprod.`IdDescProd`
-            INNER JOIN `destinodesc` destinodesc ON cabecerapedido.`IdDestinoDesc` = destinodesc.`IdDestinoDesc`";
-          //  where IdCabeceraPedido='$IdCabecera' and NumSemana='$NumSemana'";
+            P.IdPedido,
+            P.IdCabeceraPedido,
+            P.CantidadBatch,
+            P.Observacion,
+            P.Fecha,
+            P.Estado as PEstado,
+            P.CantidadKG,
+            P.IdUsuario,
+            P.IdDescProd,
+            P.NumSemana,
+            CP.IdDestinoDesc,
+            U.Usuario,
+            DP.DescProd,
+            DD.DestinoDes,
+            CP.TipoTransporte 
+       FROM 
+            cabecerapedido CP INNER JOIN pedido P ON CP.IdCabeceraPedido = P.IdCabeceraPedido
+            INNER JOIN usuario U ON P.IdUsuario = U.IdUsuario
+            INNER JOIN descprod DP ON P.IdDescProd = DP.IdDescProd
+            INNER JOIN destinodesc DD ON CP.IdDestinoDesc = DD.IdDestinoDesc
+            where P.IdCabeceraPedido='$IdCabeceraPedido' and P.NumSemana='$NumSemana'";
             
             return EjecutarConsulta($Sql);
 

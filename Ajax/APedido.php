@@ -1,5 +1,6 @@
 <?php
-
+ob_start();
+session_start();
 require_once "../Modelos/MPedido.php";
 
 $MPedido= new MPedido();
@@ -62,7 +63,7 @@ case 'ListarCabeceraPedido':
 
         $Data[]=array(
 
-            "0"=>'<button class="btn btn-info" onclick="ListarPedido()"><i class="fa fa-eye"></i></button>',
+            "0"=>'<button class="btn btn-info" onclick="ListarPedido('.$Reg->IdCabeceraPedido.')"><i class="fa fa-eye"></i></button>',
        
             
             "1"=>$Reg->DestinoDes,
@@ -90,22 +91,27 @@ break;
 
 case 'ListarPedido':
 
-    $Rspta=$MPedido->ListarPedido();
 
-    $Data = Array();
+$NumSemana=$_SESSION['NumSemana'];
+$IdCabeceraPedido=$_REQUEST['IdCabeceraPedido'];
 
-    while($Reg=$Rspta->fetch_object()){
 
-        $Data[]=array(
 
-            "0"=>'<button class="btn btn-info"><i class="fa fa-eye"></i></button>',
+    $RsptaP=$MPedido->ListarPedido($IdCabeceraPedido, $NumSemana);
+   
+    $DataP = Array();
+
+    while($RegP=$RsptaP->fetch_object()){
+
+        $DataP[]=array(
+
+            "0"=>$RegP->IdPedido,
        
             
-            "1"=>$Reg->Observacion,
-            "2"=>$Reg->DescProd,
-            "3"=>$Reg->DestinoDes,
-            "4"=>($Reg->Estado)?'<span class="label bg-green">Activado</span>':
-            '<span class="label bg-red">Desactivado</span>'
+            "1"=>$RegP->IdCabeceraPedido,
+            "2"=>$RegP->CantidadBatch,
+            "3"=>$RegP->Observacion,
+            "4"=>$RegP->PEstado
         
         );
     }
@@ -113,9 +119,9 @@ case 'ListarPedido':
     $Result = array(
 
         "sEcho"=>1,
-        "iTotalRecords"=>count($Data),
-        "ITotalDisplayRecords"=>count($Data),
-        "aaData"=>$Data);
+        "iTotalRecords"=>count($DataP),
+        "ITotalDisplayRecords"=>count($DataP),
+        "aaData"=>$DataP);
 
         echo json_encode($Result);
 
