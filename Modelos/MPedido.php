@@ -2,7 +2,7 @@
 
 require "../Config/Conexion.php";
 
-    Class MDestinoDesc{
+    Class MPedido{
 
         public function __construct(){
 
@@ -54,14 +54,46 @@ require "../Config/Conexion.php";
 
         }
 
-        public function Listar (){
+       // public function ListarPedido ($IdCabecera, $NumSemana){
 
-            $Sql="Select DD.IdDestinoDesc, DD.DestinoDes, DD.CodDestinoDesc, DD.IdDestino, D.Destino, DD.Estado from DestinoDesc DD 
-            inner join Destino D on DD.IdDestino=D.IdDestino";
+            public function ListarPedido (){
+
+            $Sql="SELECT
+            pedido.`IdPedido` AS IdPedido,
+            pedido.`IdCabeceraPedido` AS IdCabeceraPedido,
+            pedido.`CantidadBatch` AS CantidadBatch,
+            pedido.`Observacion` AS Observacion,
+            pedido.`Fecha` AS Fecha,
+            pedido.`Estado` AS Estado,
+            pedido.`CantidadKG` AS CantidadKG,
+            pedido.`IdUsuario` AS IdUsuario,
+            pedido.`IdDescProd` AS IdDescProd,
+            pedido.`NumSemana` AS NumSemana,
+            cabecerapedido.`IdDestinoDesc` AS IdDestinoDesc,
+            usuario.`Usuario` AS Usuario,
+            descprod.`DescProd` AS DescProd,
+            destinodesc.`DestinoDes` AS DestinoDes,
+            cabecerapedido.`TipoTransporte` AS TipoTransporte
+       FROM
+            `cabecerapedido` cabecerapedido INNER JOIN `pedido` pedido ON cabecerapedido.`IdCabeceraPedido` = pedido.`IdCabeceraPedido`
+            INNER JOIN `usuario` usuario ON pedido.`IdUsuario` = usuario.`IdUsuario`
+            INNER JOIN `descprod` descprod ON pedido.`IdDescProd` = descprod.`IdDescProd`
+            INNER JOIN `destinodesc` destinodesc ON cabecerapedido.`IdDestinoDesc` = destinodesc.`IdDestinoDesc`";
+          //  where IdCabeceraPedido='$IdCabecera' and NumSemana='$NumSemana'";
             
             return EjecutarConsulta($Sql);
 
         }
+
+        public function ListarCabeceraPedido(){
+
+            $Sql="Select CP.IdCabeceraPedido, DD.DestinoDes,CP.TipoTransporte,CP.OrdenEnvio, CP.Estado  from CabeceraPedido CP 
+            inner join DestinoDesc DD on CP.IdDestinoDesc=DD.IdDestinoDesc";
+            
+            return EjecutarConsulta($Sql);
+
+        }
+
 
 
         public function Select (){
