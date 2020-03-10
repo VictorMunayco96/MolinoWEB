@@ -50,7 +50,7 @@ require "../Config/Conexion.php";
              INNER JOIN DestinoDesc destinodesc  ON destinobloq.IdDestinoDesc = destinodesc.IdDestinoDesc
              INNER JOIN Destino destino  ON destinodesc.IdDestino = destino.IdDestino 
                       
-             where peso.Estado='D' and DATE(peso.FechaHoraSal)>='$FechaInicio' and DATE(peso.FechaHoraSal)<='$FechaFin' 
+             where peso.Estado='D' and peso.FechaHoraSal>='$FechaInicio' and peso.FechaHoraSal<='$FechaFin' 
              and  DescProd.DescProd like concat('%','$Busqueda','%') 
              
              order by peso.IdPeso Desc limit 15000;";

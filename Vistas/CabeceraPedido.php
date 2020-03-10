@@ -1,6 +1,5 @@
 <?php
 
-
 ob_start();
 session_start();
 
@@ -8,10 +7,16 @@ if(!isset($_SESSION["IdUsuario"])){
 
   header("LOCATION: Login.php");
 
-
 }else{
 
+
 require 'Header.php';
+
+if($_SESSION["Destino"]==1){
+
+
+
+
 ?>
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
@@ -23,7 +28,7 @@ require 'Header.php';
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Usuario
+                          <h1 class="box-title">Pedido - Sector
                             <button class="btn btn-success" onclick="MostrarForm(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
                         <div class="box-tools pull-right">
                         </div>
@@ -36,11 +41,9 @@ require 'Header.php';
                         <thead>
 
                         <th>Opciones</th>
-                        <th>Usuario</th>
-                       
-                        <th>Tipo Usuario</th>
-                        <th>Nombres y Apellidos</th>
                         <th>Sector</th>
+                        <th>Tipo Transporte</th>
+                        <th>Orden Envio</th>
                         <th>Estado</th>
 
                         </thead>
@@ -51,14 +54,10 @@ require 'Header.php';
                       <tfoot>
 
                       <th>Opciones</th>
-                        <th>Usuario</th>
-                    
-                        <th>Tipo Usuario</th>
-                        <th>Nombres y Apellidos</th>
                         <th>Sector</th>
+                        <th>Tipo Transporte</th>
+                        <th>Orden Envio</th>
                         <th>Estado</th>
-
-
 
                     </tfoot>
                       
@@ -69,60 +68,41 @@ require 'Header.php';
                         </table>
                     </div>
 
-                    <div class="panel-body" style="height: 600px;" id="FormularioRegistros">
+                    <div class="panel-body" style="height: 400px;" id="FormularioRegistros">
                     
                     <form name="Formulario" id="Formulario" method="POST">
 
-
-                    <div class="form-group col-log-12 col-md-12 col-sm-12 col-xs-12">
-                    <label>Empleado:</label>
-                    <select id="IdEmpleado" name ="IdEmpleado" class="form-control selectpicker" data-live-search="true" required> </select>
+                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>Sector:</label>
+                    <input type="hidden"  name="IdCabeceraPedido" id="IdCabeceraPedido" >
+                    <select id="IdDestinoDesc" name ="IdDestinoDesc" class="form-control selectpicker" data-live-search="true" required> </select>
                     </div>
 
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Usuario:</label>
-                    <input type="hidden" name="IdUsuario" id="IdUsuario">
-                    <input type="text" class="form-control" placeholder="Usuario" name="Usuario" id="Usuario" maxlength="50" required>
-                    </div>
-
-                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Contraseña:</label>
-                    <input type="password" name="Contrasena" class="form-control" id="Contrasena" placeholder="Contrasena" maxlength="64" required>
-                    </div>
-
-                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Sector</label>
-                    <select id="Sectores" name ="Sectores" class="form-control selectpicker" data-live-search="true" required> 
-                    <option value="SELECCION UN CAMPO" selected>SELECCIONE UN CAMPO</option>
-                    <option value="MOLINO-2">MOLINO 2</option>
-                    <option value="MOLINO-1">MOLINO 1</option>
-                    <option value="CALERA">CALERA</option>
+                    <label>Tipo Transporte:</label>
+                    <select id="TipoTransporte" name ="TipoTransporte" class="form-control selectpicker" data-live-search="true" required> 
+                   
                     
-                    
+
+                    <option value="SELECCIONE UN CAMPO" selected>SELECCIONE UN CAMPO</option>
+                    <option value="GRANDE">GRANDE</option>
+                    <option value="CHICO">CHICO</option>
+                   
                     
                     </select>
                     </div>
 
-                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Tipo Usuario:</label>
-                    <input type="text" name="TipoUsuario" class="form-control" id="TipoUsuario" placeholder="TipoUsuario" maxlength="30" required>
-                    </div>
-
-
-
-                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Privilegios:</label>
-                    <ul style="list-style: none" id="Permiso">
-                    
-
-                    
-                    </ul>
-                    </div>
-
-                    
-
                   
+
+                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>Orden Envio:</label>
+                    <input type="number" name="OrdenEnvio" class="form-control" id="OrdenEnvio" placeholder="Codigo"  required>
+                    </div>
+
+
+
+
 
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <button class="btn btn-primary" type="submit" name="BtnGuardar" id="BtnGuardar" ><i class="fa fa-save"></i> Guardar</button>
@@ -151,10 +131,18 @@ require 'Header.php';
   <!--Fin-Contenido-->
 <?php
 
+}
+else{
+
+require 'NoAcceso.php';
+
+}
+
+
 require 'Footer.php';
 ?>
 
-<script type="text/javascript" src="Scripts/Usuario.js"></script>
+<script type="text/javascript" src="Scripts/CabeceraPedido.js"></script>
 
 <?php 
 

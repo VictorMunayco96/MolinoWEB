@@ -10,6 +10,7 @@ $Usuario=isset($_POST["Usuario"]) ? limpiarCadena($_POST["Usuario"]):"";
 $Contrasena=isset($_POST["Contrasena"]) ? limpiarCadena($_POST["Contrasena"]):"";
 $TipoUsuario=isset($_POST["TipoUsuario"]) ? limpiarCadena($_POST["TipoUsuario"]):"";
 $IdEmpleado=isset($_POST["IdEmpleado"]) ? limpiarCadena($_POST["IdEmpleado"]):"";
+$Sector=isset($_POST["Sectores"]) ? limpiarCadena($_POST["Sectores"]):"";
 
 switch ($_GET["Op"]){
 
@@ -18,12 +19,12 @@ case 'GuardaryEditar':
     $ClaveHash=hash("SHA256",$Contrasena);
 if(empty($IdUsuario)){
 
-$Rspta=$MUsuario->Insertar($Usuario,$Contrasena,$TipoUsuario,$IdEmpleado,$_POST['Permiso']);
+$Rspta=$MUsuario->Insertar($Usuario,$Contrasena,$TipoUsuario,$IdEmpleado,$_POST['Permiso'],$Sector);
 echo $Rspta ? "REGISTRADO" : "NO SE PUDO REGISTRAR";
 
 }else{
 
-    $Rspta=$MUsuario->Editar($IdUsuario,$Usuario, $Contrasena, $TipoUsuario, $IdEmpleado,$_POST['Permiso']);
+    $Rspta=$MUsuario->Editar($IdUsuario,$Usuario, $Contrasena, $TipoUsuario, $IdEmpleado,$_POST['Permiso'],$Sector);
     echo $Rspta ? "EDITADO" : "NO SE PUDO EDITAR";
     
 
@@ -71,7 +72,8 @@ case 'Listar':
            
             "2"=>$Reg->TipoUsuario,
             "3"=>$Reg->NombreE." ".$Reg->ApellidosE,
-            "4"=>($Reg->Estado)?'<span class="label bg-green">Activado</span>':
+            "4"=>$Reg->Sector,
+            "5"=>($Reg->Estado)?'<span class="label bg-green">Activado</span>':
             '<span class="label bg-red">Desactivado</span>'
         
         );
@@ -151,6 +153,10 @@ array_push($Valores, $Per->IdPermiso);
            $_SESSION['IdUsuario']=$fetch->IdUsuario;
            $_SESSION['Nombre']=$fetch->NombreE.' '.$fetch->ApellidosE;
            $_SESSION['Usuario']=$fetch->Usuario;
+           $_SESSION['Sector']=$fetch->Sector;
+           $_SESSION['NumSemana']=date("W");
+
+           
         
 
             

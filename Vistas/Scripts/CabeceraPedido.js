@@ -13,24 +13,14 @@ $("#Formulario").on("submit",function(e){
 
 
 
-$.post("../Ajax/AUsuario.php?Op=SelectEmpleado", function(r){
+$.post("../Ajax/ACabeceraPedido.php?Op=SelectDestinoDesc", function(r){
 
-$("#IdEmpleado").html(r);
-$('#IdEmpleado').selectpicker('refresh');
+$("#IdDestinoDesc").html(r);
+$('#IdDestinoDesc').selectpicker('refresh');
 
 
 
 });
-
-$.post("../Ajax/AUsuario.php?Op=Permiso&Id=", function(r){
-
-    $("#Permiso").html(r);
-    $('#Permiso').selectpicker('refresh');
-    
-    
-    
-    });
-    
 
 
 
@@ -38,10 +28,9 @@ $.post("../Ajax/AUsuario.php?Op=Permiso&Id=", function(r){
 }
 function limpiar(){
 
-    $("#IdUsuario").val("");
-$("#Usuario").val("");
-$("#Contrasena").val("");
-$("#TipoUsuario").val("");
+    $("#IdCabeceraPedido").val("");
+$("#TipoTransporte").val("");
+$("#OrdenEnvio").val("");
 
 
 }
@@ -91,7 +80,7 @@ tabla=$("#tbllistado").dataTable(
 
     "ajax":{
 
-        url: '../Ajax/AUsuario.php?Op=Listar',
+        url: '../Ajax/ACabeceraPedido.php?Op=Listar',
         type : "get",
         dataType :"json",
         error: function(e){
@@ -115,7 +104,7 @@ var formData= new FormData($("#Formulario")[0]);
 
 $.ajax({
 
-url: "../Ajax/AUsuario.php?Op=GuardaryEditar",
+url: "../Ajax/ACabeceraPedido.php?Op=GuardaryEditar",
 type: "POST",
 data: formData,
 contentType: false,
@@ -135,24 +124,25 @@ success: function(datos){
 limpiar();
 }
 
-function Mostrar(IdUsuario)
+function Mostrar(IdCabeceraPedido)
 {
 
     
-    $.post("../Ajax/AUsuario.php?Op=Mostrar",{IdUsuario : IdUsuario}, function(data,status)
+    $.post("../Ajax/ACabeceraPedido.php?Op=Mostrar",{IdCabeceraPedido : IdCabeceraPedido}, function(data,status)
         {
             data =JSON.parse(data);
             
             MostrarForm(true);
-            $("#Sectores").val(data.Sector);
-            $("#Sectores").selectpicker('refresh');
-            $("#IdEmpleado").val(data.IdEmpleado);
-            $("#IdEmpleado").selectpicker('refresh');
-            $("#IdUsuario").val(data.IdUsuario);
-            $("#Usuario").val(data.Usuario);
-            $("#Contrasena").val(data.Contrasena);
-            $("#TipoUsuario").val(data.TipoUsuario);
-           
+
+
+            $("#IdCabeceraPedido").val(data.IdCabeceraPedido);
+            $("#IdDestinoDesc").val(data.IdDestinoDesc);
+            $("#IdDestinoDesc").selectpicker('refresh');
+            $("#TipoTransporte").val(data.TipoTransporte);
+            $("#OrdenEnvio").val(data.OrdenEnvio);
+            $("#TipoTransporte").val(data.TipoTransporte);
+            $("#TipoTransporte").selectpicker('refresh');
+            
         
 
          
@@ -160,27 +150,18 @@ function Mostrar(IdUsuario)
 
 
 
-});
-
-$.post("../Ajax/AUsuario.php?Op=Permiso&Id="+IdUsuario, function(r){
-
-    $("#Permiso").html(r);
-    $('#Permiso').selectpicker('refresh');
-    
-    
-    
-    });
+})
 
 
 }
 
-function Desactivar(IdUsuario){
+function Desactivar(IdCabeceraPedido){
 
-bootbox.confirm("¿ESTA SEGURO DE DESACTIVAR EL USUARIO?", function(result){
+bootbox.confirm("¿ESTA SEGURO DE DESACTIVAR LA DESCRIPCION DEL PRODUCTO?", function(result){
 
 if(result){
 
-    $.post("../Ajax/AUsuario.php?Op=Desactivar",{IdUsuario : IdUsuario}, function(e){
+    $.post("../Ajax/ACabeceraPedido.php?Op=Desactivar",{IdCabeceraPedido : IdCabeceraPedido}, function(e){
 
         bootbox.alert(e);
         tabla.ajax.reload();
@@ -198,13 +179,13 @@ if(result){
 
 
 
-function Activar(IdUsuario){
+function Activar(IdCabeceraPedido){
 
-    bootbox.confirm("¿ESTA SEGURO DE ACTIVAR EL USUARIO?", function(result){
+    bootbox.confirm("¿ESTA SEGURO DE ACTIVAR LA DESCRIPCION DEL PRODUCTO?", function(result){
     
     if(result){
     
-        $.post("../Ajax/AUsuario.php?Op=Activar",{IdUsuario : IdUsuario}, function(e){
+        $.post("../Ajax/ACabeceraPedido.php?Op=Activar",{IdCabeceraPedido : IdCabeceraPedido}, function(e){
     
             bootbox.alert(e);
             tabla.ajax.reload();

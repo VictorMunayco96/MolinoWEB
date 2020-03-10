@@ -37,12 +37,12 @@ if($_SESSION["ConsulProd"]==1){
                        
                     <div class="form-group col-log-3 col-md-3 col-sm-3 col-xs-6">
                     <label>Fecha Inicio:</label>
-                    <input type="Date" name="FechaInicio" class="form-control" id="FechaInicio" value="<?php echo date('Y-m-d'); ?>">
+                    <input type="datetime-local" name="FechaInicio" class="form-control" id="FechaInicio" value="<?php echo date('Y-m-d'); ?>T06:30">
                     </div>
 
                     <div class="form-group col-log-3 col-md-3 col-sm-3 col-xs-6s">
                     <label>Fecha Fin:</label>
-                    <input type="Date" name="FechaFin" class="form-control" id="FechaFin" value="<?php echo date('Y-m-d'); ?>">
+                    <input type="datetime-local" name="FechaFin" class="form-control" id="FechaFin" value="<?php echo date('Y-m-d'); ?>T06:30">
                     </div>
                     <div class="form-group col-log-3 col-md-3 col-sm-3 col-xs-6s">
                     <label>Filtro</label>

@@ -1,5 +1,5 @@
 INSERT INTO `empleado` (`IdEmpleado`, `DNI`, `Codigo`, `NombreE`, `ApellidosE`, `Telefono`, `Celular`, `FechaIngreso`, `Estado`) VALUES (NULL, '70605597', 'asd', 'Victor Hugo', 'Munayco Morales', NULL, NULL, '2020-02-02', '1');
-INSERT INTO `usuario` (`IdUsuario`, `Usuario`, `Contrasena`, `TipoUsuario`, `IdEmpleado`, `Estado`) VALUES (NULL, '4dm1n', '4dm1n', 'Panel', '1', '1');
+INSERT INTO `usuario` (`IdUsuario`, `Usuario`, `Contrasena`, `TipoUsuario`, `IdEmpleado`, `Estado`,Sector) VALUES (NULL, '4dm1n', '4dm1n', 'Panel', '1', '1','MOLINO 2');
 Insert Into Permiso (Nombre, Estado) values ('Escritorio',1);
 Insert Into Permiso (Nombre, Estado) values ('Almacen',1);
 Insert Into Permiso (Nombre, Estado) values ('Producto',1);

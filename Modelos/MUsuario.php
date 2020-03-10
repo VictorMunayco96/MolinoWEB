@@ -10,9 +10,9 @@ require "../Config/Conexion.php";
 
         }
 
-        public function Insertar($Usuario, $Contrasena, $TipoUsuario, $IdEmpleado,$Permiso){
+        public function Insertar($Usuario, $Contrasena, $TipoUsuario, $IdEmpleado,$Permiso,$Sector){
 
-            $Sql="Insert into Usuario (Usuario, Contrasena, TipoUsuario, IdEmpleado, Estado) values('$Usuario', '$Contrasena', '$TipoUsuario', '$IdEmpleado',1)";
+            $Sql="Insert into Usuario (Usuario, Contrasena, TipoUsuario, IdEmpleado, Estado, Sector) values('$Usuario', '$Contrasena', '$TipoUsuario', '$IdEmpleado',1,'$Sector')";
 
            // return EjecutarConsulta($Sql);
            $IdUsuarioNew=EjecutarConsulta_RetornarID($Sql);
@@ -35,10 +35,10 @@ require "../Config/Conexion.php";
 
         }       
         
-        public function Editar($IdUsuario,$Usuario, $Contrasena, $TipoUsuario, $IdEmpleado,$Permiso){
+        public function Editar($IdUsuario,$Usuario, $Contrasena, $TipoUsuario, $IdEmpleado,$Permiso,$Sector){
 
             $Sql=" Update Usuario set Usuario='$Usuario', 
-            Contrasena='$Contrasena', TipoUsuario='$TipoUsuario', IdEmpleado='$IdEmpleado' where IdUsuario='$IdUsuario';";
+            Contrasena='$Contrasena', TipoUsuario='$TipoUsuario', IdEmpleado='$IdEmpleado' , Sector='$Sector' where IdUsuario='$IdUsuario';";
             
             EjecutarConsulta($Sql);
 
@@ -95,7 +95,7 @@ require "../Config/Conexion.php";
 
         public function Listar (){
 
-            $Sql="Select U.IdUsuario, U.Usuario, U.Contrasena, U.TipoUsuario,U.IdEmpleado,E.NombreE,E.ApellidosE,U.Estado from Usuario U
+            $Sql="Select U.IdUsuario, U.Usuario, U.Contrasena, U.TipoUsuario,U.IdEmpleado,E.NombreE,E.ApellidosE,U.Estado, U.Sector from Usuario U
             inner join Empleado E on U.IdEmpleado=E.IdEmpleado";
             
             return EjecutarConsulta($Sql);
@@ -113,7 +113,7 @@ require "../Config/Conexion.php";
           //Función para verificar el acceso al sistema
     public function verificar($login,$clave)
     {
-        $sql="Select U.IdUsuario, U.Usuario, U.Contrasena, U.TipoUsuario,U.IdEmpleado,E.NombreE,E.ApellidosE,U.Estado from Usuario U
+        $sql="Select U.IdUsuario, U.Usuario, U.Contrasena, U.TipoUsuario,U.IdEmpleado,E.NombreE,E.ApellidosE,U.Estado,U.Sector from Usuario U
         inner join Empleado E on U.IdEmpleado=E.IdEmpleado WHERE U.Usuario='$login' AND U.Contrasena='$clave' AND U.Estado='1'"; 
         return ejecutarConsulta($sql);  
     }

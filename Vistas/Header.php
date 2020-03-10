@@ -69,9 +69,11 @@ session_start();
                   <li class="user-header">
                     <img src="../Public/dist/img/Logouser.jpg" class="img-circle" alt="User Image">
                     <p>
-                    <?php echo $_SESSION['Usuario'];?>
-                      <small>HOla</small>
+                    <?php echo 'USUARIO: '.$_SESSION['Usuario'];?>
+                      <small><?php echo 'Nº SEMANA: '.$_SESSION['NumSemana'];?></small>
+                      <small><?php echo 'SECTOR: '.$_SESSION['Sector'];?></small>
                     </p>
+                    
                   </li>
                   
                   <!-- Menu Footer-->
