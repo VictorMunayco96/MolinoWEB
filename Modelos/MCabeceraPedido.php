@@ -60,6 +60,15 @@ require "../Config/Conexion.php";
 
         }
 
+        public function Select (){
+
+            $Sql="Select CP.IdCabeceraPedido, DD.DestinoDes,CP.TipoTransporte,CP.OrdenEnvio, CP.Estado  from CabeceraPedido CP 
+            inner join DestinoDesc DD on CP.IdDestinoDesc=DD.IdDestinoDesc where CP.Estado=1";
+            
+            return EjecutarConsulta($Sql);
+
+        }
+
 }
 
 

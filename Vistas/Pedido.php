@@ -25,7 +25,9 @@ if($_SESSION["Producto"]==1){
                   <div class="box">
                     <div class="box-header with-border">
                           <h1 class="box-title">Pedido
-                           <!--   <button class="btn btn-success" onclick="MostrarForm(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>-->
+                             <button class="btn btn-success" onclick="MostrarForm(3)"><i class="fa fa-plus-circle"></i> Agregar</button>
+                             <button class="btn btn-danger" onclick="MostrarForm(1)"><i class="fa fa-arrow-circle-left"></i> Volver</button></h1>
+
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -104,33 +106,42 @@ if($_SESSION["Producto"]==1){
                     
                     <form name="Formulario" id="Formulario" method="POST">
 
-                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Producto:</label>
-                    <input type="hidden" name="IdProducto" id="IdProducto">
-                    <input type="text" class="form-control" placeholder="Producto" name="Producto" id="Producto" maxlength="50" required>
+                    <div class="form-group col-log-12 col-md-12 col-sm-12 col-xs-12">
+                    <label>Sector - Vehiculo:</label>
+                    <select id="IdCabeceraPedido" name ="IdCabeceraPedido" class="form-control selectpicker" data-live-search="true" required> </select>
                     </div>
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Categoria:</label>
-                    <select id="IdCategoriaProd" name ="IdCategoriaProd" class="form-control selectpicker" data-live-search="true" required> </select>
+                    <label>Producto:</label>
+                    <select id="IdDescProd" name ="IdDescProd" class="form-control selectpicker" data-live-search="true" required> </select>
                     </div>
+
+
+                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>Cantidad Mezclas:</label>
+                    <input type="hidden" name="IdPedido" id="IdPedido">
+                    <input type="number" class="form-control" placeholder="Cantidad Mezclas" name="CantidadBatch" id="CantidadBatch"  required>
+                    </div>
+
+                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>Observacion:</label>
+                    <input type="text" name="Observacion" class="form-control" id="Observacion" placeholder="Observacion" maxlength="120">
+                    </div>
+
+                 
+
+                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>Cantidad KG:</label>
+                    <input type="number" name="CantidadKG" class="form-control" id="CantidadKG" placeholder="Total Kilos" required>
+                    </div>
+
+
 
                   
 
-                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Codigo:</label>
-                    <input type="text" name="CodProducto" class="form-control" id="CodProducto" placeholder="Codigo" maxlength="15" required>
-                    </div>
+                    
 
-
-
-                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Nombre Guia:</label>
-                    <input type="text" name="NombreGuia" class="form-control" id="NombreGuia" placeholder="Codigo" maxlength="150" required>
-                    </div>
-
-
-
+                  
 
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <button class="btn btn-primary" type="submit" name="BtnGuardar" id="BtnGuardar" ><i class="fa fa-save"></i> Guardar</button>
@@ -141,7 +152,6 @@ if($_SESSION["Producto"]==1){
 
 
                     </div>
-
 
                     </form>
 

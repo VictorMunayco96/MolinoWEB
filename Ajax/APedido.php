@@ -5,24 +5,26 @@ require_once "../Modelos/MPedido.php";
 
 $MPedido= new MPedido();
 
-$IdProducto=isset($_POST["IdProducto"]) ? limpiarCadena($_POST["IdProducto"]):"" ;
-$Producto=isset($_POST["Producto"]) ? limpiarCadena($_POST["Producto"]):"";
-$CodProducto=isset($_POST["CodProducto"]) ? limpiarCadena($_POST["CodProducto"]):"";
-$IdCategoriaProd=isset($_POST["IdCategoriaProd"]) ? limpiarCadena($_POST["IdCategoriaProd"]):"";
-$NombreGuia=isset($_POST["NombreGuia"]) ? limpiarCadena($_POST["NombreGuia"]):"";
-
+$IdPedido=isset($_POST["IdPedido"]) ? limpiarCadena($_POST["IdPedido"]):"" ;
+$IdCabeceraPedido=isset($_POST["IdCabeceraPedido"]) ? limpiarCadena($_POST["IdCabeceraPedido"]):"";
+$CantidadBatch=isset($_POST["CantidadBatch"]) ? limpiarCadena($_POST["CantidadBatch"]):"";
+$Observacion=isset($_POST["Observacion"]) ? limpiarCadena($_POST["Observacion"]):"";
+$CantidadKG=isset($_POST["CantidadKG"]) ? limpiarCadena($_POST["CantidadKG"]):"";
+$IdUsuario=$_SESSION['IdUsuario'];
+$IdDescProd=isset($_POST["IdDescProd"]) ? limpiarCadena($_POST["IdDescProd"]):"";
+$NumSemana=isset($_POST["NumSemana"]) ? limpiarCadena($_POST["NumSemana"]):"";
 
 
 switch ($_GET["Op"]){
 
 case 'GuardaryEditar':
-if(empty($IdProducto)){
-$Rspta=$MProducto->Insertar($Producto,$CodProducto,$IdCategoriaProd,$NombreGuia);
+if(empty($IdPedido)){
+$Rspta=$MPedido->Insertar($IdCabeceraPedido, $CantidadBatch, $Observacion, $CantidadKG, $IdUsuario, $IdDescProd, $NumSemana);
 echo $Rspta ? "REGISTRADO" : "NO SE PUDO REGISTRAR";
 
 }else{
 
-    $Rspta=$MProducto->Editar($IdProducto,$Producto,$CodProducto,$IdCategoriaProd,$NombreGuia);
+    $Rspta=$MPedido->Editar($IdPedido,$IdCabeceraPedido, $CantidadBatch, $Observacion, $CantidadKG, $IdUsuario, $IdDescProd, $NumSemana);
     echo $Rspta ? "EDITADO" : "NO SE PUDO EDITAR";
     
 
@@ -31,7 +33,7 @@ break;
 
 case 'Desactivar':
 
-$Rspta=$MProducto->Desactivar($IdProducto);
+$Rspta=$MPedido->Desactivar($IdPedido);
 echo $Rspta ? "DESACTIVADO" : "NO SE PUDO DESACTIVAR";
 
 break;
@@ -40,14 +42,14 @@ break;
 
 case 'Activar':
 
-    $Rspta=$MProducto->Activar($IdProducto);
+    $Rspta=$MPedido->Activar($IdPedido);
     echo $Rspta ? "ACTIVADO" : "NO SE PUDO ACTIVAR";
     
     break;
 
 case 'Mostrar':
 
-    $Rspta=$MProducto->Mostrar($IdProducto);
+    $Rspta=$MPedido->Mostrar($IdPedido);
     echo json_encode($Rspta); 
 
 break;
@@ -133,21 +135,39 @@ break;
 
 
 
-case "SelectCategoriaProd":
+case "SelectCabeceraPedido":
 
-    require_once "../Modelos/MCategoriaProd.php";
-    $MCategoriaProd = new MCategoriaProd();
+    require_once "../Modelos/MCabeceraPedido.php";
+    $MCabeceraPedido = new MCabeceraPedido();
 
-    $Rspta=$MCategoriaProd->Select();
+    $Rspta=$MCabeceraPedido->Select();
 
     while($Reg = $Rspta->fetch_object()){
 
-        echo '<option value=' .$Reg->IdCategoriaProd.'>'.$Reg->CategoriaProd.'</option>';
+        echo '<option value=' .$Reg->IdCabeceraPedido.'>'.$Reg->DestinoDes.' - '.$Reg->TipoTransporte.'</option>';
 
     }
 
 
 break;
+
+case "SelectDescProd":
+
+    require_once "../Modelos/MDescProd.php";
+    $MDescProd = new MDescProd();
+
+    $Rspta=$MDescProd->Select();
+
+    while($Reg = $Rspta->fetch_object()){
+
+        echo '<option value=' .$Reg->IdDescProd.'>'.$Reg->DescProd.'</option>';
+
+    }
+
+
+break;
+
+
 
 }
 

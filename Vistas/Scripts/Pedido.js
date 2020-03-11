@@ -13,7 +13,15 @@ $("#Formulario").on("submit",function(e){
 })
 
 
+$.post("../Ajax/ADestinoBloq.php?Op=SelectDestinoDesc", function(r){
 
+    $("#IdDestinoDesc").html(r);
+    $('#IdDestinoDesc').selectpicker('refresh');
+    
+    
+    
+    });
+    
 
 
 
@@ -53,6 +61,16 @@ function MostrarForm($Ventana){
         
         
         }
+
+        if ($Ventana==3){
+    
+            $("#ListadoCabecera").hide();
+            $("#FormularioRegistros").show();
+            $("#ListadoPedido").hide();
+            $("#BtnGuardar").prop("disabled",false);
+            
+            
+            }
         
 
     
