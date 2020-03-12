@@ -40,10 +40,10 @@ $.post("../Ajax/APedido.php?Op=SelectDescProd", function(r){
 }
 function limpiar(){
 
-    $("#IdProducto").val("");
-$("#Producto").val("");
-$("#CodProducto").val("");
-$("#NombreGuia").val("");
+    $("#IdPedido").val("");
+$("#CantidadKG").val("");
+$("#Observacion").val("");
+$("#CantidadBatch").val("");
 
 
 }
@@ -93,7 +93,7 @@ function MostrarForm($Ventana){
 function CancelarForm(){
 
     limpiar();
-    MostrarForm(false);
+    MostrarForm(1);
 }
 
 function ListarCabeceraPedido(){
@@ -139,7 +139,7 @@ var formData= new FormData($("#Formulario")[0]);
 
 $.ajax({
 
-url: "../Ajax/AProducto.php?Op=GuardaryEditar",
+url: "../Ajax/APedido.php?Op=GuardaryEditar",
 type: "POST",
 data: formData,
 contentType: false,
@@ -148,7 +148,7 @@ processData: false,
 success: function(datos){
 
     bootbox.alert(datos);
-    MostrarForm(false);
+    MostrarForm(1);
     tabla.ajax.reload();
 
 }
@@ -157,6 +157,7 @@ success: function(datos){
 });
 
 limpiar();
+
 }
 
 function ListarPedido(IdCabeceraPedido)
@@ -201,13 +202,13 @@ tablaP=$("#tbllistadoP").dataTable(
 
 }
 
-function Desactivar(IdProducto){
+function Desactivar(IdPedido){
 
-bootbox.confirm("¿ESTA SEGURO DE DESACTIVAR EL PRODUCTO?", function(result){
+bootbox.confirm("¿ESTA SEGURO DE DESACTIVAR EL PEDIDO?", function(result){
 
 if(result){
 
-    $.post("../Ajax/AProducto.php?Op=Desactivar",{IdProducto : IdProducto}, function(e){
+    $.post("../Ajax/APedido.php?Op=Desactivar",{IdPedido : IdPedido}, function(e){
 
         bootbox.alert(e);
         tabla.ajax.reload();
@@ -225,13 +226,13 @@ if(result){
 
 
 
-function Activar(IdProducto){
+function Activar(IdPedido){
 
-    bootbox.confirm("¿ESTA SEGURO DE ACTIVAR EL PRODUCTO?", function(result){
+    bootbox.confirm("¿ESTA SEGURO DE ACTIVAR EL PEDIDO?", function(result){
     
     if(result){
     
-        $.post("../Ajax/AProducto.php?Op=Activar",{IdProducto : IdProducto}, function(e){
+        $.post("../Ajax/APedido.php?Op=Activar",{IdPedido : IdPedido}, function(e){
     
             bootbox.alert(e);
             tabla.ajax.reload();

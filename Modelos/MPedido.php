@@ -12,6 +12,8 @@ require "../Config/Conexion.php";
 
         public function Insertar($IdCabeceraPedido, $CantidadBatch, $Observacion, $CantidadKG, $IdUsuario, $IdDescProd, $NumSemana){
 
+         
+           
             $Sql="Insert into Pedido (IdCabeceraPedido, CantidadBatch, Observacion, Fecha, Estado, CantidadKG, IdUsuario, IdDescProd, NumSemana) 
             values('$IdCabeceraPedido', '$CantidadBatch', '$Observacion', (select now()), '1', '$CantidadKG', '$IdUsuario', '$IdDescProd', '$NumSemana')";
 

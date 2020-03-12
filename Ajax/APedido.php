@@ -15,11 +15,15 @@ $IdDescProd=isset($_POST["IdDescProd"]) ? limpiarCadena($_POST["IdDescProd"]):""
 $NumSemana=$_SESSION['NumSemana'];
 
 
+
 switch ($_GET["Op"]){
 
 case 'GuardaryEditar':
 if(empty($IdPedido)){
+
+  
 $Rspta=$MPedido->Insertar($IdCabeceraPedido, $CantidadBatch, $Observacion, $CantidadKG, $IdUsuario, $IdDescProd, $NumSemana);
+
 echo $Rspta ? "REGISTRADO" : "NO SE PUDO REGISTRAR";
 
 }else{
