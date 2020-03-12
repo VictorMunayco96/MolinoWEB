@@ -155,6 +155,7 @@ array_push($Valores, $Per->IdPermiso);
            $_SESSION['Usuario']=$fetch->Usuario;
            $_SESSION['Sector']=$fetch->Sector;
            $_SESSION['NumSemana']=date("W");
+           $_SESSION['TipoUsuario']=$fetch->TipoUsuario;
 
            
         

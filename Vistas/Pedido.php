@@ -42,6 +42,7 @@ if($_SESSION["Producto"]==1){
                         <th>Sector</th>
                         <th>Tipo Transporte</th>
                         <th>Orden Envio</th>
+                        <th>Pendientes</th>
                         <th>Estado</th>
 
                         </thead>
@@ -55,6 +56,7 @@ if($_SESSION["Producto"]==1){
                         <th>Sector</th>
                         <th>Tipo Transporte</th>
                         <th>Orden Envio</th>
+                        <th>Pendientes</th>
                         <th>Estado</th>
 
                     </tfoot>
@@ -72,15 +74,17 @@ if($_SESSION["Producto"]==1){
                         <thead>
 
                         <th>Opciones</th>
+                        <?php if($_SESSION['TipoUsuario']=='ADMINISTRADOR'){echo '<th>Aprobar/Cancelar</th>';}?>
                         <th>Sector</th>
+                      
                         <th>Tipo Alimento</th>
                         <th>Cantidad Mezclas</th>
                         <th>Total KG</th>
                         <th>Observacion</th>
                         <th>Usuario</th>
-                        <th>Estado</th>
+                        <th>Estado Pedido</th>
+                        <th>Estado Registro</th>
                        
-
 
                         </thead>
 
@@ -90,13 +94,15 @@ if($_SESSION["Producto"]==1){
                       <tfoot>
 
                       <th>Opciones</th>
+                      <?php if($_SESSION['TipoUsuario']=='ADMINISTRADOR'){echo '<th>Aprobar/Cancelar</th>';}?>
                         <th>Sector</th>
                         <th>Tipo Alimento</th>
                         <th>Cantidad Mezclas</th>
                         <th>Total KG</th>
                         <th>Observacion</th>
                         <th>Usuario</th>
-                        <th>Estado</th>
+                        <th>Estado Pedido</th>
+                        <th>Estado Registro</th>
                        
 
                     </tfoot>

@@ -48,6 +48,39 @@ $("#CantidadBatch").val("");
 
 }
 
+function Mostrar(IdPedido)
+{
+
+    
+    $.post("../Ajax/APedido.php?Op=Mostrar",{IdPedido : IdPedido}, function(data,status)
+        {
+            data =JSON.parse(data);
+            
+            MostrarForm(3);
+
+            $("#IdPedido").val(data.IdPedido);
+            $("#IdDescProd").val(data.IdDescProd);
+            $("#IdDescProd").selectpicker('refresh');
+            $("#IdCabeceraPedido").val(data.IdCabeceraPedido);
+            $("#IdCabeceraPedido").selectpicker('refresh');
+            $("#CantidadBatch").val(data.CantidadBatch);
+            $("#Observacion").val(data.Observacion);
+            $("#CantidadKG").val(data.CantidadKG);
+            
+
+
+
+
+         
+
+
+
+
+})
+
+
+}
+
 
 
 function MostrarForm($Ventana){
@@ -246,6 +279,51 @@ function Activar(IdPedido){
     
     
     }
+
+    function Aceptar(IdPedido){
+
+        bootbox.confirm("¿ESTA SEGURO DE ACEPTAR EL PEDIDO?", function(result){
+        
+        if(result){
+        
+            $.post("../Ajax/APedido.php?Op=Aceptar",{IdPedido : IdPedido}, function(e){
+        
+                bootbox.alert(e);
+                tablaP.ajax.reload();
+                tabla.ajax.reload();
+        
+            });
+        
+        
+        }
+        
+        })
+        
+        
+        }
+
+        function Rechazar(IdPedido){
+
+            bootbox.confirm("¿ESTA SEGURO DE RECHAZAR EL PEDIDO?", function(result){
+            
+            if(result){
+            
+                $.post("../Ajax/APedido.php?Op=Rechazar",{IdPedido : IdPedido}, function(e){
+            
+                    bootbox.alert(e);
+                    tablaP.ajax.reload();
+                    tabla.ajax.reload();
+            
+                });
+            
+            
+            }
+            
+            })
+            
+            
+            }
+
 
 
 init();
