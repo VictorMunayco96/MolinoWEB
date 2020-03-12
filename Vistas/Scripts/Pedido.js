@@ -211,7 +211,7 @@ if(result){
     $.post("../Ajax/APedido.php?Op=Desactivar",{IdPedido : IdPedido}, function(e){
 
         bootbox.alert(e);
-        tabla.ajax.reload();
+        tablaP.ajax.reload();
 
     });
 
@@ -235,7 +235,7 @@ function Activar(IdPedido){
         $.post("../Ajax/APedido.php?Op=Activar",{IdPedido : IdPedido}, function(e){
     
             bootbox.alert(e);
-            tabla.ajax.reload();
+            tablaP.ajax.reload();
     
         });
     

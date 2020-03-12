@@ -111,13 +111,18 @@ $IdCabeceraPedido=$_REQUEST['IdCabeceraPedido'];
 
         $DataP[]=array(
 
-            "0"=>$RegP->IdPedido,
-       
+           // "0"=>$RegP->IdPedido,
+            "0"=>($RegP->PEstado)?'<button class="btn btn-warning" onclick="Mostrar('.$RegP->IdPedido.')"><i class="fa fa-pencil"></i></button>'.
+            ' <button class="btn btn-danger" onclick="Desactivar('.$RegP->IdPedido.')"><i class="fa fa-close"></i></button>':
+            '<button class="btn btn-warning" onclick="Mostrar('.$RegP->IdPedido.')"><i class="fa fa-pencil"></i></button>'.
+            ' <button class="btn btn-success" onclick="Activar('.$RegP->IdPedido.')"><i class="fa fa-check"></i></button>',
             
             "1"=>$RegP->IdCabeceraPedido,
             "2"=>$RegP->CantidadBatch,
             "3"=>$RegP->Observacion,
-            "4"=>$RegP->PEstado
+            "4"=>($RegP->PEstado)?'<span class="label bg-green">Activado</span>':
+            '<span class="label bg-red">Desactivado</span>'
+            
         
         );
     }
