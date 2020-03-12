@@ -35,16 +35,16 @@ if($_SESSION["ConsulProd"]==1){
                     <!-- centro -->
                     <div class="panel-body table-responsive" id="ListadoRegistros">
                        
-                    <div class="form-group col-log-3 col-md-3 col-sm-3 col-xs-6">
+                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Fecha Inicio:</label>
                     <input type="datetime-local" name="FechaInicio" class="form-control" id="FechaInicio" value="<?php echo date('Y-m-d'); ?>T06:30">
                     </div>
 
-                    <div class="form-group col-log-3 col-md-3 col-sm-3 col-xs-6s">
-                    <label>Fecha Fin:</label>
+                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>Fecha Fin: </label>
                     <input type="datetime-local" name="FechaFin" class="form-control" id="FechaFin" value="<?php echo date('Y-m-d'); ?>T06:30">
                     </div>
-                    <div class="form-group col-log-3 col-md-3 col-sm-3 col-xs-6s">
+                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Filtro</label>
                     <select id="Filtro" name ="Filtro" class="form-control selectpicker" required> 
                 
@@ -58,7 +58,7 @@ if($_SESSION["ConsulProd"]==1){
                     </select>
                    
                     </div>
-                    <div class="form-group col-log-3 col-md-3 col-sm-3 col-xs-6s">
+                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Busqueda</label>
                     <input type="text" name="Busqueda" class="form-control" id="Busqueda">
                     <BR>

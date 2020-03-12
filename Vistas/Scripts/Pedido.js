@@ -13,14 +13,25 @@ $("#Formulario").on("submit",function(e){
 })
 
 
-$.post("../Ajax/ADestinoBloq.php?Op=SelectDestinoDesc", function(r){
+$.post("../Ajax/APedido.php?Op=SelectDescProd", function(r){
 
-    $("#IdDestinoDesc").html(r);
-    $('#IdDestinoDesc').selectpicker('refresh');
+    $("#IdDescProd").html(r);
+    $('#IdDescProd').selectpicker('refresh');
     
     
     
     });
+
+
+    $.post("../Ajax/APedido.php?Op=SelectCabeceraPedido", function(r){
+
+        $("#IdCabeceraPedido").html(r);
+        $('#IdCabeceraPedido').selectpicker('refresh');
+        
+        
+        
+        });
+        
     
 
 

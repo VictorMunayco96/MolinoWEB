@@ -12,7 +12,7 @@ $Observacion=isset($_POST["Observacion"]) ? limpiarCadena($_POST["Observacion"])
 $CantidadKG=isset($_POST["CantidadKG"]) ? limpiarCadena($_POST["CantidadKG"]):"";
 $IdUsuario=$_SESSION['IdUsuario'];
 $IdDescProd=isset($_POST["IdDescProd"]) ? limpiarCadena($_POST["IdDescProd"]):"";
-$NumSemana=isset($_POST["NumSemana"]) ? limpiarCadena($_POST["NumSemana"]):"";
+$NumSemana=$_SESSION['NumSemana'];
 
 
 switch ($_GET["Op"]){
