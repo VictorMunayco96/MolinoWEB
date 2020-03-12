@@ -152,6 +152,7 @@ function Mostrar(IdUsuario)
             $("#Usuario").val(data.Usuario);
             $("#Contrasena").val(data.Contrasena);
             $("#TipoUsuario").val(data.TipoUsuario);
+            $("#TipoUsuario").selectpicker('refresh');
            
         
 

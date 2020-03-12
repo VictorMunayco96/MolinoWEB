@@ -106,7 +106,16 @@ require 'Header.php';
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Tipo Usuario:</label>
-                    <input type="text" name="TipoUsuario" class="form-control" id="TipoUsuario" placeholder="TipoUsuario" maxlength="30" required>
+                    
+                    <select id="TipoUsuario" name ="TipoUsuario" class="form-control selectpicker" data-live-search="true" required> 
+                    <option value="SELECCION UN CAMPO" selected>SELECCIONE UN CAMPO</option>
+                    <option value="ADMINISTRADOR">ADMINISTRADOR</option>
+                    <option value="DIGITADOR">DIGITADOR</option>
+                   
+                    
+                    
+                    
+                    </select>
                     </div>
 
 

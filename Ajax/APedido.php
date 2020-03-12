@@ -117,10 +117,13 @@ $IdCabeceraPedido=$_REQUEST['IdCabeceraPedido'];
             '<button class="btn btn-warning" onclick="Mostrar('.$RegP->IdPedido.')"><i class="fa fa-pencil"></i></button>'.
             ' <button class="btn btn-success" onclick="Activar('.$RegP->IdPedido.')"><i class="fa fa-check"></i></button>',
             
-            "1"=>$RegP->IdCabeceraPedido,
-            "2"=>$RegP->CantidadBatch,
-            "3"=>$RegP->Observacion,
-            "4"=>($RegP->PEstado)?'<span class="label bg-green">Activado</span>':
+            "1"=>$RegP->DestinoDes,
+            "2"=>$RegP->DescProd,
+            "3"=>$RegP->CantidadBatch,
+            "4"=>$RegP->CantidadKG,
+            "5"=>$RegP->Observacion,
+            "6"=>$RegP->Usuario,
+            "7"=>($RegP->PEstado)?'<span class="label bg-green">Activado</span>':
             '<span class="label bg-red">Desactivado</span>'
             
         

@@ -71,12 +71,16 @@ if($_SESSION["Producto"]==1){
 
                         <thead>
 
-                        <th>Opciones2</th>
-                        <th>Producto2</th>
-                        <th>Nombre Guia2</th>
-                        <th>Codigo2</th>
-                        <th>Categoria2</th>
+                        <th>Opciones</th>
+                        <th>Sector</th>
+                        <th>Tipo Alimento</th>
+                        <th>Cantidad Mezclas</th>
+                        <th>Total KG</th>
+                        <th>Observacion</th>
+                        <th>Usuario</th>
+                        <th>Estado</th>
                        
+
 
                         </thead>
 
@@ -86,12 +90,14 @@ if($_SESSION["Producto"]==1){
                       <tfoot>
 
                       <th>Opciones</th>
-                        <th>Producto</th>
-                        <th>Nombre Guia</th>
-                        <th>Codigo</th>
-                        <th>Categoria</th>
+                        <th>Sector</th>
+                        <th>Tipo Alimento</th>
+                        <th>Cantidad Mezclas</th>
+                        <th>Total KG</th>
+                        <th>Observacion</th>
+                        <th>Usuario</th>
+                        <th>Estado</th>
                        
-
 
                     </tfoot>
                       
