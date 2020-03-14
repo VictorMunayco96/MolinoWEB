@@ -83,7 +83,7 @@ case 'ListarCabeceraPedido':
 
         $Data[]=array(
 
-            "0"=>'<button class="btn btn-info" onclick="ListarPedido('.$Reg->IdCabeceraPedido.')"><i class="fa fa-eye"></i></button>',
+            "0"=>'<button class="btn btn-success" onclick="ListarPedido('.$Reg->IdCabeceraPedido.')"><i class="fa fa-eye"></i></button>',
        
             
             "1"=>$Reg->DestinoDes,

@@ -2,7 +2,7 @@
 
 require "../Config/Conexion.php";
 
-    Class MPedido{
+    Class MPanel{
 
         public function __construct(){
 
@@ -10,59 +10,44 @@ require "../Config/Conexion.php";
 
         }
 
-        public function Insertar($IdCabeceraPedido, $CantidadBatch, $Observacion, $CantidadKG, $IdUsuario, $IdDescProd, $NumSemana){
+        public function Insertar($IdPedido, $CodProduccion, $NumSilo, $CantidadBatch, $PesoPanel, $IdUsuario, $NumSemana){
 
          
            
-            $Sql="Insert into Pedido (IdCabeceraPedido, CantidadBatch, Observacion, Fecha, Estado, CantidadKG, IdUsuario, IdDescProd, NumSemana, EstadoP) 
-            values('$IdCabeceraPedido', '$CantidadBatch', '$Observacion', (select now()), '1', '$CantidadKG', '$IdUsuario', '$IdDescProd', '$NumSemana','0')";
+            $Sql="Insert into Panel (IdPedido, CodProduccion, NumSilo, CantidadBatch, PesoPanel, IdUsuario, Estado, NumSemana, Fecha) 
+            values('$IdPedido', '$CodProduccion', '$NumSilo', '$CantidadBatch', '$PesoPanel', '$IdUsuario', '$Estado', '$NumSemana', '$Fecha')";
 
             return EjecutarConsulta($Sql);
 
         }       
         
-        public function Editar($IdPedido,$IdCabeceraPedido, $CantidadBatch, $Observacion, $CantidadKG, $IdUsuario, $IdDescProd, $NumSemana){
+        public function Editar($IdPedido, $CodProduccion, $NumSilo, $CantidadBatch, $PesoPanel, $IdUsuario, $NumSemana){
 
-            $Sql=" Update Pedido set IdCabeceraPedido='$IdCabeceraPedido', CantidadBatch='$CantidadBatch', Observacion='$Observacion', Fecha='(select now())', CantidadKG='$CantidadKG', 
-            IdUsuario='$IdUsuario', IdDescProd='$IdDescProd',  EstadoP='0', NumSemana='$NumSemana' 
-             where IdPedido='$IdPedido';";
+            $Sql=" Update Panel set IdPedido='$IdPedido', CodProduccion='$CodProduccion', NumSilo='$NumSilo', CantidadBatch='$CantidadBatch', PesoPanel='$PesoPanel', IdUsuario='$IdUsuario', NumSemana='$NumSemana'
+             where IdPanel='$IdPanel';";
             
             return EjecutarConsulta($Sql);
 
         }
 
-        public function Desactivar ($IdPedido){
+        public function Desactivar ($IdPanel){
 
-            $Sql=" Update Pedido set Estado=0 where IdPedido='$IdPedido';";
+            $Sql=" Update Panel set Estado=0 where IdPanel='$IdPanel';";
             
             return EjecutarConsulta($Sql);
 
         }
 
 
-        public function Activar ($IdPedido){
+        public function Activar ($IdPanel){
 
-            $Sql=" Update Pedido set Estado=1 where IdPedido='$IdPedido';";
+            $Sql=" Update Panel set Estado=1 where IdPanel='$IdPanel';";
             
             return EjecutarConsulta($Sql);
 
         }
 
-        public function Aceptar ($IdPedido){
-
-            $Sql=" Update Pedido set EstadoP=1 where IdPedido='$IdPedido';";
-            
-            return EjecutarConsulta($Sql);
-
-        }
-
-        public function Rechazar ($IdPedido){
-
-            $Sql=" Update Pedido set EstadoP=0 where IdPedido='$IdPedido';";
-            
-            return EjecutarConsulta($Sql);
-
-        }
+        
 
         public function Mostrar($IdPedido){
 

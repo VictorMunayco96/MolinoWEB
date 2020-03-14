@@ -1,5 +1,6 @@
 var tabla;
 var tablaP;
+var tablaPA;
 
 function init(){
 
@@ -163,6 +164,43 @@ tabla=$("#tbllistadoC").dataTable(
 }).DataTable();
 
 }
+
+
+function ListarPanel(){
+
+    tabla=$("#tbllistadoC").dataTable(
+        
+        {
+        "aProcessing": true,
+        "aServerSide": true,
+        dom: 'Bfrtip',
+        buttons:[
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdf'
+    
+    
+        ],
+    
+        "ajax":{
+    
+            url: '../Ajax/APedido.php?Op=ListarCabeceraPedido',
+            type : "get",
+            dataType :"json",
+            error: function(e){
+                console.log(e.responseText);
+            }
+    
+        },
+        "bDestroy":true,
+        "iDisplayLength":5,
+        "order":[[0,"desc"]]
+    
+    }).DataTable();
+    
+    }
+
 
 function GuardaryEditar(e){
 
