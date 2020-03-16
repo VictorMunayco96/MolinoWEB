@@ -25,14 +25,66 @@ if($_SESSION["Producto"]==1){
                   <div class="box">
                     <div class="box-header with-border">
                           <h1 class="box-title">Panel
-                             <button class="btn btn-success" onclick="MostrarForm(3)"><i class="fa fa-plus-circle"></i> Agregar</button>
-                             <button class="btn btn-danger" onclick="MostrarForm(1)"><i class="fa fa-arrow-circle-left"></i> Volver</button></h1>
+                          <button class="btn btn-success" onclick="MostrarForm(4)"><i class="fa fa-list"></i> Registros</button></h1>
+                             <button class="btn btn-warning" onclick="MostrarForm(1)"><i class="fa fa-plus"></i> Pedidos</button></h1>
+                            
+                             
 
                         <div class="box-tools pull-right">
                         </div>
                     </div>
                  <!--    /.box-header -->
                     <!-- centro -->
+
+                    <div class="panel-body table-responsive" id="ListadoPanel">
+                        <table id="tbllistadoPA" class="table table-striped table-bordered table-condensed table-hover" >
+
+                        <thead>
+
+                        <th>Opciones</th>
+                        <th>Codigo Panel</th>
+                        <th>Destino</th>
+                        <th>Tipo Transporte</th>
+                        <th>Cantidad Batch</th>
+                        <th>Numero Silo</th>
+                        <th>Peso Panel</th>
+                        <th>Usuario</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+
+                        </thead>
+
+                        <tbody>
+                        
+</tbody>
+                      <tfoot>
+
+                      <th>Opciones</th>
+                        <th>Codigo Panel</th>
+                        <th>Destino</th>
+                        <th>Tipo Transporte</th>
+                        
+                        <th>Cantidad Batch</th>
+                        <th>Numero Silo</th>
+                        <th>Peso Panel</th>
+                        <th>Usuario</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+
+                    </tfoot>
+                      
+                       
+
+
+
+                        </table>
+                    </div>
+
+
+
+                
+
+
                     <div class="panel-body table-responsive" id="ListadoCabecera">
                         <table id="tbllistadoC" class="table table-striped table-bordered table-condensed table-hover" >
 
@@ -115,6 +167,7 @@ if($_SESSION["Producto"]==1){
 
                         </table>
                     </div>
+
 
                     <div class="panel-body" style="height: 400px;" id="FormularioRegistros">
                     

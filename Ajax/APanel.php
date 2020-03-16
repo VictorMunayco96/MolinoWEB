@@ -5,13 +5,13 @@ require_once "../Modelos/MPanel.php";
 
 $MPanel= new MPanel();
 
-$IdPedido=isset($_POST["IdPedido"]) ? limpiarCadena($_POST["IdPedido"]):"" ;
-$IdCabeceraPedido=isset($_POST["IdCabeceraPedido"]) ? limpiarCadena($_POST["IdCabeceraPedido"]):"";
+$IdPanel=isset($_POST["IdPanel"]) ? limpiarCadena($_POST["IdPanel"]):"" ;
+$IdPedido=isset($_POST["IdPedido"]) ? limpiarCadena($_POST["IdPedido"]):"";
+$CodProduccion=isset($_POST["CodProduccion"]) ? limpiarCadena($_POST["CodProduccion"]):"";
+$NumSilo=isset($_POST["NumSilo"]) ? limpiarCadena($_POST["NumSilo"]):"";
 $CantidadBatch=isset($_POST["CantidadBatch"]) ? limpiarCadena($_POST["CantidadBatch"]):"";
-$Observacion=isset($_POST["Observacion"]) ? limpiarCadena($_POST["Observacion"]):"";
-$CantidadKG=isset($_POST["CantidadKG"]) ? limpiarCadena($_POST["CantidadKG"]):"";
-$IdUsuario=$_SESSION['IdUsuario'];
-$IdDescProd=isset($_POST["IdDescProd"]) ? limpiarCadena($_POST["IdDescProd"]):"";
+$PesoPanel=isset($_POST["PesoPanel"]) ? limpiarCadena($_POST["PesoPanel"]):"";
+$IdUsuario=$_SESSION['IdUsuario']; 
 $NumSemana=$_SESSION['NumSemana'];
 
 
@@ -19,16 +19,16 @@ $NumSemana=$_SESSION['NumSemana'];
 switch ($_GET["Op"]){
 
 case 'GuardaryEditar':
-if(empty($IdPedido)){
+if(empty($IdPanel)){
 
   
-$Rspta=$MPedido->Insertar($IdCabeceraPedido, $CantidadBatch, $Observacion, $CantidadKG, $IdUsuario, $IdDescProd, $NumSemana);
+$Rspta=$MPanel->Insertar($IdPedido, $CodProduccion, $NumSilo, $CantidadBatch, $PesoPanel, $IdUsuario, $NumSemana);
 
 echo $Rspta ? "REGISTRADO" : "NO SE PUDO REGISTRAR";
 
 }else{
 
-    $Rspta=$MPedido->Editar($IdPedido,$IdCabeceraPedido, $CantidadBatch, $Observacion, $CantidadKG, $IdUsuario, $IdDescProd, $NumSemana);
+    $Rspta=$MPanel->Editar($IdPanel, $IdPedido, $CodProduccion, $NumSilo, $CantidadBatch, $PesoPanel, $IdUsuario, $NumSemana);
     echo $Rspta ? "EDITADO" : "NO SE PUDO EDITAR";
     
 
@@ -37,7 +37,7 @@ break;
 
 case 'Desactivar':
 
-$Rspta=$MPedido->Desactivar($IdPedido);
+$Rspta=$MPanel->Desactivar($IdPanel);
 echo $Rspta ? "DESACTIVADO" : "NO SE PUDO DESACTIVAR";
 
 break;
@@ -46,28 +46,14 @@ break;
 
 case 'Activar':
 
-    $Rspta=$MPedido->Activar($IdPedido);
+    $Rspta=$MPanel->Activar($IdPanel);
     echo $Rspta ? "ACTIVADO" : "NO SE PUDO ACTIVAR";
     
     break;
 
-case 'Aceptar':
+case 'MostrarPedido':
 
-        $Rspta=$MPedido->Aceptar($IdPedido);
-        echo $Rspta ? "ACEPTADO" : "NO SE PUDO ACEPTAR";
-        
-        break;
-
-case 'Rechazar':
-
-            $Rspta=$MPedido->Rechazar($IdPedido);
-            echo $Rspta ? "RECHAZADO" : "NO SE PUDO RECHAZAR";
-            
-            break;
-
-case 'Mostrar':
-
-    $Rspta=$MPedido->Mostrar($IdPedido);
+    $Rspta=$MPanel->MostrarPedido($IdPedido);
     echo json_encode($Rspta); 
 
 break;
@@ -134,7 +120,7 @@ $IdCabeceraPedido=$_REQUEST['IdCabeceraPedido'];
 
 
 
-            "0"=> '<button class="btn btn-success" onclick="Mostrar('.$RegP->IdPedido.')"><i class="fa fa-plus"></i></button>'          ,
+            "0"=> '<button class="btn btn-success" onclick="MostrarPedido('.$RegP->IdPedido.')"><i class="fa fa-plus"></i></button>'          ,
 
             "1"=>$RegP->DestinoDes,
             "2"=>$RegP->DescProd,
@@ -169,6 +155,79 @@ $IdCabeceraPedido=$_REQUEST['IdCabeceraPedido'];
 
 
 break;
+
+
+
+
+
+
+case 'ListarPanel':
+
+
+    
+    
+    
+    
+    
+        $RsptaPA=$MPanel->ListarPanel();
+       
+        $DataPA = Array();
+    
+        while($RegPA=$RsptaPA->fetch_object()){
+    
+            $DataPA[]=array(
+    
+             
+                
+    
+    
+    
+                "0"=> ($RegPA->Estado)?'<button class="btn btn-warning" onclick="Mostrar('.$RegPA->IdPanel.')"><i class="fa fa-pencil"></i></button>'.
+                ' <button class="btn btn-danger" onclick="Desactivar('.$RegPA->IdPanel.')"><i class="fa fa-close"></i></button>':
+                '<button class="btn btn-warning" onclick="Mostrar('.$RegPA->IdPanel.')"><i class="fa fa-pencil"></i></button>'.
+                ' <button class="btn btn-success" onclick="Activar('.$RegPA->IdPanel.')"><i class="fa fa-check"></i></button>',
+                "1"=>$RegPA->CodProduccion,
+                "2"=>$RegPA->DestinoDes,
+                "3"=>$RegPA->TipoTransporte,
+                "4"=>$RegPA->CantidadBatch,
+                "5"=>$RegPA->NumSilo,
+                "6"=>$RegPA->PesoPanel,
+                
+                "7"=>$RegPA->Usuario,
+                "8"=>$RegPA->Fecha,
+               
+                "9"=>($RegPA->Estado)?'<span class="label bg-green">Activado</span>':
+                '<span class="label bg-red">Desactivado</span>'
+                
+            
+            );
+        }
+    
+        $ResultPA = array(
+    
+            "sEcho"=>1,
+            "iTotalRecords"=>count($DataPA),
+            "ITotalDisplayRecords"=>count($DataPA),
+            "aaData"=>$DataPA);
+    
+            echo json_encode($ResultPA);
+    
+    
+    
+    
+        
+    
+    
+    
+    break;
+    
+
+
+
+
+
+
+
 
 
 

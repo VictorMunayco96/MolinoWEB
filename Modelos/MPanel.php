@@ -15,13 +15,13 @@ require "../Config/Conexion.php";
          
            
             $Sql="Insert into Panel (IdPedido, CodProduccion, NumSilo, CantidadBatch, PesoPanel, IdUsuario, Estado, NumSemana, Fecha) 
-            values('$IdPedido', '$CodProduccion', '$NumSilo', '$CantidadBatch', '$PesoPanel', '$IdUsuario', '$Estado', '$NumSemana', '$Fecha')";
+            values('$IdPedido', '$CodProduccion', '$NumSilo', '$CantidadBatch', '$PesoPanel', '$IdUsuario', '1', '$NumSemana', (select now()))";
 
             return EjecutarConsulta($Sql);
 
         }       
         
-        public function Editar($IdPedido, $CodProduccion, $NumSilo, $CantidadBatch, $PesoPanel, $IdUsuario, $NumSemana){
+        public function Editar($IdPanel,$IdPedido, $CodProduccion, $NumSilo, $CantidadBatch, $PesoPanel, $IdUsuario, $NumSemana){
 
             $Sql=" Update Panel set IdPedido='$IdPedido', CodProduccion='$CodProduccion', NumSilo='$NumSilo', CantidadBatch='$CantidadBatch', PesoPanel='$PesoPanel', IdUsuario='$IdUsuario', NumSemana='$NumSemana'
              where IdPanel='$IdPanel';";
@@ -49,10 +49,9 @@ require "../Config/Conexion.php";
 
         
 
-        public function Mostrar($IdPedido){
+        public function MostrarPedido($IdPedido){
 
-            $Sql="Select * from Pedido
-            where IdPedido='$IdPedido'";
+            $Sql="Select * from Pedido  where IdPedido='$IdPedido'";
             return EjecutarConsultaSImpleFila($Sql);
 
         }
@@ -90,9 +89,28 @@ require "../Config/Conexion.php";
 
         }
 
+
+        public function ListarPanel (){
+
+        
+
+            $Sql="SELECT PA.IdPanel, PA.IdPedido,PA.CodProduccion ,DD.DestinoDes, PA.CantidadBatch, PA.NumSilo, PA.PesoPanel , U.IdUsuario, U.Usuario, PA.Fecha, PA.Estado, CP.TipoTransporte  from Panel PA 
+
+            inner join Pedido P on PA.IdPedido=P.IdPEdido
+            inner join DescProd DP on P.IdDescProd=DP.IdDescProd
+            inner join CabeceraPedido CP on P.IdCabeceraPedido=CP.IdCabeceraPedido
+            inner join DestinoDesc DD on CP.IdDestinoDesc=DD.IdDestinoDesc
+            inner join Usuario U on P.IdUsuario=U.IdUsuario where PA.Estado=1";
+            
+            return EjecutarConsulta($Sql);
+
+        }
+
+
+
         public function ListarCabeceraPedido(){
 
-            $Sql=" Select CP.IdCabeceraPedido, DD.DestinoDes,CP.TipoTransporte,CP.OrdenEnvio, CP.Estado,
+            $Sql=" SELECT CP.IdCabeceraPedido, DD.DestinoDes,CP.TipoTransporte,CP.OrdenEnvio, CP.Estado,
             ifnull((select sum(CantidadBatch)- (select sum(PA.CantidadBatch) 
             from Pedido P inner join Panel PA on P.IdPedido=PA.IdPedido where P.IdCabeceraPedido=CP.IdCabeceraPedido)
             

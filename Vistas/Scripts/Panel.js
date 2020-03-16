@@ -3,9 +3,11 @@ var tablaP;
 var tablaPA;
 
 function init(){
+  
 
 MostrarForm(1);
 ListarCabeceraPedido();
+
 
 $("#Formulario").on("submit",function(e){
 
@@ -25,31 +27,28 @@ $("#Formulario").on("submit",function(e){
 function limpiar(){
 
     $("#IdPedido").val("");
-$("#CantidadKG").val("");
-$("#Observacion").val("");
+$("#IdPanel").val("");
+$("#PesoPanel").val("");
 $("#CantidadBatch").val("");
+$("#CodProduccion").val("");
 
 
 }
 
-function Mostrar(IdPedido)
+function MostrarPedido(IdPedido)
 {
 
     
-    $.post("../Ajax/APanel.php?Op=Mostrar",{IdPedido : IdPedido}, function(data,status)
+    $.post("../Ajax/APanel.php?Op=MostrarPedido",{IdPedido : IdPedido}, function(data,status)
         {
             data =JSON.parse(data);
             
             MostrarForm(3);
 
-            $("#IdPedido").val(data.IdPedido);
-            $("#IdDescProd").val(data.IdDescProd);
-            $("#IdDescProd").selectpicker('refresh');
-            $("#IdCabeceraPedido").val(data.IdCabeceraPedido);
-            $("#IdCabeceraPedido").selectpicker('refresh');
-            $("#CantidadBatch").val(data.CantidadBatch);
-            $("#Observacion").val(data.Observacion);
-            $("#CantidadKG").val(data.CantidadKG);
+        $("#IdPedido").val(data.IdPedido);
+
+        
+           
             
 
 
@@ -76,29 +75,43 @@ function MostrarForm($Ventana){
     $("#FormularioRegistros").hide();
     $("#ListadoPedido").hide();
     $("#BtnGuardar").prop("disabled",false);
-    
+    $("#ListadoPanel").hide();
+        
     
     }
 
     if ($Ventana==2){
     
-        $("#ListadoCabecera").hide();
-        $("#FormularioRegistros").hide();
-        $("#ListadoPedido").show();
-        $("#BtnGuardar").prop("disabled",false);
-        
+    $("#ListadoCabecera").hide();
+    $("#FormularioRegistros").hide();
+    $("#ListadoPedido").show();
+    $("#BtnGuardar").prop("disabled",false);
+    $("#ListadoPanel").hide();
+            
         
         }
 
-        if ($Ventana==3){
+    if ($Ventana==3){
     
-            $("#ListadoCabecera").hide();
-            $("#FormularioRegistros").show();
-            $("#ListadoPedido").hide();
-            $("#BtnGuardar").prop("disabled",false);
-            
+        $("#ListadoPanel").hide();
+    $("#ListadoCabecera").hide();
+    $("#FormularioRegistros").show();
+    $("#ListadoPedido").hide();
+    $("#BtnGuardar").prop("disabled",false);
+    
             
             }
+
+            if ($Ventana==4){
+    $("#ListadoPanel").show();
+    $("#ListadoCabecera").hide();
+    $("#FormularioRegistros").hide();
+    $("#ListadoPedido").hide();
+    $("#BtnGuardar").prop("disabled",false);
+                
+    ListarPanel();
+                
+                }
         
 
     
@@ -110,10 +123,18 @@ function MostrarForm($Ventana){
 function CancelarForm(){
 
     limpiar();
-    MostrarForm(1);
+    MostrarForm(2);
 }
 
+
+
+
 function ListarCabeceraPedido(){
+
+
+    MostrarForm(1);
+
+var Hola = "AA";
 
 tabla=$("#tbllistadoC").dataTable(
     
@@ -149,41 +170,6 @@ tabla=$("#tbllistadoC").dataTable(
 }
 
 
-function ListarPanel(){
-
-    tabla=$("#tbllistadoC").dataTable(
-        
-        {
-        "aProcessing": true,
-        "aServerSide": true,
-        dom: 'Bfrtip',
-        buttons:[
-                    'copyHtml5',
-                    'excelHtml5',
-                    'csvHtml5',
-                    'pdf'
-    
-    
-        ],
-    
-        "ajax":{
-    
-            url: '../Ajax/APanel.php?Op=ListarCabeceraPedido',
-            type : "get",
-            dataType :"json",
-            error: function(e){
-                console.log(e.responseText);
-            }
-    
-        },
-        "bDestroy":true,
-        "iDisplayLength":5,
-        "order":[[0,"desc"]]
-    
-    }).DataTable();
-    
-    }
-
 
 function GuardaryEditar(e){
 
@@ -213,6 +199,50 @@ success: function(datos){
 limpiar();
 
 }
+
+
+
+
+function ListarPanel()
+{
+ 
+
+tablaPA=$("#tbllistadoPA").dataTable(
+    
+    {
+    "aProcessing": true,
+    "aServerSide": true,
+    dom: 'Bfrtip',
+    buttons:[
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdf'
+
+
+    ],
+
+    "ajax":{
+
+        url: '../Ajax/APanel.php?Op=ListarPanel',
+        
+        type : "get",
+        dataType :"json",
+        error: function(e){
+            console.log(e);
+        }
+
+    },
+    "bDestroy":true,
+    "iDisplayLength":5,
+    "order":[[0,"desc"]]
+
+}).DataTable(); 
+
+
+
+}
+
 
 function ListarPedido(IdCabeceraPedido)
 {
