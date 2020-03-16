@@ -77,13 +77,14 @@ require "../Config/Conexion.php";
             DP.DescProd,
             DD.DestinoDes,
             CP.TipoTransporte,
-            P.EstadoP
+            P.EstadoP,
+            ifnull((P.CantidadBatch-(select sum(PA.CantidadBatch) from Panel PA where PA.IdPedido=P.IdPedido)),P.CantidadBatch) as Restante
        FROM 
             cabecerapedido CP INNER JOIN pedido P ON CP.IdCabeceraPedido = P.IdCabeceraPedido
             INNER JOIN usuario U ON P.IdUsuario = U.IdUsuario
             INNER JOIN descprod DP ON P.IdDescProd = DP.IdDescProd
             INNER JOIN destinodesc DD ON CP.IdDestinoDesc = DD.IdDestinoDesc
-            where P.IdCabeceraPedido='$IdCabeceraPedido' and P.NumSemana='$NumSemana'";
+            where P.IdCabeceraPedido='$IdCabeceraPedido' and P.NumSemana='$NumSemana' and P.EstadoP=1";
             
             return EjecutarConsulta($Sql);
 
@@ -91,8 +92,16 @@ require "../Config/Conexion.php";
 
         public function ListarCabeceraPedido(){
 
-            $Sql="Select CP.IdCabeceraPedido, DD.DestinoDes,CP.TipoTransporte,CP.OrdenEnvio, CP.Estado,(select count(IdPedido) from pedido where EstadoP=0 and IdCabeceraPedido=CP.IdCabeceraPedido and Estado=1) as Pendiente from CabeceraPedido CP 
-            inner join DestinoDesc DD on CP.IdDestinoDesc=DD.IdDestinoDesc";
+            $Sql=" Select CP.IdCabeceraPedido, DD.DestinoDes,CP.TipoTransporte,CP.OrdenEnvio, CP.Estado,
+            ifnull((select sum(CantidadBatch)- (select sum(PA.CantidadBatch) 
+            from Pedido P inner join Panel PA on P.IdPedido=PA.IdPedido where P.IdCabeceraPedido=CP.IdCabeceraPedido)
+            
+            from pedido where EstadoP=1 and IdCabeceraPedido=CP.IdCabeceraPedido and Estado=1),
+            
+            (select sum(CantidadBatch) from pedido where EstadoP=1 and IdCabeceraPedido=CP.IdCabeceraPedido and Estado=1)
+            
+            ) as Pendiente from CabeceraPedido CP 
+                        inner join DestinoDesc DD on CP.IdDestinoDesc=DD.IdDestinoDesc;";
             
             return EjecutarConsulta($Sql);
 

@@ -14,24 +14,7 @@ $("#Formulario").on("submit",function(e){
 })
 
 
-$.post("../Ajax/APedido.php?Op=SelectDescProd", function(r){
 
-    $("#IdDescProd").html(r);
-    $('#IdDescProd').selectpicker('refresh');
-    
-    
-    
-    });
-
-
-    $.post("../Ajax/APedido.php?Op=SelectCabeceraPedido", function(r){
-
-        $("#IdCabeceraPedido").html(r);
-        $('#IdCabeceraPedido').selectpicker('refresh');
-        
-        
-        
-        });
         
     
 
@@ -53,7 +36,7 @@ function Mostrar(IdPedido)
 {
 
     
-    $.post("../Ajax/APedido.php?Op=Mostrar",{IdPedido : IdPedido}, function(data,status)
+    $.post("../Ajax/APanel.php?Op=Mostrar",{IdPedido : IdPedido}, function(data,status)
         {
             data =JSON.parse(data);
             
@@ -149,7 +132,7 @@ tabla=$("#tbllistadoC").dataTable(
 
     "ajax":{
 
-        url: '../Ajax/APedido.php?Op=ListarCabeceraPedido',
+        url: '../Ajax/APanel.php?Op=ListarCabeceraPedido',
         type : "get",
         dataType :"json",
         error: function(e){
@@ -185,7 +168,7 @@ function ListarPanel(){
     
         "ajax":{
     
-            url: '../Ajax/APedido.php?Op=ListarCabeceraPedido',
+            url: '../Ajax/APanel.php?Op=ListarCabeceraPedido',
             type : "get",
             dataType :"json",
             error: function(e){
@@ -210,7 +193,7 @@ var formData= new FormData($("#Formulario")[0]);
 
 $.ajax({
 
-url: "../Ajax/APedido.php?Op=GuardaryEditar",
+url: "../Ajax/APanel.php?Op=GuardaryEditar",
 type: "POST",
 data: formData,
 contentType: false,
@@ -254,7 +237,7 @@ tablaP=$("#tbllistadoP").dataTable(
 
     "ajax":{
 
-        url: '../Ajax/APedido.php?Op=ListarPedido&IdCabeceraPedido='+Hola,
+        url: '../Ajax/APanel.php?Op=ListarPedido&IdCabeceraPedido='+Hola,
         //data:{IdCabeceraPedido:Hola},
         type : "get",
         dataType :"json",

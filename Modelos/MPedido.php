@@ -106,7 +106,7 @@ require "../Config/Conexion.php";
 
         public function ListarCabeceraPedido(){
 
-            $Sql="Select CP.IdCabeceraPedido, DD.DestinoDes,CP.TipoTransporte,CP.OrdenEnvio, CP.Estado,(select count(IdPedido) from pedido where EstadoP=0 and IdCabeceraPedido=CP.IdCabeceraPedido and Estado=1) as Pendiente from CabeceraPedido CP 
+            $Sql=" Select CP.IdCabeceraPedido, DD.DestinoDes,CP.TipoTransporte,CP.OrdenEnvio, CP.Estado,ifnull((select count(IdPedido) from pedido where EstadoP=0 and IdCabeceraPedido=CP.IdCabeceraPedido and Estado=1),0) as Pendiente from CabeceraPedido CP 
             inner join DestinoDesc DD on CP.IdDestinoDesc=DD.IdDestinoDesc";
             
             return EjecutarConsulta($Sql);

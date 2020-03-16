@@ -24,7 +24,7 @@ if($_SESSION["Producto"]==1){
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Pedido
+                          <h1 class="box-title">Panel
                              <button class="btn btn-success" onclick="MostrarForm(3)"><i class="fa fa-plus-circle"></i> Agregar</button>
                              <button class="btn btn-danger" onclick="MostrarForm(1)"><i class="fa fa-arrow-circle-left"></i> Volver</button></h1>
 
@@ -74,16 +74,17 @@ if($_SESSION["Producto"]==1){
                         <thead>
 
                         <th>Opciones</th>
-                        <?php if($_SESSION['TipoUsuario']=='ADMINISTRADOR'){echo '<th>Aprobar/Cancelar</th>';}?>
+                       
                         <th>Sector</th>
                       
                         <th>Tipo Alimento</th>
                         <th>Cantidad Mezclas</th>
+                        <th>Falta Producir</th>
                         <th>Total KG</th>
                         <th>Observacion</th>
                         <th>Usuario</th>
+                      
                         <th>Estado Pedido</th>
-                        <th>Estado Registro</th>
                        
 
                         </thead>
@@ -94,15 +95,16 @@ if($_SESSION["Producto"]==1){
                       <tfoot>
 
                       <th>Opciones</th>
-                      <?php if($_SESSION['TipoUsuario']=='ADMINISTRADOR'){echo '<th>Aprobar/Cancelar</th>';}?>
+                    
                         <th>Sector</th>
                         <th>Tipo Alimento</th>
                         <th>Cantidad Mezclas</th>
+                        <th>Falta Producir</th>
                         <th>Total KG</th>
                         <th>Observacion</th>
                         <th>Usuario</th>
+                        
                         <th>Estado Pedido</th>
-                        <th>Estado Registro</th>
                        
 
                     </tfoot>
