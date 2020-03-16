@@ -286,18 +286,20 @@ tablaP=$("#tbllistadoP").dataTable(
 
 }
 
-function Desactivar(IdPedido){
+function Desactivar(IdPanel){
 
-bootbox.confirm("¿ESTA SEGURO DE DESACTIVAR EL PEDIDO?", function(result){
+bootbox.confirm("¿ESTA SEGURO DE DESACTIVAR EL REGISTRO?", function(result){
 
 if(result){
 
-    $.post("../Ajax/APedido.php?Op=Desactivar",{IdPedido : IdPedido}, function(e){
+    $.post("../Ajax/APanel.php?Op=Desactivar",{IdPanel : IdPanel}, function(e){
 
         bootbox.alert(e);
+        tablaPA.ajax.reload();
+    
         tablaP.ajax.reload();
         tabla.ajax.reload();
-
+        
     });
 
 
@@ -311,15 +313,17 @@ if(result){
 
 
 
-function Activar(IdPedido){
+function Activar(IdPanel){
 
-    bootbox.confirm("¿ESTA SEGURO DE ACTIVAR EL PEDIDO?", function(result){
+    bootbox.confirm("¿ESTA SEGURO DE ACTIVAR EL REGISTRO?", function(result){
     
     if(result){
     
-        $.post("../Ajax/APedido.php?Op=Activar",{IdPedido : IdPedido}, function(e){
+        $.post("../Ajax/APanel.php?Op=Activar",{IdPanel : IdPanel}, function(e){
     
             bootbox.alert(e);
+            tablaPA.ajax.reload();
+    
             tablaP.ajax.reload();
             tabla.ajax.reload();
     
@@ -333,49 +337,8 @@ function Activar(IdPedido){
     
     }
 
-    function Aceptar(IdPedido){
+   
 
-        bootbox.confirm("¿ESTA SEGURO DE ACEPTAR EL PEDIDO?", function(result){
-        
-        if(result){
-        
-            $.post("../Ajax/APedido.php?Op=Aceptar",{IdPedido : IdPedido}, function(e){
-        
-                bootbox.alert(e);
-                tablaP.ajax.reload();
-                tabla.ajax.reload();
-        
-            });
-        
-        
-        }
-        
-        })
-        
-        
-        }
-
-        function Rechazar(IdPedido){
-
-            bootbox.confirm("¿ESTA SEGURO DE RECHAZAR EL PEDIDO?", function(result){
-            
-            if(result){
-            
-                $.post("../Ajax/APedido.php?Op=Rechazar",{IdPedido : IdPedido}, function(e){
-            
-                    bootbox.alert(e);
-                    tablaP.ajax.reload();
-                    tabla.ajax.reload();
-            
-                });
-            
-            
-            }
-            
-            })
-            
-            
-            }
 
 
 
