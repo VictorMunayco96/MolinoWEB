@@ -77,7 +77,7 @@ require "../Config/Conexion.php";
             DD.DestinoDes,
             CP.TipoTransporte,
             P.EstadoP,
-            ifnull((P.CantidadBatch-(select sum(PA.CantidadBatch) from Panel PA where PA.IdPedido=P.IdPedido)),P.CantidadBatch) as Restante
+            ifnull((P.CantidadBatch-(select sum(PA.CantidadBatch) from Panel PA where PA.IdPedido=P.IdPedido and PA.Estado=1)),P.CantidadBatch) as Restante
        FROM 
             cabecerapedido CP INNER JOIN pedido P ON CP.IdCabeceraPedido = P.IdCabeceraPedido
             INNER JOIN usuario U ON P.IdUsuario = U.IdUsuario
@@ -100,7 +100,7 @@ require "../Config/Conexion.php";
             inner join DescProd DP on P.IdDescProd=DP.IdDescProd
             inner join CabeceraPedido CP on P.IdCabeceraPedido=CP.IdCabeceraPedido
             inner join DestinoDesc DD on CP.IdDestinoDesc=DD.IdDestinoDesc
-            inner join Usuario U on P.IdUsuario=U.IdUsuario where PA.Estado=1";
+            inner join Usuario U on P.IdUsuario=U.IdUsuario where PA.Estado=1 order by PA.IdPanel desc";
             
             return EjecutarConsulta($Sql);
 

@@ -76,7 +76,7 @@ function MostrarForm($Ventana){
     $("#ListadoPedido").hide();
     $("#BtnGuardar").prop("disabled",false);
     $("#ListadoPanel").hide();
-        
+    
     
     }
 
@@ -87,7 +87,7 @@ function MostrarForm($Ventana){
     $("#ListadoPedido").show();
     $("#BtnGuardar").prop("disabled",false);
     $("#ListadoPanel").hide();
-            
+     
         
         }
 
@@ -98,6 +98,7 @@ function MostrarForm($Ventana){
     $("#FormularioRegistros").show();
     $("#ListadoPedido").hide();
     $("#BtnGuardar").prop("disabled",false);
+    
     
             
             }
@@ -188,8 +189,8 @@ processData: false,
 success: function(datos){
 
     bootbox.alert(datos);
-    MostrarForm(1);
-    tabla.ajax.reload();
+    MostrarForm(4);
+    tablaPA.ajax.reload();
 
 }
 
@@ -234,7 +235,7 @@ tablaPA=$("#tbllistadoPA").dataTable(
 
     },
     "bDestroy":true,
-    "iDisplayLength":5,
+    "iDisplayLength":10,
     "order":[[0,"desc"]]
 
 }).DataTable(); 
@@ -297,9 +298,6 @@ if(result){
         bootbox.alert(e);
         tablaPA.ajax.reload();
     
-        tablaP.ajax.reload();
-        tabla.ajax.reload();
-        
     });
 
 
@@ -324,8 +322,7 @@ function Activar(IdPanel){
             bootbox.alert(e);
             tablaPA.ajax.reload();
     
-            tablaP.ajax.reload();
-            tabla.ajax.reload();
+            
     
         });
     
