@@ -12,7 +12,7 @@ if(!isset($_SESSION["IdUsuario"])){
 
 require 'Header.php';
 
-if($_SESSION["Producto"]==1){
+if($_SESSION["Pedido"]==1){
 ?>
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->

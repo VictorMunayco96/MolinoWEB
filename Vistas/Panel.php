@@ -12,7 +12,7 @@ if(!isset($_SESSION["IdUsuario"])){
 
 require 'Header.php';
 
-if($_SESSION["Producto"]==1){
+if($_SESSION["Panel"]==1){
 ?>
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
@@ -45,6 +45,8 @@ if($_SESSION["Producto"]==1){
                         <th>Codigo Panel</th>
                         <th>Destino</th>
                         <th>Tipo Transporte</th>
+                        <th>Tipo Alimento</th>
+                        
                         <th>Cantidad Batch</th>
                         <th>Numero Silo</th>
                         <th>Peso Panel</th>
@@ -63,6 +65,7 @@ if($_SESSION["Producto"]==1){
                         <th>Codigo Panel</th>
                         <th>Destino</th>
                         <th>Tipo Transporte</th>
+                        <th>Tipo Alimento</th>
                         
                         <th>Cantidad Batch</th>
                         <th>Numero Silo</th>

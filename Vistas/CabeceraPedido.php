@@ -12,7 +12,7 @@ if(!isset($_SESSION["IdUsuario"])){
 
 require 'Header.php';
 
-if($_SESSION["Destino"]==1){
+if($_SESSION["Pedido"]==1){
 
 
 

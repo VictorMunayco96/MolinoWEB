@@ -101,7 +101,7 @@ session_start();
             <?php 
             if($_SESSION['Escritorio']==1){ 
               echo '<li>
-              <a href="#">
+              <a href="Escritorio.php">
                 <i class="fa fa-tasks"></i> <span>Escritorio</span>
               </a>
             </li>     ';
@@ -211,16 +211,16 @@ session_start();
                    
 
                    <?php 
-            if($_SESSION['Compras']==1){ 
+            if($_SESSION['Pedido']==1){ 
               echo '<li class="treeview">
               <a href="#">
-                <i class="fa fa-th"></i>
-                <span>Compras</span>
+                <i class="fa fa-list"></i>
+                <span>Pedido</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="ingreso.php"><i class="fa fa-circle-o"></i> Ingresos</a></li>
-                <li><a href="proveedor.php"><i class="fa fa-circle-o"></i> Proveedores</a></li>
+                <li><a href="CabeceraPedido.php"><i class="fa fa-circle-o"></i> Cabecera Pedido</a></li>
+                <li><a href="Pedido.php"><i class="fa fa-circle-o"></i> Pedido</a></li>
               </ul>
             </li>';
             }
@@ -228,16 +228,15 @@ session_start();
                    
 
                    <?php 
-            if($_SESSION['Ventas']==1){ 
+            if($_SESSION['Panel']==1){ 
               echo ' <li class="treeview">
               <a href="#">
-                <i class="fa fa-shopping-cart"></i>
-                <span>Ventas</span>
+              <i class="fa fa-laptop"></i>
+                <span>Panel</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="venta.php"><i class="fa fa-circle-o"></i> Ventas</a></li>
-                <li><a href="cliente.php"><i class="fa fa-circle-o"></i> Clientes</a></li>
+                <li><a href="Panel.php"><i class="fa fa-circle-o"></i> Panel</a></li>
               </ul>
             </li>         ';
             }

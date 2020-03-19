@@ -23,7 +23,7 @@ require "../Config/Conexion.php";
         
         public function Editar($IdPanel,$IdPedido, $CodProduccion, $NumSilo, $CantidadBatch, $PesoPanel, $IdUsuario, $NumSemana){
 
-            $Sql=" Update Panel set IdPedido='$IdPedido', CodProduccion='$CodProduccion', NumSilo='$NumSilo', CantidadBatch='$CantidadBatch', PesoPanel='$PesoPanel', IdUsuario='$IdUsuario', NumSemana='$NumSemana'
+            $Sql=" Update Panel set IdPedido='$IdPedido', CodProduccion='$CodProduccion', NumSilo='$NumSilo', CantidadBatch='$CantidadBatch', PesoPanel='$PesoPanel', IdUsuario='$IdUsuario', fecha=(select now())
              where IdPanel='$IdPanel';";
             
             return EjecutarConsulta($Sql);
@@ -55,6 +55,15 @@ require "../Config/Conexion.php";
             return EjecutarConsultaSImpleFila($Sql);
 
         }
+
+
+        public function MostrarPanel($IdPanel){
+
+            $Sql="Select * from Panel  where IdPanel='$IdPanel'";
+            return EjecutarConsultaSImpleFila($Sql);
+
+        }
+
 
         public function ListarPedido ($IdCabeceraPedido, $NumSemana){
 
@@ -94,7 +103,7 @@ require "../Config/Conexion.php";
 
         
 
-            $Sql="SELECT PA.IdPanel, PA.IdPedido,PA.CodProduccion ,DD.DestinoDes, PA.CantidadBatch, PA.NumSilo, PA.PesoPanel , U.IdUsuario, U.Usuario, PA.Fecha, PA.Estado, CP.TipoTransporte  from Panel PA 
+            $Sql="SELECT PA.IdPanel, PA.IdPedido,PA.CodProduccion ,DD.DestinoDes, PA.CantidadBatch, PA.NumSilo, PA.PesoPanel , U.IdUsuario, U.Usuario, PA.Fecha, PA.Estado, CP.TipoTransporte, DP.DescProd  from Panel PA 
 
             inner join Pedido P on PA.IdPedido=P.IdPEdido
             inner join DescProd DP on P.IdDescProd=DP.IdDescProd

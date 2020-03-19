@@ -47,22 +47,40 @@ function MostrarPedido(IdPedido)
 
         $("#IdPedido").val(data.IdPedido);
 
-        
-           
-            
-
-
-
-
-         
-
-
-
 
 })
 
 
 }
+
+
+
+function MostrarPanel(IdPanel)
+{
+
+    
+    $.post("../Ajax/APanel.php?Op=MostrarPanel",{IdPanel : IdPanel}, function(data,status)
+        {
+            data =JSON.parse(data);
+            
+            MostrarForm(3);
+
+        $("#IdPanel").val(data.IdPanel);
+        $("#IdPedido").val(data.IdPedido);
+        $("#CodProduccion").val(data.CodProduccion);
+        $("#NumSilo").val(data.NumSilo);
+        $("#NumSilo").selectpicker('refresh');
+ $("#CantidadBatch").val(data.CantidadBatch);
+ $("#PesoPanel").val(data.PesoPanel);
+
+
+
+
+    })
+
+
+}
+
 
 
 
@@ -124,7 +142,7 @@ function MostrarForm($Ventana){
 function CancelarForm(){
 
     limpiar();
-    MostrarForm(2);
+    MostrarForm(1);
 }
 
 

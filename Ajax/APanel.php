@@ -58,6 +58,13 @@ case 'MostrarPedido':
 
 break;
 
+case 'MostrarPanel':
+
+    $Rspta=$MPanel->MostrarPanel($IdPanel);
+    echo json_encode($Rspta); 
+
+break;
+
 
 case 'ListarCabeceraPedido':
 
@@ -182,21 +189,22 @@ case 'ListarPanel':
     
     
     
-                "0"=> ($RegPA->Estado)?'<button class="btn btn-warning" onclick="Mostrar('.$RegPA->IdPanel.')"><i class="fa fa-pencil"></i></button>'.
+                "0"=> ($RegPA->Estado)?'<button class="btn btn-warning" onclick="MostrarPanel('.$RegPA->IdPanel.')"><i class="fa fa-pencil"></i></button>'.
                 ' <button class="btn btn-danger" onclick="Desactivar('.$RegPA->IdPanel.')"><i class="fa fa-close"></i></button>':
-                '<button class="btn btn-warning" onclick="Mostrar('.$RegPA->IdPanel.')"><i class="fa fa-pencil"></i></button>'.
+                '<button class="btn btn-warning" onclick="MostrarPanel('.$RegPA->IdPanel.')"><i class="fa fa-pencil"></i></button>'.
                 ' <button class="btn btn-success" onclick="Activar('.$RegPA->IdPanel.')"><i class="fa fa-check"></i></button>',
                 "1"=>$RegPA->CodProduccion,
                 "2"=>$RegPA->DestinoDes,
                 "3"=>$RegPA->TipoTransporte,
-                "4"=>$RegPA->CantidadBatch,
-                "5"=>$RegPA->NumSilo,
-                "6"=>$RegPA->PesoPanel,
+                "4"=>$RegPA->DescProd,
+                "5"=>$RegPA->CantidadBatch,
+                "6"=>$RegPA->NumSilo,
+                "7"=>$RegPA->PesoPanel,
                 
-                "7"=>$RegPA->Usuario,
-                "8"=>$RegPA->Fecha,
+                "8"=>$RegPA->Usuario,
+                "9"=>$RegPA->Fecha,
                
-                "9"=>($RegPA->Estado)?'<span class="label bg-green">Activado</span>':
+                "10"=>($RegPA->Estado)?'<span class="label bg-green">Activado</span>':
                 '<span class="label bg-red">Desactivado</span>'
                 
             
