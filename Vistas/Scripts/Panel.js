@@ -209,6 +209,7 @@ success: function(datos){
     bootbox.alert(datos);
     MostrarForm(4);
     tablaPA.ajax.reload();
+    tabla.ajax.reload();
 
 }
 

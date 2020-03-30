@@ -42,7 +42,7 @@ if($_SESSION["Pedido"]==1){
 
                         <th>Opciones</th>
                         <th>Sector</th>
-                        <th>Tipo Transporte</th>
+                        
                         <th>Orden Envio</th>
                         <th>Estado</th>
 
@@ -55,7 +55,7 @@ if($_SESSION["Pedido"]==1){
 
                       <th>Opciones</th>
                         <th>Sector</th>
-                        <th>Tipo Transporte</th>
+                       
                         <th>Orden Envio</th>
                         <th>Estado</th>
 
@@ -79,20 +79,7 @@ if($_SESSION["Pedido"]==1){
                     </div>
 
 
-                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Tipo Transporte:</label>
-                    <select id="TipoTransporte" name ="TipoTransporte" class="form-control selectpicker" data-live-search="true" required> 
-                   
-                    
-
-                    <option value="SELECCIONE UN CAMPO" selected>SELECCIONE UN CAMPO</option>
-                    <option value="GRANDE">GRANDE</option>
-                    <option value="CHICO">CHICO</option>
-                   
-                    
-                    </select>
-                    </div>
-
+                
                   
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">

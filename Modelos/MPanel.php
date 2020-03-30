@@ -32,7 +32,7 @@ require "../Config/Conexion.php";
 
         public function Desactivar ($IdPanel){
 
-            $Sql=" Update Panel set Estado=0 where IdPanel='$IdPanel';";
+            $Sql=" Update Panel set Estado=0  Update Panel set Estado=0, CodProduccion=null where IdPanel='$IdPanel';";
             
             return EjecutarConsulta($Sql);
 
@@ -103,13 +103,13 @@ require "../Config/Conexion.php";
 
         
 
-            $Sql="SELECT PA.IdPanel, PA.IdPedido,PA.CodProduccion ,DD.DestinoDes, PA.CantidadBatch, PA.NumSilo, PA.PesoPanel , U.IdUsuario, U.Usuario, PA.Fecha, PA.Estado, CP.TipoTransporte, DP.DescProd  from Panel PA 
+            $Sql="SELECT PA.IdPanel, PA.IdPedido,PA.CodProduccion ,DD.DestinoDes, PA.CantidadBatch, PA.NumSilo, PA.PesoPanel , PA.IdUsuario, U.Usuario as PAUsuario, PA.Fecha, PA.Estado, CP.TipoTransporte, DP.DescProd  from Panel PA 
 
             inner join Pedido P on PA.IdPedido=P.IdPEdido
             inner join DescProd DP on P.IdDescProd=DP.IdDescProd
             inner join CabeceraPedido CP on P.IdCabeceraPedido=CP.IdCabeceraPedido
             inner join DestinoDesc DD on CP.IdDestinoDesc=DD.IdDestinoDesc
-            inner join Usuario U on P.IdUsuario=U.IdUsuario where PA.Estado=1 order by PA.IdPanel desc";
+            inner join Usuario U on PA.IdUsuario=U.IdUsuario where PA.Estado=1 order by PA.IdPanel desc";
             
             return EjecutarConsulta($Sql);
 
@@ -128,7 +128,7 @@ require "../Config/Conexion.php";
             (select sum(CantidadBatch) from pedido where EstadoP=1 and IdCabeceraPedido=CP.IdCabeceraPedido and Estado=1)
             
             ) as Pendiente from CabeceraPedido CP 
-                        inner join DestinoDesc DD on CP.IdDestinoDesc=DD.IdDestinoDesc;";
+                        inner join DestinoDesc DD on CP.IdDestinoDesc=DD.IdDestinoDesc where CP.Estado=1;";
             
             return EjecutarConsulta($Sql);
 

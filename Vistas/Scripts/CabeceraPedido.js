@@ -29,7 +29,7 @@ $('#IdDestinoDesc').selectpicker('refresh');
 function limpiar(){
 
     $("#IdCabeceraPedido").val("");
-$("#TipoTransporte").val("");
+
 $("#OrdenEnvio").val("");
 
 
@@ -138,11 +138,9 @@ function Mostrar(IdCabeceraPedido)
             $("#IdCabeceraPedido").val(data.IdCabeceraPedido);
             $("#IdDestinoDesc").val(data.IdDestinoDesc);
             $("#IdDestinoDesc").selectpicker('refresh');
-            $("#TipoTransporte").val(data.TipoTransporte);
+         
             $("#OrdenEnvio").val(data.OrdenEnvio);
-            $("#TipoTransporte").val(data.TipoTransporte);
-            $("#TipoTransporte").selectpicker('refresh');
-            
+           
         
 
          

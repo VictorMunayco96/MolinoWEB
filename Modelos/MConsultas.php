@@ -149,6 +149,40 @@ require "../Config/Conexion.php";
         }
 
 
+
+        public function EscPedido($NumSemana){
+
+           
+      
+           $Sql="SELECT sum(CantidadKG) as TotalPedidoSemana from Pedido where NumSemana=$NumSemana and EstadoP=1 and Estado=1;";
+
+
+        
+           
+           return EjecutarConsulta($Sql);
+
+       }
+
+
+       public function EscPanel($NumSemana){
+
+           
+      
+        $Sql="SELECT sum(PesoPanel) as TotalPesoPanel from Panel where NumSemana=$NumSemana and Estado=1;";
+
+
+     
+        
+        return EjecutarConsulta($Sql);
+
+    }
+
+
+
+
+
+
+
     
 
 

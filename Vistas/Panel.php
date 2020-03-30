@@ -183,7 +183,7 @@ if($_SESSION["Panel"]==1){
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Numero Silo:</label>
-                    <select id="NumSilo" name ="NumSilo" class="form-control selectpicker" data-live-search="true" required> 
+                    <select id="NumSilo" name ="NumSilo" class="form-control selectpicker" data-live-search="false" required> 
                     <option value="SELECCIONAR" selected>SELECCIONAR</option>
                     <option value="P1">P1</option>
                     <option value="P2">P2</option>

@@ -6,7 +6,6 @@ $MCabeceraPedido= new MCabeceraPedido();
 
 $IdCabeceraPedido=isset($_POST["IdCabeceraPedido"]) ? limpiarCadena($_POST["IdCabeceraPedido"]):"" ;
 $IdDestinoDesc=isset($_POST["IdDestinoDesc"]) ? limpiarCadena($_POST["IdDestinoDesc"]):"";
-$TipoTransporte=isset($_POST["TipoTransporte"]) ? limpiarCadena($_POST["TipoTransporte"]):"";
 $OrdenEnvio=isset($_POST["OrdenEnvio"]) ? limpiarCadena($_POST["OrdenEnvio"]):"";
 
 
@@ -15,12 +14,12 @@ switch ($_GET["Op"]){
 
 case 'GuardaryEditar':
 if(empty($IdCabeceraPedido)){
-$Rspta=$MCabeceraPedido->Insertar($IdDestinoDesc, $TipoTransporte, $OrdenEnvio);
+$Rspta=$MCabeceraPedido->Insertar($IdDestinoDesc, $OrdenEnvio);
 echo $Rspta ? "REGISTRADO" : "NO SE PUDO REGISTRAR";
 
 }else{
 
-    $Rspta=$MCabeceraPedido->Editar($IdCabeceraPedido, $IdDestinoDesc, $TipoTransporte, $OrdenEnvio);
+    $Rspta=$MCabeceraPedido->Editar($IdCabeceraPedido, $IdDestinoDesc, $OrdenEnvio);
     echo $Rspta ? "EDITADO" : "NO SE PUDO EDITAR";
     
 
@@ -65,9 +64,9 @@ case 'Listar':
             '<button class="btn btn-warning" onclick="Mostrar('.$Reg->IdCabeceraPedido.')"><i class="fa fa-pencil"></i></button>'.
             ' <button class="btn btn-success" onclick="Activar('.$Reg->IdCabeceraPedido.')"><i class="fa fa-check"></i></button>',
             "1"=>$Reg->DestinoDes,
-            "2"=>$Reg->TipoTransporte,
-            "3"=>$Reg->OrdenEnvio,
-            "4"=>($Reg->Estado)?'<span class="label bg-green">Activado</span>':
+            
+            "2"=>$Reg->OrdenEnvio,
+            "3"=>($Reg->Estado)?'<span class="label bg-green">Activado</span>':
             '<span class="label bg-red">Desactivado</span>'
         
         );

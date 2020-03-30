@@ -10,17 +10,18 @@ require "../Config/Conexion.php";
 
         }
 
-        public function Insertar($IdDestinoDesc, $TipoTransporte, $OrdenEnvio){
+        public function Insertar($IdDestinoDesc, $OrdenEnvio){
 
-            $Sql="Insert into CabeceraPedido ( IdDestinoDesc,TipoTransporte,OrdenEnvio,Estado) values('$IdDestinoDesc','$TipoTransporte','$OrdenEnvio',1)";
+            $Sql="Insert into CabeceraPedido ( IdDestinoDesc,OrdenEnvio,Estado) 
+            values('$IdDestinoDesc','$OrdenEnvio',1)";
 
             return EjecutarConsulta($Sql);
 
         }       
         
-        public function Editar($IdCabeceraPedido,$IdDestinoDesc, $TipoTransporte, $OrdenEnvio){
+        public function Editar($IdCabeceraPedido,$IdDestinoDesc,  $OrdenEnvio){
 
-            $Sql=" Update CabeceraPedido set IdDestinoDesc='$IdDestinoDesc',TipoTransporte='$TipoTransporte',OrdenEnvio='$OrdenEnvio' where IdCabeceraPedido='$IdCabeceraPedido';";
+            $Sql=" Update CabeceraPedido set IdDestinoDesc='$IdDestinoDesc',OrdenEnvio='$OrdenEnvio' where IdCabeceraPedido='$IdCabeceraPedido';";
             
             return EjecutarConsulta($Sql);
 
@@ -53,7 +54,7 @@ require "../Config/Conexion.php";
 
         public function Listar (){
 
-            $Sql="Select CP.IdCabeceraPedido, DD.DestinoDes,CP.TipoTransporte,CP.OrdenEnvio, CP.Estado  from CabeceraPedido CP 
+            $Sql="Select CP.IdCabeceraPedido, DD.DestinoDes, CP.OrdenEnvio, CP.Estado  from CabeceraPedido CP 
             inner join DestinoDesc DD on CP.IdDestinoDesc=DD.IdDestinoDesc";
             
             return EjecutarConsulta($Sql);
@@ -62,7 +63,7 @@ require "../Config/Conexion.php";
 
         public function Select (){
 
-            $Sql="Select CP.IdCabeceraPedido, DD.DestinoDes,CP.TipoTransporte,CP.OrdenEnvio, CP.Estado  from CabeceraPedido CP 
+            $Sql="Select CP.IdCabeceraPedido, DD.DestinoDes,CP.OrdenEnvio, CP.Estado  from CabeceraPedido CP 
             inner join DestinoDesc DD on CP.IdDestinoDesc=DD.IdDestinoDesc where CP.Estado=1";
             
             return EjecutarConsulta($Sql);

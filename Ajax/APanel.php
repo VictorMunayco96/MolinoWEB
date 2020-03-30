@@ -201,7 +201,7 @@ case 'ListarPanel':
                 "6"=>$RegPA->NumSilo,
                 "7"=>$RegPA->PesoPanel,
                 
-                "8"=>$RegPA->Usuario,
+                "8"=>$RegPA->PAUsuario,
                 "9"=>$RegPA->Fecha,
                
                 "10"=>($RegPA->Estado)?'<span class="label bg-green">Activado</span>':
