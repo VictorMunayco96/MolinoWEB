@@ -123,7 +123,7 @@ if($_SESSION["Pedido"]==1){
                     <form name="Formulario" id="Formulario" method="POST">
 
                     <div class="form-group col-log-12 col-md-12 col-sm-12 col-xs-12">
-                    <label>Sector - Vehiculo:</label>
+                    <label>Sector:</label>
                     <select id="IdCabeceraPedido" name ="IdCabeceraPedido" class="form-control selectpicker" data-live-search="true" required> </select>
                     </div>
 
@@ -135,9 +135,29 @@ if($_SESSION["Pedido"]==1){
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Cantidad Mezclas:</label>
-                    <input type="hidden" name="IdPedido" id="IdPedido">
+                    <input type="hidden" name="IdPedidoSemanal" id="IdPedidoSemanal">
                     <input type="number" class="form-control" placeholder="Cantidad Mezclas" name="CantidadBatch" id="CantidadBatch"  required>
                     </div>
+
+                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>Cantidad KG:</label>
+                    <input type="number" name="CantidadKG" class="form-control" id="CantidadKG" placeholder="Total Kilos" required>
+                    </div>
+
+                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>Motivo:</label>
+                    <select id="Motivo" name ="Motivo" class="form-control selectpicker" required> 
+                    <option value="SELECCIONAR">SELECCIONAR</option>
+                    <option value="PEDIDO">PEDIDO</option>
+                    <option value="MODIFICACION">MODIFICACION</option>
+                    
+
+
+
+                    </select>
+                    </div>
+
+
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Observacion:</label>
@@ -146,11 +166,7 @@ if($_SESSION["Pedido"]==1){
 
                  
 
-                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Cantidad KG:</label>
-                    <input type="number" name="CantidadKG" class="form-control" id="CantidadKG" placeholder="Total Kilos" required>
-                    </div>
-
+                   
 
 
                   

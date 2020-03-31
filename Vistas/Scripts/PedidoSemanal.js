@@ -13,7 +13,7 @@ $("#Formulario").on("submit",function(e){
 })
 
 
-$.post("../Ajax/APedido.php?Op=SelectDescProd", function(r){
+$.post("../Ajax/APedidoSemanal.php?Op=SelectDescProd", function(r){
 
     $("#IdDescProd").html(r);
     $('#IdDescProd').selectpicker('refresh');
@@ -23,10 +23,10 @@ $.post("../Ajax/APedido.php?Op=SelectDescProd", function(r){
     });
 
 
-    $.post("../Ajax/APedido.php?Op=SelectCabeceraPedido", function(r){
+    $.post("../Ajax/APedidoSemanal.php?Op=SelectCabeceraPedido", function(r){
 
         $("#IdCabeceraPedido").html(r);
-        $('#IdCabeceraPedido').selectpicker('refresh');
+        $("#IdCabeceraPedido").selectpicker('refresh');
         
         
         
@@ -44,21 +44,23 @@ function limpiar(){
 $("#CantidadKG").val("");
 $("#Observacion").val("");
 $("#CantidadBatch").val("");
+$("#Motivo").val("SELECCIONAR");
+$("#Motivo").selectpicker('refresh');
 
 
 }
 
-function Mostrar(IdPedido)
+function Mostrar(IdPedidoSemanal)
 {
 
     
-    $.post("../Ajax/APedido.php?Op=Mostrar",{IdPedido : IdPedido}, function(data,status)
+    $.post("../Ajax/APedidoSemanal.php?Op=Mostrar",{IdPedidoSemanal : IdPedidoSemanal}, function(data,status)
         {
             data =JSON.parse(data);
             
             MostrarForm(3);
 
-            $("#IdPedido").val(data.IdPedido);
+            $("#IdPedidoSemanal").val(data.IdPedidoSemanal);
             $("#IdDescProd").val(data.IdDescProd);
             $("#IdDescProd").selectpicker('refresh');
             $("#IdCabeceraPedido").val(data.IdCabeceraPedido);
@@ -66,6 +68,8 @@ function Mostrar(IdPedido)
             $("#CantidadBatch").val(data.CantidadBatch);
             $("#Observacion").val(data.Observacion);
             $("#CantidadKG").val(data.CantidadKG);
+            $("#Motivo").val(data.Motivo);
+            $("#Motivo").selectpicker('refresh');
             
 
 
@@ -172,7 +176,7 @@ var formData= new FormData($("#Formulario")[0]);
 
 $.ajax({
 
-url: "../Ajax/APedido.php?Op=GuardaryEditar",
+url: "../Ajax/APedidoSemanal.php?Op=GuardaryEditar",
 type: "POST",
 data: formData,
 contentType: false,

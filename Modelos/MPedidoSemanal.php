@@ -13,7 +13,7 @@ require "../Config/Conexion.php";
         public function Insertar($IdCabeceraPedido, $IdDescProd, $CantidadBatch, $CantidadKG, $NumSemana, $Observacion, $IdUsuario,$Motivo ){
 
             $Sql="Insert into PedidoSemanal ( IdCabeceraPedido, IdDescProd, CantidadBatch, CantidadKG, NumSemana, Observacion, IdUsuario, EstadoPS, Estado,Fecha,Motivo) 
-            values($IdCabeceraPedido, $IdDescProd, $CantidadBatch, $CantidadKG, $NumSemana, '$Observacion', $IdUsuario, '0', '1',(Select Now()),'$Motivo'";
+            values($IdCabeceraPedido, $IdDescProd, $CantidadBatch, $CantidadKG, $NumSemana, '$Observacion', $IdUsuario, '0', '1',(Select Now()),'$Motivo');";
 
             return EjecutarConsulta($Sql);
 

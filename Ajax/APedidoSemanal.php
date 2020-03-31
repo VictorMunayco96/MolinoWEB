@@ -239,7 +239,7 @@ case "SelectCabeceraPedido":
 
     while($Reg = $Rspta->fetch_object()){
 
-        echo '<option value=' .$Reg->IdCabeceraPedido.'>'.$Reg->DestinoDes.' - '.$Reg->TipoTransporte.'</option>';
+        echo '<option value='.$Reg->IdCabeceraPedido.'>'.$Reg->DestinoDes.'</option>';
 
     }
 
