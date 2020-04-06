@@ -141,15 +141,17 @@ if($_SESSION['TipoUsuario']=="DIGITADOR"){
             ' <button class="btn btn-success" onclick="Activar('.$RegP->IdPedidoSemanal.')"><i class="fa fa-check"></i></button>',
 
             "1"=>$RegP->DestinoDes,
-            "2"=>$RegP->DescProd,
-            "3"=>$RegP->CantidadBatch,
-            "4"=>$RegP->CantidadKG,
-            "5"=>$RegP->DestinoBloq,
+            "2"=>$RegP->DestinoBloq,
+            "3"=>$RegP->DescProd,
+            "4"=>$RegP->CantidadBatch,
+            "5"=>$RegP->CantidadKG,
+          
             "6"=>$RegP->Observacion,
             "7"=>$RegP->Fecha,
-            "8"=>($RegP->EstadoPS)?'<span class="label bg-green">Aceptado</span>':
+            "8"=>$RegP->Usuario,
+            "9"=>($RegP->EstadoPS)?'<span class="label bg-green">Aceptado</span>':
             '<span class="label bg-orange">Pendiente</span>',
-            "9"=>($RegP->Estado)?'<span class="label bg-green">Activado</span>':
+            "10"=>($RegP->Estado)?'<span class="label bg-green">Activado</span>':
             '<span class="label bg-red">Desactivado</span>'
             
         

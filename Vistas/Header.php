@@ -222,6 +222,7 @@ session_start();
                 <li><a href="CabeceraPedido.php"><i class="fa fa-circle-o"></i> Cabecera Pedido</a></li>
                 <li><a href="PedidoSemanal.php"><i class="fa fa-circle-o"></i> Pedido Semanal</a></li>
                 <li><a href="Pedido.php"><i class="fa fa-circle-o"></i> Pedido</a></li>
+                <li><a href="Variaciones.php"><i class="fa fa-circle-o"></i> Variaciones</a></li>
               </ul>
             </li>';
             }

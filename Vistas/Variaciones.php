@@ -1,4 +1,3 @@
-
 <?php
 
 ob_start();
@@ -25,7 +24,7 @@ if($_SESSION["Pedido"]==1){
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Pedido Semanal
+                          <h1 class="box-title">Variaciones
                             <!-- <button class="btn btn-success" onclick="MostrarForm(3)"><i class="fa fa-plus-circle"></i> Agregar</button>-->
                              <button class="btn btn-danger" onclick="MostrarForm(1)"><i class="fa fa-arrow-circle-left"></i> Volver</button></h1>
 
@@ -76,7 +75,7 @@ if($_SESSION["Pedido"]==1){
                         <thead>
 
                         <th>Opciones</th>
-                        <?php if($_SESSION['TipoUsuario']=='ADMINISTRADOR'){echo '<th>Aprobar/Cancelar</th>';}?>
+                      
                         <th>Sector</th>
                         <th>Bloque</th>
                         <th>Tipo Alimento</th>
@@ -86,10 +85,64 @@ if($_SESSION["Pedido"]==1){
                         <th>Fecha</th>
                         
                         <th>Usuario</th>
-                     
                         <th>Estado Pedido</th>
-                        <th>Estado Registro</th>
                        
+                        <th>Estado</th>
+                       
+                       
+                       
+
+                        </thead>
+
+                        <tbody>
+                        
+</tbody>
+                      <tfoot>
+
+                      <th>Opciones</th>
+                    
+                      <th>Sector</th>
+                        <th>Bloque</th>
+                        <th>Tipo Alimento</th>
+                        <th>Cantidad Mezclas</th>
+                        <th>Total KG</th>
+                        <th>Observacion</th>
+                        <th>Fecha</th>
+                        
+                        <th>Usuario</th>
+                        <th>Estado Pedido</th>
+                       
+                        <th>Estado</th>
+                       
+                       
+
+                    </tfoot>
+                      
+                       
+
+
+
+                        </table>
+                    </div>
+
+                    
+    <div class="panel-body table-responsive" id="ListadoVariaciones">
+         <table id="tbllistadoVA" class="table table-striped table-bordered table-condensed table-hover" >
+
+            <thead>
+
+                        <th>Opciones</th>
+                        <?php if($_SESSION['TipoUsuario']=='ADMINISTRADOR'){echo '<th>Aprobar/Cancelar</th>';}?>
+                         <th>Sector</th>
+                        <th>Bloque</th>
+                        <th>Tipo Alimento</th>
+                        <th>Cantidad Mezclas</th>
+                        <th>Total KG</th>
+                        <th>Observacion</th>
+                        <th>Fecha</th>
+                        
+                        
+              
                        
 
                         </thead>
@@ -109,12 +162,6 @@ if($_SESSION["Pedido"]==1){
                         <th>Observacion</th>
                         <th>Fecha</th>
                         
-                        <th>Usuario</th>
-                     
-                        <th>Estado Pedido</th>
-                        <th>Estado Registro</th>
-                       
-
                     </tfoot>
                       
                        
@@ -129,42 +176,28 @@ if($_SESSION["Pedido"]==1){
                     <form name="Formulario" id="Formulario" method="POST">
 
                     <div class="form-group col-log-12 col-md-12 col-sm-12 col-xs-12">
-                    <label>Bloque:</label>
-                    <select id="IdDestinoBloq" name ="IdDestinoBloq" class="form-control selectpicker"  required> </select>
-                    </div>
-
-                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Producto:</label>
-                    <select id="IdDescProd" name ="IdDescProd" class="form-control selectpicker" data-live-search="true" required> </select>
-                    </div>
-
-
-                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Cantidad Mezclas:</label>
-                    <input type="hidden" name="IdPedidoSemanal" id="IdPedidoSemanal">
-                    <input type="hidden" name="IdCabeceraPedido" id="IdCabeceraPedido">
+                    <label>CantidadBatch:</label>
                     <input type="number" class="form-control" placeholder="Cantidad Mezclas" name="CantidadBatch" id="CantidadBatch"  required>
-                    </div>
-
-                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Cantidad KG:</label>
-                    <input type="number" name="CantidadKG" class="form-control" id="CantidadKG" placeholder="Total Kilos" required>
-                    </div>
-
-
-                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Observacion:</label>
-                    <input type="text" name="Observacion" class="form-control" id="Observacion" placeholder="Observacion" maxlength="120">
-                    </div>
-
-                 
-
-                   
-
-
-                  
-
                     
+                    </div>
+
+                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>Motivo:</label>
+                    <select id="Motivo" name ="Motivo" class="form-control selectpicker" required> 
+                    <option value="SELECCIONAR" selected>SELECCIONAR</option>
+                    <option value="AUMENTAR">AUMENTAR</option>
+                    <option value="DISMINUIR">DISMINUIR</option>
+                    </select>
+                    </div>
+
+
+                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>Detalle:</label>
+                    <input type="hidden" name="IdPedidoSemanal" id="IdPedidoSemanal">
+                    <input type="hidden" name="IdVariaciones" id="IdVariaciones">
+                    <input type="text" class="form-control" placeholder="Detalle" name="Detalle" id="Detalle"  required>
+                    </div>
+                   
 
                   
 
@@ -202,7 +235,7 @@ require 'NoAcceso.php';
 require 'Footer.php';
 ?>
 
-<script type="text/javascript" src="Scripts/PedidoSemanal.js"></script>
+<script type="text/javascript" src="Scripts/Variaciones.js"></script>
 
 <?php 
 
