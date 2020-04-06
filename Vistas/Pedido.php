@@ -71,7 +71,7 @@ if($_SESSION["Pedido"]==1){
                         </table>
                     </div>
 
-                    <div class="panel-body table-responsive" id="ListadoPedido">
+                    <div class="panel-body table-responsive" id="ListadoPedidoSemanal">
                         <table id="tbllistadoPS" class="table table-striped table-bordered table-condensed table-hover" >
 
                         <thead>
@@ -88,8 +88,7 @@ if($_SESSION["Pedido"]==1){
                         <th>Estado Pedido</th>
                         <th>Estado Registro</th>
                         <th>Estado Pedido</th>
-                        <th>Estado Registro</th>
-
+                      
                         </thead>
 
                         <tbody>
@@ -108,7 +107,7 @@ if($_SESSION["Pedido"]==1){
                         <th>Estado Pedido</th>
                         <th>Estado Registro</th>
                         <th>Estado Pedido</th>
-                        <th>Estado Registro</th>
+                        
 
                     </tfoot>
                       
@@ -118,6 +117,61 @@ if($_SESSION["Pedido"]==1){
 
                         </table>
                     </div>
+
+
+
+
+
+                    <div class="panel-body table-responsive" id="ListadoPedido">
+         <table id="tbllistadoPE" class="table table-striped table-bordered table-condensed table-hover" >
+
+            <thead>
+
+                        <th>Opciones</th>
+                        <?php if($_SESSION['TipoUsuario']=='ADMINISTRADOR'){echo '<th>Aprobar/Cancelar</th>';}?>
+                         <th>Sector</th>
+                        <th>Bloque</th>
+                        <th>Tipo Alimento</th>
+                        <th>Cantidad Mezclas</th>
+                        <th>Total KG</th>
+                        <th>Observacion</th>
+                        <th>Fecha</th>
+                       
+                        
+              
+                       
+
+                        </thead>
+
+                        <tbody>
+                        
+</tbody>
+                      <tfoot>
+
+                      <th>Opciones</th>
+                      <?php if($_SESSION['TipoUsuario']=='ADMINISTRADOR'){echo '<th>Aprobar/Cancelar</th>';}?>
+                      <th>Sector</th>
+                        <th>Bloque</th>
+                        <th>Tipo Alimento</th>
+                        <th>Cantidad Mezclas</th>
+                        <th>Total KG</th>
+                        <th>Observacion</th>
+                        <th>Fecha</th>
+                       
+                        
+                    </tfoot>
+                      
+                       
+
+
+
+                        </table>
+                    </div>
+
+
+
+
+
 
                     <div class="panel-body" style="height: 400px;" id="FormularioRegistros">
                     
@@ -151,6 +205,11 @@ if($_SESSION["Pedido"]==1){
 
                     </select>
                     </div>
+
+
+
+
+
                  
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">

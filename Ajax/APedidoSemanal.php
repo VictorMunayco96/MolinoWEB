@@ -90,10 +90,12 @@ case 'ListarCabeceraPedido':
             "1"=>$Reg->DestinoDes,
             "2"=>$Reg->OrdenEnvio,
             "3"=>$Reg->TotalMezclas,
-            "4"=>($Reg->Pendiente>0)?'<span class="label bg-yellow">Pendiente</span>':
+            "4"=>$Reg->CantidadVA,
+            "5"=>$Reg->TotalFinal,
+            "6"=>($Reg->Pendiente>0)?'<span class="label bg-yellow">Pendiente</span>':
             '<span class="label bg-green">Al Dia</span>',
 
-            "5"=>($Reg->Estado)?'<span class="label bg-green">Activado</span>':
+            "7"=>($Reg->Estado)?'<span class="label bg-green">Activado</span>':
             '<span class="label bg-red">Desactivado</span>'
         
         );
@@ -144,14 +146,15 @@ if($_SESSION['TipoUsuario']=="DIGITADOR"){
             "2"=>$RegP->DestinoBloq,
             "3"=>$RegP->DescProd,
             "4"=>$RegP->CantidadBatch,
-            "5"=>$RegP->CantidadKG,
+            "5"=>$RegP->CantidadVA,
+            "6"=>$RegP->TotalFinal,
           
-            "6"=>$RegP->Observacion,
-            "7"=>$RegP->Fecha,
-            "8"=>$RegP->Usuario,
-            "9"=>($RegP->EstadoPS)?'<span class="label bg-green">Aceptado</span>':
+            "7"=>$RegP->Observacion,
+            "8"=>$RegP->Fecha,
+            "9"=>$RegP->Usuario,
+            "10"=>($RegP->EstadoPS)?'<span class="label bg-green">Aceptado</span>':
             '<span class="label bg-orange">Pendiente</span>',
-            "10"=>($RegP->Estado)?'<span class="label bg-green">Activado</span>':
+            "11"=>($RegP->Estado)?'<span class="label bg-green">Activado</span>':
             '<span class="label bg-red">Desactivado</span>'
             
         
@@ -197,15 +200,16 @@ if($_SESSION['TipoUsuario']=="DIGITADOR"){
             "4"=>$RegP->DescProd,
            
             "5"=>$RegP->CantidadBatch,
-            "6"=>$RegP->CantidadKG,
+            "6"=>$RegP->CantidadVA,
+            "7"=>$RegP->TotalFinal,
             
-            "7"=>$RegP->Observacion,
-            "8"=>$RegP->Fecha,
-            "9"=>$RegP->Usuario,
+            "8"=>$RegP->Observacion,
+            "9"=>$RegP->Fecha,
+            "10"=>$RegP->Usuario,
             
-            "10"=>($RegP->EstadoPS)?'<span class="label bg-green">Aceptado</span>':
+            "11"=>($RegP->EstadoPS)?'<span class="label bg-green">Aceptado</span>':
             '<span class="label bg-orange">Pendiente</span>',
-            "11"=>($RegP->Estado)?'<span class="label bg-green">Activado</span>':
+            "12"=>($RegP->Estado)?'<span class="label bg-green">Activado</span>':
             '<span class="label bg-red">Desactivado</span>'
             
             

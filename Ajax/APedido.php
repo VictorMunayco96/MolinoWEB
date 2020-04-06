@@ -117,68 +117,13 @@ break;
 case 'ListarPedidoSemanal':
 
 
-$NumSemana=$_SESSION['NumSemana'];
-$IdCabeceraPedido=$_REQUEST['IdCabeceraPedido'];
-
-
-
-
-    $RsptaP=$MPedido->ListarPedidoSemanal($IdCabeceraPedido, $NumSemana);
-   
-    $DataP = Array();
-
-    while($RegP=$RsptaP->fetch_object()){
-
-        $DataP[]=array(
-
-         
-            
-
-
-
-            "0"=>'<button class="btn btn-success" onclick="Mostrar('.$RegP->IdPedidoSemanal.')"><i class="fa fa-plus"></i></button>'.
-            ' <button class="btn btn-warning" onclick="ListarPedidoSemanal('.$RegP->IdPedidoSemanal.')"><i class="fa fa-eye"></i></button>',
-            "1"=>$RegP->DestinoDes,
-            "2"=>$RegP->DescProd,
-            "3"=>$RegP->CantidadBatch,
-            "4"=>$RegP->CantidadKG,
-            "5"=>$RegP->Motivo,
-            "6"=>$RegP->Observacion,
-            "7"=>$RegP->PUsuario,
-            "8"=>$RegP->Fecha,
-            "9"=>($RegP->Pendiente>0)?'<span class="label bg-yellow">Pendiente</span>':
-            '<span class="label bg-green">Al Dia</span>',
-            "10"=>($RegP->Estado)?'<span class="label bg-green">Activado</span>':
-            '<span class="label bg-red">Desactivado</span>'
-            
-        
-        );
-    }
-
-    $Result = array(
-
-        "sEcho"=>1,
-        "iTotalRecords"=>count($DataP),
-        "ITotalDisplayRecords"=>count($DataP),
-        "aaData"=>$DataP);
-
-        echo json_encode($Result);
-
-
-break;
-
-
-
-
-case 'ListarPedido':
-
-
-    $IdPedidoSemanal=$_REQUEST['IdCabeceraPedido'];
+    $NumSemana=$_SESSION['NumSemana'];
+    $IdCabeceraPedido=$_REQUEST['IdCabeceraPedido'];
     
     
-    if($_SESSION['TipoUsuario']=="DIGITADOR"){
     
-        $RsptaP=$MPedidoSemanal->ListarPedidoSemanal($IdCabeceraPedido, $NumSemana);
+    
+        $RsptaP=$MPedido->ListarPedidoSemanal($IdCabeceraPedido, $NumSemana);
        
         $DataP = Array();
     
@@ -191,20 +136,20 @@ case 'ListarPedido':
     
     
     
-                "0"=>($RegP->Estado)?'<button class="btn btn-warning" onclick="Mostrar('.$RegP->IdPedidoSemanal.')"><i class="fa fa-pencil"></i></button>'.
-                ' <button class="btn btn-danger" onclick="Desactivar('.$RegP->IdPedidoSemanal.')"><i class="fa fa-close"></i></button>':
-                '<button class="btn btn-warning" onclick="Mostrar('.$RegP->IdPedidoSemanal.')"><i class="fa fa-pencil"></i></button>'.
-                ' <button class="btn btn-success" onclick="Activar('.$RegP->IdPedidoSemanal.')"><i class="fa fa-check"></i></button>',
+                "0"=>'<button class="btn btn-success" onclick="AgregarPedido('.$RegP->IdPedidoSemanal.')"><i class="fa fa-plus"></i></button>'.
+                ' <button class="btn btn-warning" onclick="ListarPedido('.$RegP->IdPedidoSemanal.')"><i class="fa fa-eye"></i></button>',
     
                 "1"=>$RegP->DestinoDes,
-                "2"=>$RegP->DescProd,
-                "3"=>$RegP->CantidadBatch,
-                "4"=>$RegP->CantidadKG,
-                "5"=>$RegP->Motivo,
-                "6"=>$RegP->Observacion,
-                "7"=>$RegP->Fecha,
-                "8"=>($RegP->EstadoPS)?'<span class="label bg-green">Aceptado</span>':
-                '<span class="label bg-orange">Pendiente</span>',
+                "2"=>$RegP->DestinoBloq,
+                "3"=>$RegP->DescProd,
+              
+                "4"=>$RegP->TotalFinal,
+              
+                "5"=>$RegP->Observacion,
+                "6"=>$RegP->Fecha,
+                "7"=>$RegP->Usuario,
+                "8"=>($RegP->Pendiente>0)?'<span class="label bg-yellow">Pendiente</span>':
+                '<span class="label bg-green">Al Dia</span>',
                 "9"=>($RegP->Estado)?'<span class="label bg-green">Activado</span>':
                 '<span class="label bg-red">Desactivado</span>'
                 
@@ -223,40 +168,100 @@ case 'ListarPedido':
     
     
     
-    }else{
     
-    
-        $RsptaP=$MPedidoSemanal->ListarPedidoSemanal($IdCabeceraPedido, $NumSemana);
+
+
+break;
+
+
+
+
+case 'ListarPedido':
+
+    $IdPedidoSemanal=$_REQUEST['IdPedidoSemanal'];
+        
+        
+    if($_SESSION['TipoUsuario']=="DIGITADOR"){
+
+        $RsptaVA=$MPedido->ListarVariaciones($IdPedidoSemanal);
        
-        $DataP = Array();
+        $DataVA = Array();
     
-        while($RegP=$RsptaP->fetch_object()){
+        while($RegVA=$RsptaVA->fetch_object()){
     
-            $DataP[]=array(
+            $DataVA[]=array(
     
              
                 
     
     
     
-                "0"=>($RegP->Estado)?'<button class="btn btn-warning" onclick="Mostrar('.$RegP->IdPedidoSemanal.')"><i class="fa fa-pencil"></i></button>'.
-                ' <button class="btn btn-danger" onclick="Desactivar('.$RegP->IdPedidoSemanal.')"><i class="fa fa-close"></i></button>':
-                '<button class="btn btn-warning" onclick="Mostrar('.$RegP->IdPedidoSemanal.')"><i class="fa fa-pencil"></i></button>'.
-                ' <button class="btn btn-success" onclick="Activar('.$RegP->IdPedidoSemanal.')"><i class="fa fa-check"></i></button>',
+                "0"=>($RegVA->Estado)?'<button class="btn btn-warning" onclick="Mostrar('.$RegVA->IdPedido.')"><i class="fa fa-pencil"></i></button>'.
+                ' <button class="btn btn-danger" onclick="Desactivar('.$RegVA->IdPedido.')"><i class="fa fa-close"></i></button>':
+                '<button class="btn btn-warning" onclick="Mostrar('.$RegVA->IdPedido.')"><i class="fa fa-pencil"></i></button>'.
+                ' <button class="btn btn-success" onclick="Activar('.$RegVA->IdPedido.')"><i class="fa fa-check"></i></button>',
     
-                "1"=>($RegP->EstadoPS)?' <button class="btn btn-warning" onclick="Rechazar('.$RegP->IdPedidoSemanal.')"><i class="fa fa-close"></i></button>':
-                ' <button class="btn btn-success" onclick="Aceptar('.$RegP->IdPedidoSemanal.')"><i class="fa fa-check"></i></button>',
-                "2"=>$RegP->DestinoDes,
-                "3"=>$RegP->DescProd,
-                "4"=>$RegP->CantidadBatch,
-                "5"=>$RegP->CantidadKG,
-                "6"=>$RegP->Motivo,
-                "7"=>$RegP->Observacion,
-                "8"=>$RegP->Fecha,
-                "9"=>($RegP->EstadoPS)?'<span class="label bg-green">Aceptado</span>':
+                "1"=>$RegVA->DescProd,
+                "2"=>$RegVA->CantidadBatch,
+                "3"=>$RegVA->CantidadKGº,
+                "4"=>$RegVA->TipoTransporte,
+                "5"=>$RegVA->Fecha,
+               
+                "6"=>($RegVA->EstadoP)?'<span class="label bg-green">Aceptado</span>':
                 '<span class="label bg-orange">Pendiente</span>',
-                "10"=>($RegP->Estado)?'<span class="label bg-green">Activado</span>':
+                "7"=>($RegVA->Estado)?'<span class="label bg-green">Activado</span>':
                 '<span class="label bg-red">Desactivado</span>'
+                
+            
+            );
+        }
+    
+        $Result = array(
+    
+            "sEcho"=>1,
+            "iTotalRecords"=>count($DataVA),
+            "ITotalDisplayRecords"=>count($DataVA),
+            "aaData"=>$DataVA);
+    
+            echo json_encode($Result);
+    
+    
+    
+    }else{
+    
+    
+        $RsptaVA=$MPedido->ListarPedido($IdPedidoSemanal);
+       
+        $DataVA = Array();
+    
+        while($RegVA=$RsptaVA->fetch_object()){
+    
+            $DataVA[]=array(
+             
+                
+    
+    
+    
+                "0"=>($RegVA->Estado)?'<button class="btn btn-warning" onclick="Mostrar('.$RegVA->IdPedido.')"><i class="fa fa-pencil"></i></button>'.
+                ' <button class="btn btn-danger" onclick="Desactivar('.$RegVA->IdPedido.')"><i class="fa fa-close"></i></button>':
+                '<button class="btn btn-warning" onclick="Mostrar('.$RegVA->IdPedido.')"><i class="fa fa-pencil"></i></button>'.
+                ' <button class="btn btn-success" onclick="Activar('.$RegVA->IdPedido.')"><i class="fa fa-check"></i></button>',
+    
+                "1"=>($RegVA->EstadoP)?' <button class="btn btn-warning" onclick="Rechazar('.$RegVA->IdPedido.')"><i class="fa fa-close"></i></button>':
+                ' <button class="btn btn-success" onclick="Aceptar('.$RegVA->IdPedido.')"><i class="fa fa-check"></i></button>',
+
+              
+                "2"=>$RegVA->DescProd,
+                "3"=>$RegVA->CantidadBatch,
+                "4"=>$RegVA->CantidadKG,
+                "5"=>$RegVA->TipoTransporte,
+                "6"=>$RegVA->Fecha,
+               
+                "7"=>($RegVA->EstadoP)?'<span class="label bg-green">Aceptado</span>':
+                '<span class="label bg-orange">Pendiente</span>',
+                "8"=>($RegVA->Estado)?'<span class="label bg-green">Activado</span>':
+                '<span class="label bg-red">Desactivado</span>'
+                
                 
                 
             
@@ -266,9 +271,9 @@ case 'ListarPedido':
         $Result = array(
     
             "sEcho"=>1,
-            "iTotalRecords"=>count($DataP),
-            "ITotalDisplayRecords"=>count($DataP),
-            "aaData"=>$DataP);
+            "iTotalRecords"=>count($DataVA),
+            "ITotalDisplayRecords"=>count($DataVA),
+            "aaData"=>$DataVA);
     
             echo json_encode($Result);
     
@@ -276,7 +281,6 @@ case 'ListarPedido':
     
     
     }
-        
     
     
     

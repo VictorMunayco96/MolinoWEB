@@ -42,7 +42,9 @@ if($_SESSION["Pedido"]==1){
                         <th>Sector</th>
                         <th>Orden Envio</th>
                         <th>Mezclas Total</th>
-                        <th>Estado Pedido</th>
+                        <th>Variacion</th>
+                        <th>Total Final</th>
+                        <th>Estado Variacion</th>
                         <th>Estado</th>
 
                         </thead>
@@ -56,7 +58,9 @@ if($_SESSION["Pedido"]==1){
                         <th>Sector</th>
                         <th>Orden Envio</th>
                         <th>Mezclas Total</th>
-                        <th>Estado Pedido</th>
+                        <th>Variacion</th>
+                        <th>Total Final</th>
+                        <th>Estado Variacion</th>
                         <th>Estado</th>
                        
 
@@ -80,7 +84,8 @@ if($_SESSION["Pedido"]==1){
                         <th>Bloque</th>
                         <th>Tipo Alimento</th>
                         <th>Cantidad Mezclas</th>
-                        <th>Total KG</th>
+                        <th>Variacion</th>
+                        <th>Total Final</th>
                         <th>Observacion</th>
                         <th>Fecha</th>
                         
@@ -100,20 +105,20 @@ if($_SESSION["Pedido"]==1){
                       <tfoot>
 
                       <th>Opciones</th>
-                    
+                      
                       <th>Sector</th>
-                        <th>Bloque</th>
-                        <th>Tipo Alimento</th>
-                        <th>Cantidad Mezclas</th>
-                        <th>Total KG</th>
-                        <th>Observacion</th>
-                        <th>Fecha</th>
-                        
-                        <th>Usuario</th>
-                        <th>Estado Pedido</th>
-                       
-                        <th>Estado</th>
-                       
+                      <th>Bloque</th>
+                      <th>Tipo Alimento</th>
+                      <th>Cantidad Mezclas</th>
+                      <th>Variacion</th>
+                      <th>Total Final</th>
+                      <th>Observacion</th>
+                      <th>Fecha</th>
+                      
+                      <th>Usuario</th>
+                      <th>Estado Pedido</th>
+                     
+                      <th>Estado</th>
                        
 
                     </tfoot>

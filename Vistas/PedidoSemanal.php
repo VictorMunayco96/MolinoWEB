@@ -43,6 +43,8 @@ if($_SESSION["Pedido"]==1){
                         <th>Sector</th>
                         <th>Orden Envio</th>
                         <th>Mezclas Total</th>
+                        <th>Variacion</th>
+                        <th>Total Final</th>
                         <th>Estado Pedido</th>
                         <th>Estado</th>
 
@@ -57,6 +59,8 @@ if($_SESSION["Pedido"]==1){
                         <th>Sector</th>
                         <th>Orden Envio</th>
                         <th>Mezclas Total</th>
+                        <th>Variacion</th>
+                        <th>Total Final</th>
                         <th>Estado Pedido</th>
                         <th>Estado</th>
                        
@@ -81,7 +85,8 @@ if($_SESSION["Pedido"]==1){
                         <th>Bloque</th>
                         <th>Tipo Alimento</th>
                         <th>Cantidad Mezclas</th>
-                        <th>Total KG</th>
+                        <th>Variacion</th>
+                      <th>Total Final</th>
                         <th>Observacion</th>
                         <th>Fecha</th>
                         
@@ -105,7 +110,8 @@ if($_SESSION["Pedido"]==1){
                         <th>Bloque</th>
                         <th>Tipo Alimento</th>
                         <th>Cantidad Mezclas</th>
-                        <th>Total KG</th>
+                        <th>Variacion</th>
+                      <th>Total Final</th>
                         <th>Observacion</th>
                         <th>Fecha</th>
                         

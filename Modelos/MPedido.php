@@ -75,15 +75,28 @@ require "../Config/Conexion.php";
 
         
 
-            $Sql="SELECT PS.IdPedidoSemanal, PS.IDCabeceraPedido,DD.DestinoDes,PS.IdDescProd, DP.DescProd, PS.CantidadBatch, PS.CantidadKG, PS.NumSemana, PS.Observacion, PS.IdUsuario, U.USuario as PUsuario, PS.EstadoPS, PS.Estado, PS.Fecha, PS.Motivo,
-              (Select count(P.IdPedido) from Pedido P
-             where P.IdPedidoSemanal=PS.IdPedidoSemanal and P.NumSemana=$NumSemana and P.Estado=1 and P.EstadoP=0) as Pendiente
-
-             from PedidoSemanal PS 
-            inner join Usuario U on U.IdUsuario=PS.IdUSuario
-            inner join DescProd DP on DP.IdDescProd=PS.IdDescProd
-            inner join CabeceraPedido CP on CP.IdCabeceraPedido=PS.IdCabeceraPedido
-            inner join DestinoDesc DD on DD.IdDestinoDesc=CP.IdDestinoDesc where PS.NumSemana=$NumSemana and PS.Estado=1 and PS.EstadoPS=1 and PS.IdCabeceraPedido=$IdCabeceraPedido";
+            $Sql="SELECT PS.IdPedidoSemanal,DD.DestinoDes, DB.DestinoBloq ,DP.DescProd, PS.CantidadBatch, PS.CantidadKG, 
+            ifnull((Select sum(VA.CantidadBatch) from Variaciones VA 
+           
+           where VA.EstadoVA=1 and VA.Estado=1 and VA.IdPedidoSemanal=PS.IdPedidoSemanal and PS.NumSemana=$NumSemana),0) as CantidadVA,
+           
+           ifnull((ifnull((PS.CantidadBatch),0) +  ifnull((Select sum(VA.CantidadBatch) from Variaciones VA 
+           
+           where VA.EstadoVA=1 and VA.Estado=1 and VA.IdPedidoSemanal=PS.IdPedidoSEmanal and PS.NumSemana=$NumSemana),0)),0) as TotalFinal,
+           
+           
+           
+           
+           PS.Observacion, PS.Fecha, 
+           (Select count(VA.EstadoVA) from Variaciones VA 
+                       inner join PedidoSemanal PS on PS.IdPedidoSemanal=VA.IdPedidoSemanal
+                       where VA.EstadoVA=0 and VA.Estado=1 and VA.IdPedidoSEmanal=PS.IdPedidoSemanal and PS.NumSemana=$NumSemana) as Pendiente, 
+           U.Usuario,PS.Estado from PedidoSemanal PS 
+                       inner join Usuario U on U.IdUsuario=PS.IdUsuario
+                       inner join DescProd DP on DP.IdDescProd=PS.IdDescProd
+                       inner join CabeceraPedido CP on CP.IdCabeceraPedido=PS.IdCabeceraPedido
+                       inner join DestinoBloq DB on DB.IdDestinoBloq=PS.IdDestinoBloq
+                       inner join DestinoDesc DD on DD.IdDestinoDesc=CP.IdDestinoDesc where PS.NumSemana=$NumSemana and PS.IdCabeceraPedido=$IdCabeceraPedido; ";
 
 
             return EjecutarConsulta($Sql);
@@ -99,7 +112,9 @@ require "../Config/Conexion.php";
             DD.DestinoDes,
             CP.OrdenEnvio, 
             CP.Estado,
-            ifnull((Select Sum(PS.CantidadBatch) from PedidoSemanal PS where PS.EstadoPS=1 and PS.Estado=1 and PS.IdCabeceraPedido=CP.IdCabeceraPedido and PS.NumSemana=$NumSemana),0) as TotalMezclas,
+            ifnull((ifnull((Select Sum(PS.CantidadBatch) from PedidoSemanal PS where PS.EstadoPS=1 and PS.Estado=1 and PS.IdCabeceraPedido=CP.IdCabeceraPedido and PS.NumSemana=$NumSemana),0) +  ifnull((Select sum(VA.CantidadBatch) from Variaciones VA 
+            inner join PedidoSemanal PS on PS.IdPedidoSemanal=VA.IdPedidoSemanal
+            where VA.EstadoVA=1 and VA.Estado=1 and PS.IdCabeceraPedido=CP.IdCabeceraPedido and PS.NumSemana=$NumSemana),0)),0) as TotalMezclas,
             
             (Select count(P.IdPedido) from Pedido P inner join PedidoSemanal PS on PS.IdPedidoSemanal=P.IdPedidoSemanal 
              where PS.IdCabeceraPedido=CP.IDCabeceraPedido and P.NumSemana=$NumSemana and P.Estado=1 and P.EstadoP=0) as Pendiente,

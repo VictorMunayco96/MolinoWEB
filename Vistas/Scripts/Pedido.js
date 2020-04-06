@@ -1,11 +1,12 @@
 var tabla;
-var tablaPS;
+var tablaP;
+var tablaPE;
 
 function init(){
 
 MostrarForm(1);
 ListarCabeceraPedido();
-
+limpiar();
 $("#Formulario").on("submit",function(e){
 
     GuardaryEditar(e);
@@ -13,24 +14,10 @@ $("#Formulario").on("submit",function(e){
 })
 
 
-$.post("../Ajax/APedido.php?Op=SelectDescProd", function(r){
-
-    $("#IdDescProd").html(r);
-    $('#IdDescProd').selectpicker('refresh');
-    
-    
-    
-    });
 
 
-    $.post("../Ajax/APedido.php?Op=SelectCabeceraPedido", function(r){
 
-        $("#IdCabeceraPedido").html(r);
-        $('#IdCabeceraPedido').selectpicker('refresh');
-        
-        
-        
-        });
+
         
     
 
@@ -40,36 +27,36 @@ $.post("../Ajax/APedido.php?Op=SelectDescProd", function(r){
 }
 function limpiar(){
 
-    $("#IdPedido").val("");
-$("#CantidadKG").val("");
-$("#Observacion").val("");
+    $("#IdVariaciones").val("");
+$("#IdPedidoSemanal").val("");
 $("#CantidadBatch").val("");
+$("#Detalle").val("");
+$("#Motivo").val("SELECCIONAR");
+//$("#Motivo").selectpicker('refresh');
 
 
 }
 
-function Mostrar(IdPedidoSemanal)
+function Mostrar(IdVariaciones)
 {
 
     
-    $.post("../Ajax/APedidoSemanal.php?Op=Mostrar",{IdPedidoSemanal : IdPedidoSemanal}, function(data,status)
+    $.post("../Ajax/AVariaciones.php?Op=Mostrar",{IdVariaciones : IdVariaciones}, function(data,status)
         {
             data =JSON.parse(data);
             
             MostrarForm(3);
 
-            $("#IdPedido").val(data.IdPedido);
-            $("#IdDescProd").val(data.IdDescProd);
-            $("#IdDescProd").selectpicker('refresh');
-            $("#IdCabeceraPedido").val(data.IdCabeceraPedido);
-            $("#IdCabeceraPedido").selectpicker('refresh');
+            $("#IdVariaciones").val(data.IdVariaciones);
+            $("#IdPedidoSemanal").val(data.IdPedidoSemanal);
             $("#CantidadBatch").val(data.CantidadBatch);
-            $("#Observacion").val(data.Observacion);
-            $("#CantidadKG").val(data.CantidadKG);
-            
+            $("#Motivo").val(data.Motivo);
+            $("#Motivo").selectpicker('refresh');
+           
+        
+            $("#Detalle").val(data.Detalle);
 
-
-
+           
 
          
 
@@ -83,6 +70,26 @@ function Mostrar(IdPedidoSemanal)
 
 
 
+function AgregarPedido(IdPedidoSemanal)
+{
+    MostrarForm(3);
+
+        $("#IdPedidoSemanal").val(IdPedidoSemanal);
+
+
+        
+
+
+}
+
+
+
+
+
+
+
+
+
 function MostrarForm($Ventana){
 
     limpiar();
@@ -90,6 +97,7 @@ function MostrarForm($Ventana){
     
     $("#ListadoCabecera").show();
     $("#FormularioRegistros").hide();
+    $("#ListadoPedidoSemanal").hide();
     $("#ListadoPedido").hide();
     $("#BtnGuardar").prop("disabled",false);
     
@@ -100,7 +108,8 @@ function MostrarForm($Ventana){
     
         $("#ListadoCabecera").hide();
         $("#FormularioRegistros").hide();
-        $("#ListadoPedido").show();
+        $("#ListadoPedidoSemanal").show();
+        $("#ListadoPedido").hide();
         $("#BtnGuardar").prop("disabled",false);
         
         
@@ -110,11 +119,25 @@ function MostrarForm($Ventana){
     
             $("#ListadoCabecera").hide();
             $("#FormularioRegistros").show();
+            $("#ListadoPedidoSemanal").hide();
             $("#ListadoPedido").hide();
             $("#BtnGuardar").prop("disabled",false);
             
             
             }
+
+            if ($Ventana==4){
+    
+                $("#ListadoCabecera").hide();
+                $("#FormularioRegistros").hide();
+                $("#ListadoPedidoSemanal").hide();
+                $("#ListadoPedido").show();
+                $("#BtnGuardar").prop("disabled",false);
+                
+                
+                }
+            
+
         
 
     
@@ -157,7 +180,7 @@ tabla=$("#tbllistadoC").dataTable(
 
     },
     "bDestroy":true,
-    "iDisplayLength":5,
+    "iDisplayLength":10,
     "order":[[0,"desc"]]
 
 }).DataTable();
@@ -199,7 +222,7 @@ function ListarPedidoSemanal(IdCabeceraPedido)
 
 var Hola = IdCabeceraPedido;
    
-tablaPS=$("#tbllistadoPS").dataTable(
+tablaP=$("#tbllistadoPS").dataTable(
     
     {
     "aProcessing": true,
@@ -235,17 +258,66 @@ tablaPS=$("#tbllistadoPS").dataTable(
 
 }
 
-function Desactivar(IdPedido){
 
-bootbox.confirm("¿ESTA SEGURO DE DESACTIVAR EL PEDIDO?", function(result){
+function ListarPedido(IdPedidoSemanal)
+{
+   MostrarForm(4);
+
+var Hola = IdPedidoSemanal;
+   
+tablaVA=$("#tbllistadoPE").dataTable(
+    
+    {
+    "aProcessing": true,
+    "aServerSide": true,
+    dom: 'Bfrtip',
+    buttons:[
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdf'
+
+
+    ],
+
+    "ajax":{
+
+        url: '../Ajax/APedido.php?Op=ListarPedido&IdPedidoSemanal='+Hola,
+        //data:{IdCabeceraPedido:Hola},
+        type : "get",
+        dataType :"json",
+        error: function(e){
+            console.log(e.responseText);
+        }
+
+    },
+    "bDestroy":true,
+    "iDisplayLength":5,
+    "order":[[0,"desc"]]
+
+}).DataTable(); 
+
+
+
+}
+
+
+
+
+
+
+function Desactivar(IdVariaciones){
+
+bootbox.confirm("¿ESTA SEGURO DE DESACTIVAR LA VARIACION?", function(result){
 
 if(result){
 
-    $.post("../Ajax/APedido.php?Op=Desactivar",{IdPedido : IdPedido}, function(e){
+    $.post("../Ajax/AVariaciones.php?Op=Desactivar",{IdVariaciones : IdVariaciones}, function(e){
 
         bootbox.alert(e);
         tablaP.ajax.reload();
         tabla.ajax.reload();
+        tablaVA.ajax.reload();
 
     });
 
@@ -260,17 +332,18 @@ if(result){
 
 
 
-function Activar(IdPedido){
+function Activar(IdVariaciones){
 
-    bootbox.confirm("¿ESTA SEGURO DE ACTIVAR EL PEDIDO?", function(result){
+    bootbox.confirm("¿ESTA SEGURO DE ACTIVAR LA VARIACION?", function(result){
     
     if(result){
     
-        $.post("../Ajax/APedido.php?Op=Activar",{IdPedido : IdPedido}, function(e){
+        $.post("../Ajax/AVariaciones.php?Op=Activar",{IdVariaciones : IdVariaciones}, function(e){
     
             bootbox.alert(e);
             tablaP.ajax.reload();
             tabla.ajax.reload();
+            tablaVA.ajax.reload();
     
         });
     
@@ -282,17 +355,19 @@ function Activar(IdPedido){
     
     }
 
-    function Aceptar(IdPedido){
+    function Aceptar(IdVariaciones){
 
-        bootbox.confirm("¿ESTA SEGURO DE ACEPTAR EL PEDIDO?", function(result){
+        bootbox.confirm("¿ESTA SEGURO DE ACEPTAR LA VARIACION?", function(result){
         
         if(result){
         
-            $.post("../Ajax/APedido.php?Op=Aceptar",{IdPedido : IdPedido}, function(e){
+            $.post("../Ajax/AVariaciones.php?Op=Aceptar",{IdVariaciones : IdVariaciones}, function(e){
         
                 bootbox.alert(e);
                 tablaP.ajax.reload();
                 tabla.ajax.reload();
+                tablaVA.ajax.reload();
+
         
             });
         
@@ -304,17 +379,18 @@ function Activar(IdPedido){
         
         }
 
-        function Rechazar(IdPedido){
+        function Rechazar(IdPedidoSemanal){
 
             bootbox.confirm("¿ESTA SEGURO DE RECHAZAR EL PEDIDO?", function(result){
             
             if(result){
             
-                $.post("../Ajax/APedido.php?Op=Rechazar",{IdPedido : IdPedido}, function(e){
+                $.post("../Ajax/AVariaciones.php?Op=Rechazar",{IdPedidoSemanal : IdPedidoSemanal}, function(e){
             
                     bootbox.alert(e);
                     tablaP.ajax.reload();
                     tabla.ajax.reload();
+                    tablaVA.ajax.reload();
             
                 });
             
