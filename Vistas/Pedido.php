@@ -40,9 +40,10 @@ if($_SESSION["Pedido"]==1){
 
                         <th>Opciones</th>
                         <th>Sector</th>
-                        <th>Tipo Transporte</th>
                         <th>Orden Envio</th>
-                        <th>Pendientes</th>
+                        <th>Total Mezclas</th>
+                        <th>Avance Programado</th>
+                        <th>Pedido Pendientes</th>
                         <th>Estado</th>
 
                         </thead>
@@ -52,11 +53,13 @@ if($_SESSION["Pedido"]==1){
 </tbody>
                       <tfoot>
 
+                        
                         <th>Opciones</th>
                         <th>Sector</th>
-                        <th>Tipo Transporte</th>
                         <th>Orden Envio</th>
-                        <th>Pendientes</th>
+                        <th>Total Mezclas</th>
+                        <th>Avance Programado</th>
+                        <th>Pedido Pendientes</th>
                         <th>Estado</th>
 
                     </tfoot>
@@ -69,12 +72,12 @@ if($_SESSION["Pedido"]==1){
                     </div>
 
                     <div class="panel-body table-responsive" id="ListadoPedido">
-                        <table id="tbllistadoP" class="table table-striped table-bordered table-condensed table-hover" >
+                        <table id="tbllistadoPS" class="table table-striped table-bordered table-condensed table-hover" >
 
                         <thead>
 
                         <th>Opciones</th>
-                        <?php if($_SESSION['TipoUsuario']=='ADMINISTRADOR'){echo '<th>Aprobar/Cancelar</th>';}?>
+                      
                         <th>Sector</th>
                       
                         <th>Tipo Alimento</th>
@@ -84,7 +87,8 @@ if($_SESSION["Pedido"]==1){
                         <th>Usuario</th>
                         <th>Estado Pedido</th>
                         <th>Estado Registro</th>
-                       
+                        <th>Estado Pedido</th>
+                        <th>Estado Registro</th>
 
                         </thead>
 
@@ -94,7 +98,7 @@ if($_SESSION["Pedido"]==1){
                       <tfoot>
 
                       <th>Opciones</th>
-                      <?php if($_SESSION['TipoUsuario']=='ADMINISTRADOR'){echo '<th>Aprobar/Cancelar</th>';}?>
+                   
                         <th>Sector</th>
                         <th>Tipo Alimento</th>
                         <th>Cantidad Mezclas</th>
@@ -103,7 +107,8 @@ if($_SESSION["Pedido"]==1){
                         <th>Usuario</th>
                         <th>Estado Pedido</th>
                         <th>Estado Registro</th>
-                       
+                        <th>Estado Pedido</th>
+                        <th>Estado Registro</th>
 
                     </tfoot>
                       
@@ -118,33 +123,39 @@ if($_SESSION["Pedido"]==1){
                     
                     <form name="Formulario" id="Formulario" method="POST">
 
-                    <div class="form-group col-log-12 col-md-12 col-sm-12 col-xs-12">
-                    <label>Sector - Vehiculo:</label>
-                    <select id="IdCabeceraPedido" name ="IdCabeceraPedido" class="form-control selectpicker" data-live-search="true" required> </select>
-                    </div>
-
+                                        
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Producto:</label>
-                    <select id="IdDescProd" name ="IdDescProd" class="form-control selectpicker" data-live-search="true" required> </select>
+                    <label>Cantidad Batch:</label>
+                    <input type="number" name="CantidadBatch" class="form-control" id="CantidadBatch" placeholder="CantidadBatch" required>
                     </div>
 
 
+
+
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Cantidad Mezclas:</label>
+                    <label>CantidadKG:</label>
                     <input type="hidden" name="IdPedido" id="IdPedido">
-                    <input type="number" class="form-control" placeholder="Cantidad Mezclas" name="CantidadBatch" id="CantidadBatch"  required>
+                    <input type="hidden" name="IdPedidoSemanal" id="IdPedidoSemanal">
+                    <input type="number" class="form-control" placeholder="CantidadKG" name="CantidadKG" id="CantidadKG"  required>
                     </div>
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Observacion:</label>
-                    <input type="text" name="Observacion" class="form-control" id="Observacion" placeholder="Observacion" maxlength="120">
-                    </div>
+                    <label>Tipo Transporte:</label>
+                    <select id="TipoTransporte" name ="TipoTransporte" class="form-control selectpicker" required> 
+                    <option value="SELECCIONAR">SELECCIONAR</option>
+                    <option value="GRANDE">GRANDE</option>
+                    <option value="CHICO">CHICO</option>
+                    
 
+
+
+                    </select>
+                    </div>
                  
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Cantidad KG:</label>
-                    <input type="number" name="CantidadKG" class="form-control" id="CantidadKG" placeholder="Total Kilos" required>
+                    <label>Observacion:</label>
+                    <input type="text" name="Observacion" class="form-control" id="Observacion" placeholder="Observacion">
                     </div>
 
 

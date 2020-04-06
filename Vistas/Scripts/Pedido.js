@@ -1,5 +1,5 @@
 var tabla;
-var tablaP;
+var tablaPS;
 
 function init(){
 
@@ -48,11 +48,11 @@ $("#CantidadBatch").val("");
 
 }
 
-function Mostrar(IdPedido)
+function Mostrar(IdPedidoSemanal)
 {
 
     
-    $.post("../Ajax/APedido.php?Op=Mostrar",{IdPedido : IdPedido}, function(data,status)
+    $.post("../Ajax/APedidoSemanal.php?Op=Mostrar",{IdPedidoSemanal : IdPedidoSemanal}, function(data,status)
         {
             data =JSON.parse(data);
             
@@ -193,13 +193,13 @@ limpiar();
 
 }
 
-function ListarPedido(IdCabeceraPedido)
+function ListarPedidoSemanal(IdCabeceraPedido)
 {
    MostrarForm(2);
 
 var Hola = IdCabeceraPedido;
    
-tablaP=$("#tbllistadoP").dataTable(
+tablaPS=$("#tbllistadoPS").dataTable(
     
     {
     "aProcessing": true,
@@ -216,7 +216,7 @@ tablaP=$("#tbllistadoP").dataTable(
 
     "ajax":{
 
-        url: '../Ajax/APedido.php?Op=ListarPedido&IdCabeceraPedido='+Hola,
+        url: '../Ajax/APedido.php?Op=ListarPedidoSemanal&IdCabeceraPedido='+Hola,
         //data:{IdCabeceraPedido:Hola},
         type : "get",
         dataType :"json",

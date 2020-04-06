@@ -70,6 +70,15 @@ require "../Config/Conexion.php";
 
         }
 
+        public function SelectBloqDesc ($IdCabeceraPedido){
+
+            $Sql="SELECT DB.IdDestinoBloq, DB.DestinoBloq, DD.DestinoDes from DestinoBloq DB 
+            inner join DestinoDesc DD on DD.IdDestinoDesc=DB.IdDestinoDesc where DB.IdDestinoDesc=(Select IdDestinoDesc from CabeceraPedido where IdCabeceraPedido=$IdCabeceraPedido) and DB.Estado=1;";
+            
+            return EjecutarConsulta($Sql);
+
+        }
+
 
 }
 

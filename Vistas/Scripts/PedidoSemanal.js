@@ -5,7 +5,7 @@ function init(){
 
 MostrarForm(1);
 ListarCabeceraPedido();
-
+limpiar();
 $("#Formulario").on("submit",function(e){
 
     GuardaryEditar(e);
@@ -23,14 +23,7 @@ $.post("../Ajax/APedidoSemanal.php?Op=SelectDescProd", function(r){
     });
 
 
-    $.post("../Ajax/APedidoSemanal.php?Op=SelectCabeceraPedido", function(r){
 
-        $("#IdCabeceraPedido").html(r);
-        $("#IdCabeceraPedido").selectpicker('refresh');
-        
-        
-        
-        });
         
     
 
@@ -46,6 +39,7 @@ $("#Observacion").val("");
 $("#CantidadBatch").val("");
 $("#Motivo").val("SELECCIONAR");
 $("#Motivo").selectpicker('refresh');
+IdDestinoBloq.disabled=false;
 
 
 }
@@ -61,17 +55,34 @@ function Mostrar(IdPedidoSemanal)
             MostrarForm(3);
 
             $("#IdPedidoSemanal").val(data.IdPedidoSemanal);
-            $("#IdDescProd").val(data.IdDescProd);
-            $("#IdDescProd").selectpicker('refresh');
             $("#IdCabeceraPedido").val(data.IdCabeceraPedido);
             $("#IdCabeceraPedido").selectpicker('refresh');
+            $("#IdDescProd").val(data.IdDescProd);
+            $("#IdDescProd").selectpicker('refresh');
+           
             $("#CantidadBatch").val(data.CantidadBatch);
-            $("#Observacion").val(data.Observacion);
             $("#CantidadKG").val(data.CantidadKG);
-            $("#Motivo").val(data.Motivo);
-            $("#Motivo").selectpicker('refresh');
-            
+            $("#Observacion").val(data.Observacion);
 
+
+            $.post("../Ajax/APedidoSemanal.php?Op=SelectBloqDesc&IdCabeceraPedido="+data.IdCabeceraPedido, function(r){
+
+                $("#IdDestinoBloq").html(r);
+                $('#IdDestinoBloq').selectpicker('refresh');
+                
+                
+                
+                });
+
+
+          
+            $("#IdDestinoBloq").val(data.IdDestinoBloq);
+            $("#IdDestinoBloq").selectpicker('refresh');
+            
+            IdDestinoBloq.disabled=true;
+
+
+          
 
 
 
@@ -84,6 +95,34 @@ function Mostrar(IdPedidoSemanal)
 
 
 }
+
+
+
+function AgregarPedidoSemanal(IdCabeceraPedido)
+{
+
+    $.post("../Ajax/APedidoSemanal.php?Op=SelectBloqDesc&IdCabeceraPedido="+IdCabeceraPedido, function(r){
+
+        $("#IdDestinoBloq").html(r);
+        $('#IdDestinoBloq').selectpicker('refresh');
+        
+        
+        
+        });
+
+        $("#IdCabeceraPedido").val(IdCabeceraPedido);
+
+
+        MostrarForm(3);
+
+
+}
+
+
+
+
+
+
 
 
 
@@ -161,7 +200,7 @@ tabla=$("#tbllistadoC").dataTable(
 
     },
     "bDestroy":true,
-    "iDisplayLength":5,
+    "iDisplayLength":10,
     "order":[[0,"desc"]]
 
 }).DataTable();

@@ -10,21 +10,20 @@ require "../Config/Conexion.php";
 
         }
 
-        public function Insertar($IdCabeceraPedido, $CantidadBatch, $Observacion, $CantidadKG, $IdUsuario, $IdDescProd, $NumSemana){
+        public function Insertar($CantidadBatch, $Observacion, $CantidadKG, $IdUsuario, $NumSemana, $IdPedidoSemanal, $TipoTransporte){
 
          
            
-            $Sql="Insert into Pedido (IdCabeceraPedido, CantidadBatch, Observacion, Fecha, Estado, CantidadKG, IdUsuario, IdDescProd, NumSemana, EstadoP) 
-            values('$IdCabeceraPedido', '$CantidadBatch', '$Observacion', (select now()), '1', '$CantidadKG', '$IdUsuario', '$IdDescProd', '$NumSemana','0')";
+            $Sql="Insert into Pedido (CantidadBatch, Observacion, Fecha, Estado, CantidadKG, IdUsuario, NumSemana, EstadoP, IdPedidoSemanal,TipoTransporte) 
+            values('$CantidadBatch','$Observacion',(select now()),1,'$CantidadKG','$IdUsuario','$NumSemana',0,'$IdPedidoSemanal','$TipoTransporte');";
 
             return EjecutarConsulta($Sql);
 
         }       
         
-        public function Editar($IdPedido,$IdCabeceraPedido, $CantidadBatch, $Observacion, $CantidadKG, $IdUsuario, $IdDescProd, $NumSemana){
+        public function Editar($IdPedido, $CantidadBatch, $Observacion, $CantidadKG, $IdUsuario, $NumSemana, $IdPedidoSemanal, $TipoTransporte){
 
-            $Sql=" Update Pedido set IdCabeceraPedido='$IdCabeceraPedido', CantidadBatch='$CantidadBatch', Observacion='$Observacion', Fecha='(select now())', CantidadKG='$CantidadKG', 
-            IdUsuario='$IdUsuario', IdDescProd='$IdDescProd',  EstadoP='0', NumSemana='$NumSemana' 
+            $Sql=" Update Pedido set CantidadBatch='$CantidadBatch', Observacion='$Observacion', Fecha=(Select now()),CantidadKG='$CantidadKG', IdUsuario='$IdUsuario',NumSemana='$NumSemana',EstadoP=0,IdPedidoSemanal='$IdPedidoSemanal', TipoTransporte='$TipoTransporte' 
              where IdPedido='$IdPedido';";
             
             return EjecutarConsulta($Sql);
@@ -72,46 +71,62 @@ require "../Config/Conexion.php";
 
         }
 
-        public function ListarPedido ($IdCabeceraPedido, $NumSemana){
+        public function ListarPedidoSemanal ($IdCabeceraPedido, $NumSemana){
 
         
 
-            $Sql="SELECT
-            P.IdPedido,
-            P.IdCabeceraPedido,
-            P.CantidadBatch,
-            P.Observacion,
-            P.Fecha,
-            P.Estado as PEstado,
-            P.CantidadKG,
-            P.IdUsuario,
-            P.IdDescProd,
-            P.NumSemana,
-            CP.IdDestinoDesc,
-            U.Usuario,
-            DP.DescProd,
+            $Sql="SELECT PS.IdPedidoSemanal, PS.IDCabeceraPedido,DD.DestinoDes,PS.IdDescProd, DP.DescProd, PS.CantidadBatch, PS.CantidadKG, PS.NumSemana, PS.Observacion, PS.IdUsuario, U.USuario as PUsuario, PS.EstadoPS, PS.Estado, PS.Fecha, PS.Motivo,
+              (Select count(P.IdPedido) from Pedido P
+             where P.IdPedidoSemanal=PS.IdPedidoSemanal and P.NumSemana=$NumSemana and P.Estado=1 and P.EstadoP=0) as Pendiente
+
+             from PedidoSemanal PS 
+            inner join Usuario U on U.IdUsuario=PS.IdUSuario
+            inner join DescProd DP on DP.IdDescProd=PS.IdDescProd
+            inner join CabeceraPedido CP on CP.IdCabeceraPedido=PS.IdCabeceraPedido
+            inner join DestinoDesc DD on DD.IdDestinoDesc=CP.IdDestinoDesc where PS.NumSemana=$NumSemana and PS.Estado=1 and PS.EstadoPS=1 and PS.IdCabeceraPedido=$IdCabeceraPedido";
+
+
+            return EjecutarConsulta($Sql);
+
+        }
+
+        public function ListarCabeceraPedido($NumSemana){
+
+            
+            $Sql=" SELECT
+            CP.IdCabeceraPedido, 
+            CP.IdDestinoDesc, 
             DD.DestinoDes,
-            CP.TipoTransporte,
-            P.EstadoP
-       FROM 
-            cabecerapedido CP INNER JOIN pedido P ON CP.IdCabeceraPedido = P.IdCabeceraPedido
-            INNER JOIN usuario U ON P.IdUsuario = U.IdUsuario
-            INNER JOIN descprod DP ON P.IdDescProd = DP.IdDescProd
-            INNER JOIN destinodesc DD ON CP.IdDestinoDesc = DD.IdDestinoDesc
-            where P.IdCabeceraPedido='$IdCabeceraPedido' and P.NumSemana='$NumSemana'";
+            CP.OrdenEnvio, 
+            CP.Estado,
+            ifnull((Select Sum(PS.CantidadBatch) from PedidoSemanal PS where PS.EstadoPS=1 and PS.Estado=1 and PS.IdCabeceraPedido=CP.IdCabeceraPedido and PS.NumSemana=$NumSemana),0) as TotalMezclas,
+            
+            (Select count(P.IdPedido) from Pedido P inner join PedidoSemanal PS on PS.IdPedidoSemanal=P.IdPedidoSemanal 
+             where PS.IdCabeceraPedido=CP.IDCabeceraPedido and P.NumSemana=$NumSemana and P.Estado=1 and P.EstadoP=0) as Pendiente,
+            
+            ifnull((Select sum(P.CantidadBatch) from Pedido P inner join PedidoSemanal PS on PS.IdPedidoSemanal=P.IdPedidoSemanal 
+             where PS.IdCabeceraPedido=CP.IDCabeceraPedido and P.NumSemana=$NumSemana and P.Estado=1 and P.EstadoP=1),0) as CanPed  
+             
+                        from CabeceraPedido CP
+                        inner join DestinoDesc DD on DD.IdDestinoDesc=CP.IdDestinoDesc;  ";
             
             return EjecutarConsulta($Sql);
 
         }
 
-        public function ListarCabeceraPedido(){
 
-            $Sql=" Select CP.IdCabeceraPedido, DD.DestinoDes,CP.TipoTransporte,CP.OrdenEnvio, CP.Estado,ifnull((select count(IdPedido) from pedido where EstadoP=0 and IdCabeceraPedido=CP.IdCabeceraPedido and Estado=1),0) as Pendiente from CabeceraPedido CP 
-            inner join DestinoDesc DD on CP.IdDestinoDesc=DD.IdDestinoDesc";
+        public function ListarPedido($IdPedidoSemanal){
+
+            
+            $Sql=" SELECT P.IdPedido, P.CantidadBatch, P.Observacion, P.Fecha,  P.Estado, P.CantidadKG, U.Usuario, P.NumSemana, P.EstadoP,DP.DescProd ,P.IdPedidoSemanal, P.TipoTransporte from Pedido P 
+            inner join Usuario U on U.IdUsuario=P.IdUsuario
+            inner join PedidoSemanal PS on PS.IdPedidoSemanal=P.IdPedidoSemanal
+            inner join DescProd DP on DP.IdDescProd=PS.IdDescProd where P.IdPedidoSemanal=$IdPedidoSemanal and P.Estado=1; ";
             
             return EjecutarConsulta($Sql);
 
         }
+
 
 
 

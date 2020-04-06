@@ -13,8 +13,7 @@ $CantidadKG=isset($_POST["CantidadKG"]) ? limpiarCadena($_POST["CantidadKG"]):""
 $NumSemana=$_SESSION['NumSemana'];
 $Observacion=isset($_POST["Observacion"]) ? limpiarCadena($_POST["Observacion"]):"";
 $IdUsuario=$_SESSION['IdUsuario'];
-$Motivo=isset($_POST["Motivo"]) ? limpiarCadena($_POST["Motivo"]):"";
-
+$IdDestinoBloq=isset($_POST["IdDestinoBloq"]) ? limpiarCadena($_POST["IdDestinoBloq"]):"";
 
 
 switch ($_GET["Op"]){
@@ -23,13 +22,13 @@ case 'GuardaryEditar':
 if(empty($IdPedidoSemanal)){
 
   
-$Rspta=$MPedidoSemanal->Insertar($IdCabeceraPedido, $IdDescProd, $CantidadBatch, $CantidadKG, $NumSemana, $Observacion, $IdUsuario,$Motivo);
+$Rspta=$MPedidoSemanal->Insertar($IdCabeceraPedido, $IdDescProd, $CantidadBatch, $CantidadKG, $NumSemana, $Observacion, $IdUsuario,$IdDestinoBloq);
 
 echo $Rspta ? "REGISTRADO" : "NO SE PUDO REGISTRAR";
 
 }else{
 
-    $Rspta=$MPedidoSemanal->Editar($IdPedidoSemanal,$IdCabeceraPedido, $IdDescProd, $CantidadBatch, $CantidadKG, $NumSemana, $Observacion, $IdUsuario, $Motivo);
+    $Rspta=$MPedidoSemanal->Editar($IdPedidoSemanal,$IdCabeceraPedido, $IdDescProd, $CantidadBatch, $CantidadKG, $NumSemana, $Observacion, $IdUsuario);
     echo $Rspta ? "EDITADO" : "NO SE PUDO EDITAR";
     
 
@@ -84,7 +83,8 @@ case 'ListarCabeceraPedido':
 
         $Data[]=array(
 
-            "0"=>'<button class="btn btn-success" onclick="ListarPedidoSemanal('.$Reg->IdCabeceraPedido.')"><i class="fa fa-eye"></i></button>',
+            "0"=>'<button class="btn btn-success" onclick="AgregarPedidoSemanal('.$Reg->IdCabeceraPedido.')"><i class="fa fa-plus"></i></button>
+            <button class="btn btn-warning" onclick="ListarPedidoSemanal('.$Reg->IdCabeceraPedido.')"><i class="fa fa-eye"></i></button>',
        
             
             "1"=>$Reg->DestinoDes,
@@ -144,7 +144,7 @@ if($_SESSION['TipoUsuario']=="DIGITADOR"){
             "2"=>$RegP->DescProd,
             "3"=>$RegP->CantidadBatch,
             "4"=>$RegP->CantidadKG,
-            "5"=>$RegP->Motivo,
+            "5"=>$RegP->DestinoBloq,
             "6"=>$RegP->Observacion,
             "7"=>$RegP->Fecha,
             "8"=>($RegP->EstadoPS)?'<span class="label bg-green">Aceptado</span>':
@@ -191,15 +191,19 @@ if($_SESSION['TipoUsuario']=="DIGITADOR"){
             "1"=>($RegP->EstadoPS)?' <button class="btn btn-warning" onclick="Rechazar('.$RegP->IdPedidoSemanal.')"><i class="fa fa-close"></i></button>':
             ' <button class="btn btn-success" onclick="Aceptar('.$RegP->IdPedidoSemanal.')"><i class="fa fa-check"></i></button>',
             "2"=>$RegP->DestinoDes,
-            "3"=>$RegP->DescProd,
-            "4"=>$RegP->CantidadBatch,
-            "5"=>$RegP->CantidadKG,
-            "6"=>$RegP->Motivo,
+            "3"=>$RegP->DestinoBloq,
+            "4"=>$RegP->DescProd,
+           
+            "5"=>$RegP->CantidadBatch,
+            "6"=>$RegP->CantidadKG,
+            
             "7"=>$RegP->Observacion,
             "8"=>$RegP->Fecha,
-            "9"=>($RegP->EstadoPS)?'<span class="label bg-green">Aceptado</span>':
+            "9"=>$RegP->Usuario,
+            
+            "10"=>($RegP->EstadoPS)?'<span class="label bg-green">Aceptado</span>':
             '<span class="label bg-orange">Pendiente</span>',
-            "10"=>($RegP->Estado)?'<span class="label bg-green">Activado</span>':
+            "11"=>($RegP->Estado)?'<span class="label bg-green">Activado</span>':
             '<span class="label bg-red">Desactivado</span>'
             
             
@@ -256,6 +260,24 @@ case "SelectDescProd":
     while($Reg = $Rspta->fetch_object()){
 
         echo '<option value=' .$Reg->IdDescProd.'>'.$Reg->DescProd.'</option>';
+
+    }
+
+
+break;
+
+case "SelectBloqDesc":
+
+$IdCabeceraPedido=$_REQUEST['IdCabeceraPedido'];
+echo $IdCabeceraPedido;
+    require_once "../Modelos/MDestinoBloq.php";
+    $MDestinoBloq = new MDestinoBloq();
+
+    $Rspta=$MDestinoBloq->SelectBloqDesc($IdCabeceraPedido);
+
+    while($Reg = $Rspta->fetch_object()){
+
+        echo '<option value='.$Reg->IdDestinoBloq.'>'.$Reg->DestinoDes."-".$Reg->DestinoBloq.'</option>';
 
     }
 
