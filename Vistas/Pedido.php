@@ -25,7 +25,7 @@ if($_SESSION["Pedido"]==1){
                   <div class="box">
                     <div class="box-header with-border">
                           <h1 class="box-title">Pedido
-                             <button class="btn btn-success" onclick="MostrarForm(3)"><i class="fa fa-plus-circle"></i> Agregar</button>
+                         
                              <button class="btn btn-danger" onclick="MostrarForm(1)"><i class="fa fa-arrow-circle-left"></i> Volver</button></h1>
 
                         <div class="box-tools pull-right">
@@ -88,7 +88,8 @@ if($_SESSION["Pedido"]==1){
                         <th>Estado Pedido</th>
                         <th>Estado Registro</th>
                         <th>Estado Pedido</th>
-                      
+                        <th>Estado Registro</th>
+                        <th>Estado Pedido</th>
                         </thead>
 
                         <tbody>
@@ -107,7 +108,8 @@ if($_SESSION["Pedido"]==1){
                         <th>Estado Pedido</th>
                         <th>Estado Registro</th>
                         <th>Estado Pedido</th>
-                        
+                        <th>Estado Registro</th>
+                        <th>Estado Pedido</th>
 
                     </tfoot>
                       
@@ -129,6 +131,8 @@ if($_SESSION["Pedido"]==1){
 
                         <th>Opciones</th>
                         <?php if($_SESSION['TipoUsuario']=='ADMINISTRADOR'){echo '<th>Aprobar/Cancelar</th>';}?>
+                        <th>Sector</th>
+                        <th>Bloque</th>
                          <th>Sector</th>
                         <th>Bloque</th>
                         <th>Tipo Alimento</th>
@@ -150,6 +154,8 @@ if($_SESSION["Pedido"]==1){
 
                       <th>Opciones</th>
                       <?php if($_SESSION['TipoUsuario']=='ADMINISTRADOR'){echo '<th>Aprobar/Cancelar</th>';}?>
+                      <th>Sector</th>
+                        <th>Bloque</th>
                       <th>Sector</th>
                         <th>Bloque</th>
                         <th>Tipo Alimento</th>

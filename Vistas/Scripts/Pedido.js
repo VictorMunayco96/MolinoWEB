@@ -27,32 +27,33 @@ $("#Formulario").on("submit",function(e){
 }
 function limpiar(){
 
-    $("#IdVariaciones").val("");
+    $("#IdPedido").val("");
 $("#IdPedidoSemanal").val("");
 $("#CantidadBatch").val("");
 $("#Detalle").val("");
-$("#Motivo").val("SELECCIONAR");
-//$("#Motivo").selectpicker('refresh');
-
+$("#TipoTransporte").val("SELECCIONAR");
+$("#TipoTransporte").selectpicker('refresh');
+$("#CantidadKG").val("");
 
 }
 
-function Mostrar(IdVariaciones)
+function Mostrar(IdPedido)
 {
 
     
-    $.post("../Ajax/AVariaciones.php?Op=Mostrar",{IdVariaciones : IdVariaciones}, function(data,status)
+    $.post("../Ajax/APedido.php?Op=Mostrar",{IdPedido : IdPedido}, function(data,status)
         {
             data =JSON.parse(data);
             
             MostrarForm(3);
 
-            $("#IdVariaciones").val(data.IdVariaciones);
-            $("#IdPedidoSemanal").val(data.IdPedidoSemanal);
+            $("#IdPedido").val(data.IdPedido);
             $("#CantidadBatch").val(data.CantidadBatch);
-            $("#Motivo").val(data.Motivo);
-            $("#Motivo").selectpicker('refresh');
-           
+            $("#Observacion").val(data.Observacion);
+            $("#CantidadKG").val(data.CantidadKG);
+            $("#TipoTransporte").val(data.TipoTransporte);
+            $("#TipoTransporte").selectpicker('refresh');
+            $("#IdPedidoSemanal").val(data.IdPedidoSemanal);
         
             $("#Detalle").val(data.Detalle);
 
@@ -265,7 +266,7 @@ function ListarPedido(IdPedidoSemanal)
 
 var Hola = IdPedidoSemanal;
    
-tablaVA=$("#tbllistadoPE").dataTable(
+tablaPE=$("#tbllistadoPE").dataTable(
     
     {
     "aProcessing": true,
@@ -306,18 +307,18 @@ tablaVA=$("#tbllistadoPE").dataTable(
 
 
 
-function Desactivar(IdVariaciones){
+function Desactivar(IdPedido){
 
-bootbox.confirm("¿ESTA SEGURO DE DESACTIVAR LA VARIACION?", function(result){
+bootbox.confirm("¿ESTA SEGURO DE DESACTIVAR EL PEDIDO?", function(result){
 
 if(result){
 
-    $.post("../Ajax/AVariaciones.php?Op=Desactivar",{IdVariaciones : IdVariaciones}, function(e){
+    $.post("../Ajax/APedido.php?Op=Desactivar",{IdPedido : IdPedido}, function(e){
 
         bootbox.alert(e);
         tablaP.ajax.reload();
         tabla.ajax.reload();
-        tablaVA.ajax.reload();
+        tablaPE.ajax.reload();
 
     });
 
@@ -332,18 +333,18 @@ if(result){
 
 
 
-function Activar(IdVariaciones){
+function Activar(IdPedido){
 
-    bootbox.confirm("¿ESTA SEGURO DE ACTIVAR LA VARIACION?", function(result){
+    bootbox.confirm("¿ESTA SEGURO DE ACTIVAR EL PEDIDO?", function(result){
     
     if(result){
     
-        $.post("../Ajax/AVariaciones.php?Op=Activar",{IdVariaciones : IdVariaciones}, function(e){
+        $.post("../Ajax/APedido.php?Op=Activar",{IdPedido : IdPedido}, function(e){
     
             bootbox.alert(e);
             tablaP.ajax.reload();
             tabla.ajax.reload();
-            tablaVA.ajax.reload();
+            tablaPE.ajax.reload();
     
         });
     
@@ -355,18 +356,18 @@ function Activar(IdVariaciones){
     
     }
 
-    function Aceptar(IdVariaciones){
+    function Aceptar(IdPedido){
 
-        bootbox.confirm("¿ESTA SEGURO DE ACEPTAR LA VARIACION?", function(result){
+        bootbox.confirm("¿ESTA SEGURO DE ACEPTAR EL PEDIDO?", function(result){
         
         if(result){
         
-            $.post("../Ajax/AVariaciones.php?Op=Aceptar",{IdVariaciones : IdVariaciones}, function(e){
+            $.post("../Ajax/APedido.php?Op=Aceptar",{IdPedido : IdPedido}, function(e){
         
                 bootbox.alert(e);
                 tablaP.ajax.reload();
                 tabla.ajax.reload();
-                tablaVA.ajax.reload();
+                tablaPE.ajax.reload();
 
         
             });
@@ -379,18 +380,18 @@ function Activar(IdVariaciones){
         
         }
 
-        function Rechazar(IdPedidoSemanal){
+        function Rechazar(IdPedido){
 
             bootbox.confirm("¿ESTA SEGURO DE RECHAZAR EL PEDIDO?", function(result){
             
             if(result){
             
-                $.post("../Ajax/AVariaciones.php?Op=Rechazar",{IdPedidoSemanal : IdPedidoSemanal}, function(e){
+                $.post("../Ajax/APedido.php?Op=Rechazar",{IdPedido : IdPedido}, function(e){
             
                     bootbox.alert(e);
                     tablaP.ajax.reload();
                     tabla.ajax.reload();
-                    tablaVA.ajax.reload();
+                    tablaPE.ajax.reload();
             
                 });
             

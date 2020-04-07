@@ -99,6 +99,7 @@ if($_SESSION["Panel"]==1){
                         <th>Orden Envio</th>
                         <th>Pendientes</th>
                         <th>Estado</th>
+                        <th>Estado</th>
 
                         </thead>
 
@@ -112,6 +113,7 @@ if($_SESSION["Panel"]==1){
                         <th>Tipo Transporte</th>
                         <th>Orden Envio</th>
                         <th>Pendientes</th>
+                        <th>Estado</th>
                         <th>Estado</th>
 
                     </tfoot>

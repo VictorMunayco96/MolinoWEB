@@ -83,20 +83,21 @@ require "../Config/Conexion.php";
            ifnull((ifnull((PS.CantidadBatch),0) +  ifnull((Select sum(VA.CantidadBatch) from Variaciones VA 
            
            where VA.EstadoVA=1 and VA.Estado=1 and VA.IdPedidoSemanal=PS.IdPedidoSEmanal and PS.NumSemana=$NumSemana),0)),0) as TotalFinal,
-           
-           
-           
+
+           ifnull((Select sum(P.CantidadBatch) from Pedido P 
+                       
+                       where P.EstadoP=1 and P.Estado=1 and P.IdPedidoSEmanal=PS.IdPedidoSemanal and P.NumSemana=$NumSemana),0) as Avance,
            
            PS.Observacion, PS.Fecha, 
-           (Select count(VA.EstadoVA) from Variaciones VA 
-                       inner join PedidoSemanal PS on PS.IdPedidoSemanal=VA.IdPedidoSemanal
-                       where VA.EstadoVA=0 and VA.Estado=1 and VA.IdPedidoSEmanal=PS.IdPedidoSemanal and PS.NumSemana=$NumSemana) as Pendiente, 
+           (Select count(P.EstadoP) from Pedido P 
+                       
+                       where P.EstadoP=0 and P.Estado=1 and P.IdPedidoSEmanal=PS.IdPedidoSemanal and P.NumSemana=$NumSemana) as Pendiente, 
            U.Usuario,PS.Estado from PedidoSemanal PS 
                        inner join Usuario U on U.IdUsuario=PS.IdUsuario
                        inner join DescProd DP on DP.IdDescProd=PS.IdDescProd
                        inner join CabeceraPedido CP on CP.IdCabeceraPedido=PS.IdCabeceraPedido
                        inner join DestinoBloq DB on DB.IdDestinoBloq=PS.IdDestinoBloq
-                       inner join DestinoDesc DD on DD.IdDestinoDesc=CP.IdDestinoDesc where PS.NumSemana=$NumSemana and PS.IdCabeceraPedido=$IdCabeceraPedido; ";
+                       inner join DestinoDesc DD on DD.IdDestinoDesc=CP.IdDestinoDesc where PS.NumSemana=$NumSemana and PS.IdCabeceraPedido=1;";
 
 
             return EjecutarConsulta($Sql);
@@ -133,10 +134,12 @@ require "../Config/Conexion.php";
         public function ListarPedido($IdPedidoSemanal){
 
             
-            $Sql=" SELECT P.IdPedido, P.CantidadBatch, P.Observacion, P.Fecha,  P.Estado, P.CantidadKG, U.Usuario, P.NumSemana, P.EstadoP,DP.DescProd ,P.IdPedidoSemanal, P.TipoTransporte from Pedido P 
-            inner join Usuario U on U.IdUsuario=P.IdUsuario
-            inner join PedidoSemanal PS on PS.IdPedidoSemanal=P.IdPedidoSemanal
-            inner join DescProd DP on DP.IdDescProd=PS.IdDescProd where P.IdPedidoSemanal=$IdPedidoSemanal and P.Estado=1; ";
+            $Sql="    SELECT P.IdPedido,DD.DestinoDes,DB.DestinoBloq ,P.CantidadBatch, P.Observacion, P.Fecha,  P.Estado, P.CantidadKG, U.Usuario, P.NumSemana, P.EstadoP,DP.DescProd ,P.IdPedidoSemanal, P.TipoTransporte from Pedido P 
+ inner join Usuario U on U.IdUsuario=P.IdUsuario
+ inner join PedidoSemanal PS on PS.IdPedidoSemanal=P.IdPedidoSemanal
+ inner join DestinoBloq DB on DB.IdDestinoBloq=PS.IdDestinoBloq
+ inner join DestinoDesc DD on DD.IdDestinoDesc=DB.IdDestinoDesc
+            inner join DescProd DP on DP.IdDescProd=PS.IdDescProd where P.IdPedidoSemanal=$IdPedidoSemanal; ";
             
             return EjecutarConsulta($Sql);
 

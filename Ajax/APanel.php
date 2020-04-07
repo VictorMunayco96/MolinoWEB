@@ -68,7 +68,7 @@ break;
 
 case 'ListarCabeceraPedido':
 
-    $Rspta=$MPanel->ListarCabeceraPedido();
+    $Rspta=$MPanel->ListarCabeceraPedido($_SESSION['NumSemana']);
 
     $Data = Array();
 
@@ -80,12 +80,13 @@ case 'ListarCabeceraPedido':
        
             
             "1"=>$Reg->DestinoDes,
-            "2"=>$Reg->TipoTransporte,
-            "3"=>$Reg->OrdenEnvio,
-            "4"=>($Reg->Pendiente!=0)?'<span class="label bg-yellow">'.$Reg->Pendiente.'</span>':
-            '<span class="label bg-green">Cumplido</span>',
+            "2"=>$Reg->OrdenEnvio,
+            "3"=>$Reg->Pedido,
+            "4"=>$Reg->Avance,
+            "5"=>(($Reg->Pedido - $Reg->Avance)==0)?'<span class="label bg-green">CUMPLIDO</span>':
+            '<span class="label bg-yellow">'.($Reg->Pedido - $Reg->Avance).'</span>',
 
-            "5"=>($Reg->Estado)?'<span class="label bg-green">Activado</span>':
+            "6"=>($Reg->Estado)?'<span class="label bg-green">Activado</span>':
             '<span class="label bg-red">Desactivado</span>'
         
         );
@@ -130,15 +131,17 @@ $IdCabeceraPedido=$_REQUEST['IdCabeceraPedido'];
             "0"=> '<button class="btn btn-success" onclick="MostrarPedido('.$RegP->IdPedido.')"><i class="fa fa-plus"></i></button>'          ,
 
             "1"=>$RegP->DestinoDes,
-            "2"=>$RegP->DescProd,
-            "3"=>$RegP->CantidadBatch,
-            "4"=>($RegP->Restante==0)?'<span class="label bg-green">PEDIDO CUMPLIDO</span>':
-            '<span class="label bg-orange">'.$RegP->Restante.'</span>',
-            "5"=>$RegP->CantidadKG,
-            "6"=>$RegP->Observacion,
-            "7"=>$RegP->Usuario,
+            "2"=>$RegP->DestinoBloq,
+            "3"=>$RegP->DescProd,
+            "4"=>$RegP->CantidadBatch,
+            "5"=>(($RegP->CantidadBatch-$RegP->Avance)==0)?'<span class="label bg-green">PEDIDO CUMPLIDO</span>':
+            '<span class="label bg-orange">'.($RegP->CantidadBatch-$RegP->Avance).'</span>',
+            
+            "6"=>$RegP->Usuario,
+            "7"=>($RegP->EstadoP)?'<span class="label bg-green">Activado</span>':
+            '<span class="label bg-red">Desactivado</span>',
            
-            "8"=>($RegP->EstadoP)?'<span class="label bg-green">Activado</span>':
+            "8"=>($RegP->Estado)?'<span class="label bg-green">Activado</span>':
             '<span class="label bg-red">Desactivado</span>'
             
         

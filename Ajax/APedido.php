@@ -144,13 +144,16 @@ case 'ListarPedidoSemanal':
                 "3"=>$RegP->DescProd,
               
                 "4"=>$RegP->TotalFinal,
+                "5"=>$RegP->Avance,
+                "6"=>(($RegP->TotalFinal-$RegP->Avance)!=0)?'<span class="label bg-yellow">'.($RegP->TotalFinal-$RegP->Avance).'</span>':
+                    '<span class="label bg-green">Cumplido</span>',
               
-                "5"=>$RegP->Observacion,
-                "6"=>$RegP->Fecha,
-                "7"=>$RegP->Usuario,
-                "8"=>($RegP->Pendiente>0)?'<span class="label bg-yellow">Pendiente</span>':
-                '<span class="label bg-green">Al Dia</span>',
-                "9"=>($RegP->Estado)?'<span class="label bg-green">Activado</span>':
+                "7"=>$RegP->Observacion,
+                "8"=>$RegP->Fecha,
+                "9"=>$RegP->Usuario,
+                "10"=>($RegP->Pendiente>0)?'<span class="label bg-yellow">Pendiente</span>':
+                '<span class="label bg-green">Activado</span>',
+                "11"=>($RegP->Estado)?'<span class="label bg-green">Activado</span>':
                 '<span class="label bg-red">Desactivado</span>'
                 
             
@@ -200,16 +203,17 @@ case 'ListarPedido':
                 ' <button class="btn btn-danger" onclick="Desactivar('.$RegVA->IdPedido.')"><i class="fa fa-close"></i></button>':
                 '<button class="btn btn-warning" onclick="Mostrar('.$RegVA->IdPedido.')"><i class="fa fa-pencil"></i></button>'.
                 ' <button class="btn btn-success" onclick="Activar('.$RegVA->IdPedido.')"><i class="fa fa-check"></i></button>',
-    
-                "1"=>$RegVA->DescProd,
-                "2"=>$RegVA->CantidadBatch,
-                "3"=>$RegVA->CantidadKGº,
-                "4"=>$RegVA->TipoTransporte,
-                "5"=>$RegVA->Fecha,
+                "1"=>$RegVA->DestinoDes,
+                "2"=>$RegVA->DestinoBloq,
+                "3"=>$RegVA->DescProd,
+                "4"=>$RegVA->CantidadBatch,
+                "5"=>$RegVA->CantidadKGº,
+                "6"=>$RegVA->TipoTransporte,
+                "7"=>$RegVA->Fecha,
                
-                "6"=>($RegVA->EstadoP)?'<span class="label bg-green">Aceptado</span>':
+                "8"=>($RegVA->EstadoP)?'<span class="label bg-green">Aceptado</span>':
                 '<span class="label bg-orange">Pendiente</span>',
-                "7"=>($RegVA->Estado)?'<span class="label bg-green">Activado</span>':
+                "9"=>($RegVA->Estado)?'<span class="label bg-green">Activado</span>':
                 '<span class="label bg-red">Desactivado</span>'
                 
             
@@ -249,17 +253,18 @@ case 'ListarPedido':
     
                 "1"=>($RegVA->EstadoP)?' <button class="btn btn-warning" onclick="Rechazar('.$RegVA->IdPedido.')"><i class="fa fa-close"></i></button>':
                 ' <button class="btn btn-success" onclick="Aceptar('.$RegVA->IdPedido.')"><i class="fa fa-check"></i></button>',
-
+                "2"=>$RegVA->DestinoDes,
+                "3"=>$RegVA->DestinoBloq,
               
-                "2"=>$RegVA->DescProd,
-                "3"=>$RegVA->CantidadBatch,
-                "4"=>$RegVA->CantidadKG,
-                "5"=>$RegVA->TipoTransporte,
-                "6"=>$RegVA->Fecha,
+                "4"=>$RegVA->DescProd,
+                "5"=>$RegVA->CantidadBatch,
+                "6"=>$RegVA->CantidadKG,
+                "7"=>$RegVA->TipoTransporte,
+                "8"=>$RegVA->Fecha,
                
-                "7"=>($RegVA->EstadoP)?'<span class="label bg-green">Aceptado</span>':
+                "9"=>($RegVA->EstadoP)?'<span class="label bg-green">Aceptado</span>':
                 '<span class="label bg-orange">Pendiente</span>',
-                "8"=>($RegVA->Estado)?'<span class="label bg-green">Activado</span>':
+                "10"=>($RegVA->Estado)?'<span class="label bg-green">Activado</span>':
                 '<span class="label bg-red">Desactivado</span>'
                 
                 
