@@ -178,7 +178,17 @@ require "../Config/Conexion.php";
     }
 
 
+public function DestinoBatch(){
 
+  $Sql="SELECT DD.DestinoDes,P.CantidadBatch from Pedido P 
+  inner join Usuario U on U.IdUsuario=P.IdUsuario
+  inner join PedidoSemanal PS on PS.IdPedidoSemanal=P.IdPedidoSemanal
+  inner join DestinoBloq DB on DB.IdDestinoBloq=PS.IdDestinoBloq
+  inner join DestinoDesc DD on DD.IdDestinoDesc=DB.IdDestinoDesc
+             inner join DescProd DP on DP.IdDescProd=PS.IdDescProd ";
+
+
+}
 
 
 

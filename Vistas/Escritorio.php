@@ -27,12 +27,28 @@ if($_SESSION["Escritorio"]==1){
 
   $TotalPE=$RegPE->TotalPedidoSemana;
   $TotalPA=$RegPA->TotalPesoPanel;
+/*
+  //GRAFICO DE BARRAS
+  $DestinoBatches=$MConsulta->DestinoBatch();
+$Destino='';
+$Batch='';
+
+while($RegAS=$DestinoBatches->fetch_object()){
+
+  $Destino=$Destino.'"'.$RegAS->DestinoDes.'",';
+  $Batch=$Batch.$RegAS->CantidadBatch.',';
+
+
+}
+
+//QUITAMOS LA ULTIMA COMA
+
+$Destino=substr($Destino,0,-1);
+$Batch=substr($Batch,0,-1);
 
 
 
-
-
-
+*/
 
 ?>
 <!--Contenido-->
@@ -148,7 +164,7 @@ if($_SESSION["Escritorio"]==1){
 
 
 
-                        
+                  
 
                     <!--Fin centro -->
                   </div><!-- /.box -->
@@ -171,7 +187,145 @@ require 'NoAcceso.php';
 require 'Footer.php';
 ?>
 
-<script type="text/javascript" src="Scripts/DescProd.js"></script>
+<script src="../Public/js/Chart.min.js"></script>
+<script src="../Public/js/Chart.bundle.min.js"></script>
+<script type="text/javascript">
+
+
+/*
+var barChartData = {
+  labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"],
+
+  datasets: [{
+
+      fillColor: "#6b9dfa",
+      strokeColor: "#ffffff",
+      highlightFill: "#1864f2",
+      highlightStroke: "#ffffff",
+      data: [90, 30, 10, 80, 15, 5, 15]
+
+    },
+    {
+
+      fillColor: "#e9e225",
+      strokeColor: "#ffffff",
+      highlightFill: "#ee7f49",
+      highlightStroke: "#ffffff",
+      data: [40, 50, 70, 40, 85, 55, 15]
+
+    }
+
+  ]
+
+}
+
+var options = {
+  responsive: true,
+  showTooltips: false,
+  onAnimationComplete: function() {
+
+    var ctx = this.chart.ctx;
+    ctx.font = this.scale.font;
+    ctx.fillStyle = this.scale.textColor
+    ctx.textAlign = "center";
+    ctx.textBaseline = "bottom";
+
+    this.datasets.forEach(function(dataset) {
+      dataset.bars.forEach(function(bar) {
+        ctx.fillText(bar.value, bar.x, bar.y - 5);
+      });
+    })
+  }
+};
+
+var ventas = document.getElementById("ventas").getContext("2d");
+ventas = new Chart(ventas).Bar(barChartData, options);
+
+*/
+var ctx = document.getElementById('ventas').getContext('2d');
+var ventas = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+
+
+
+var ctx = document.getElementById("compras").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [
+        {
+            label: 'AQUI DOS LINEAS',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor:'rgba(255, 99, 132, 0.2)',    
+            borderWidth: 1
+        },
+            {
+            label: 'Xxxx',
+            data: [22, 29, 33, 55, 52, 33],
+            backgroundColor:'rgba(255, 99, 132,0.2)',    
+            borderWidth: 1
+        },
+        {
+            label: 'Xxxx',
+            data: [23, 25, 30, 52, 57, 40],
+            backgroundColor:'rgba(50, 99, 200, 0.2)',    
+            borderWidth: 1
+        }
+        ]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>
+
+
+
+
+
 
 <?php 
 
