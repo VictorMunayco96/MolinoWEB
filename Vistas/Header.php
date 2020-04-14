@@ -118,8 +118,8 @@ session_start();
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="articulo.php"><i class="fa fa-circle-o"></i> Artículos</a></li>
-                <li><a href="categoria.php"><i class="fa fa-circle-o"></i> Categorías</a></li>
+                <li><a href="ProveClien.php"><i class="fa fa-circle-o"></i> Proveedor/Cliente</a></li>
+               
               </ul>
             </li>';
             }
