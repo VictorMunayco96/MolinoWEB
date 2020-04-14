@@ -69,15 +69,15 @@ require "../Config/Conexion.php";
 
         
 
-            $Sql=" SELECT P.IdPedido, DD.DestinoDes, DB.DestinoBloq, DP.DescProd,P.TipoTransporte, P.CantidadBatch, 
+            $Sql=" SELECT P.IdPedido, DD.DestinoDes, DB.DestinoBloq, DP.DescProd,P.TipoTransporte, P.CantidadBatch, P.TipoTransporte,
             ifnull((select sum(PA.CantidadBatch) from Panel PA where PA.IdPedido=P.IdPedido and Estado=1 and PA.NumSemana=$NumSemana  ),0) as Avance,  
             U.Usuario, P.Estado, P.EstadoP from Pedido P
             inner join PedidoSemanal PS on PS.IdPedidoSemanal=P.IdPedidoSemanal
             inner join DestinoBloq DB on DB.IdDestinoBloq=PS.IdDestinoBloq
             inner join DestinoDesc DD on DD.IdDestinoDesc=DB.IdDestinoDesc
-            inner join Usuario U on U.IdUsuario=P.IdPedido 
+            inner join Usuario U on U.IdUsuario=P.IdUsuario 
             inner join DescProd DP on DP.IdDescProd=PS.IdDescProd
-            where PS.IdCabeceraPedido=$IdCabeceraPedido;";
+            where PS.IdCabeceraPedido=$IdCabeceraPedido and P.NumSemana=$NumSemana;";
             
             return EjecutarConsulta($Sql);
 

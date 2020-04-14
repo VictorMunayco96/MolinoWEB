@@ -133,15 +133,15 @@ if($_SESSION["Panel"]==1){
                         <th>Opciones</th>
                        
                         <th>Sector</th>
-                      
+                        <th>Bloque</th>
                         <th>Tipo Alimento</th>
-                        <th>Cantidad Mezclas</th>
+                        <th>Carro</th>
+                        <th>Total </th>
                         <th>Falta Producir</th>
-                        <th>Total KG</th>
-                        <th>Observacion</th>
                         <th>Usuario</th>
-                      
                         <th>Estado Pedido</th>
+                      
+                        <th>Estado</th>
                        
 
                         </thead>
@@ -152,17 +152,17 @@ if($_SESSION["Panel"]==1){
                       <tfoot>
 
                       <th>Opciones</th>
-                    
-                        <th>Sector</th>
-                        <th>Tipo Alimento</th>
-                        <th>Cantidad Mezclas</th>
-                        <th>Falta Producir</th>
-                        <th>Total KG</th>
-                        <th>Observacion</th>
-                        <th>Usuario</th>
-                        
-                        <th>Estado Pedido</th>
                        
+                        <th>Sector</th>
+                        <th>Bloque</th>
+                        <th>Tipo Alimento</th>
+                        <th>Carro</th>
+                        <th>Total </th>
+                        <th>Falta Producir</th>
+                        <th>Usuario</th>
+                        <th>Estado Pedido</th>
+                      
+                        <th>Estado</th>
 
                     </tfoot>
                       

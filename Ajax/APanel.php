@@ -133,15 +133,16 @@ $IdCabeceraPedido=$_REQUEST['IdCabeceraPedido'];
             "1"=>$RegP->DestinoDes,
             "2"=>$RegP->DestinoBloq,
             "3"=>$RegP->DescProd,
-            "4"=>$RegP->CantidadBatch,
-            "5"=>(($RegP->CantidadBatch-$RegP->Avance)==0)?'<span class="label bg-green">PEDIDO CUMPLIDO</span>':
+            "4"=>$RegP->TipoTransporte,
+            "5"=>$RegP->CantidadBatch,
+            "6"=>(($RegP->CantidadBatch-$RegP->Avance)==0)?'<span class="label bg-green">PEDIDO CUMPLIDO</span>':
             '<span class="label bg-orange">'.($RegP->CantidadBatch-$RegP->Avance).'</span>',
             
-            "6"=>$RegP->Usuario,
-            "7"=>($RegP->EstadoP)?'<span class="label bg-green">Activado</span>':
+            "7"=>$RegP->Usuario,
+            "8"=>($RegP->EstadoP)?'<span class="label bg-green">Activado</span>':
             '<span class="label bg-red">Desactivado</span>',
            
-            "8"=>($RegP->Estado)?'<span class="label bg-green">Activado</span>':
+            "9"=>($RegP->Estado)?'<span class="label bg-green">Activado</span>':
             '<span class="label bg-red">Desactivado</span>'
             
         

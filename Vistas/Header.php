@@ -239,6 +239,7 @@ session_start();
               </a>
               <ul class="treeview-menu">
                 <li><a href="Panel.php"><i class="fa fa-circle-o"></i> Panel</a></li>
+                <li><a href="EstadoPlanta.php"><i class="fa fa-circle-o"></i>Estado Planta</a></li>
               </ul>
             </li>         ';
             }
