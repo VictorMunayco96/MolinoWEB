@@ -16,12 +16,12 @@ switch ($_GET["Op"]){
 
 case 'GuardaryEditar':
 if(empty($IdPrecio)){
-$Rspta=$MPrecio->Insertar($IdPrecio, $Precio, $NumSemana, $);
+$Rspta=$MPrecio->Insertar($Precio, $NumSemana, $IdDescProd);
 echo $Rspta ? "REGISTRADO" : "NO SE PUDO REGISTRAR";
 
 }else{
 
-    $Rspta=$MDestinoDesc->Editar($IdDestinoDesc,$DestinoDes,$CodDestinoDesc,$IdDestino);
+    $Rspta=$MPrecio->Editar($IdPrecio,$Precio, $NumSemana, $IdDescProd);
     echo $Rspta ? "EDITADO" : "NO SE PUDO EDITAR";
     
 
@@ -30,7 +30,7 @@ break;
 
 case 'Desactivar':
 
-$Rspta=$MDestinoDesc->Desactivar($IdDestinoDesc);
+$Rspta=$MPrecio->Desactivar($IdPrecio);
 echo $Rspta ? "DESACTIVADO" : "NO SE PUDO DESACTIVAR";
 
 break;
@@ -39,21 +39,21 @@ break;
 
 case 'Activar':
 
-    $Rspta=$MDestinoDesc->Activar($IdDestinoDesc);
+    $Rspta=$MPrecio->Activar($Precio);
     echo $Rspta ? "ACTIVADO" : "NO SE PUDO ACTIVAR";
     
     break;
 
 case 'Mostrar':
 
-    $Rspta=$MDestinoDesc->Mostrar($IdDestinoDesc);
+    $Rspta=$MPrecio->Mostrar($IdPrecio);
     echo json_encode($Rspta); 
 
 break;
 
 case 'Listar':
 
-    $Rspta=$MDestinoDesc->Listar();
+    $Rspta=$MPrecio->Listar();
 
     $Data = Array();
 
@@ -61,13 +61,13 @@ case 'Listar':
 
         $Data[]=array(
 
-            "0"=> ($Reg->Estado)?'<button class="btn btn-warning" onclick="Mostrar('.$Reg->IdDestinoDesc.')"><i class="fa fa-pencil"></i></button>'.
-            ' <button class="btn btn-danger" onclick="Desactivar('.$Reg->IdDestinoDesc.')"><i class="fa fa-close"></i></button>':
-            '<button class="btn btn-warning" onclick="Mostrar('.$Reg->IdDestinoDesc.')"><i class="fa fa-pencil"></i></button>'.
-            ' <button class="btn btn-success" onclick="Activar('.$Reg->IdDestinoDesc.')"><i class="fa fa-check"></i></button>',
-            "1"=>$Reg->DestinoDes,
-            "2"=>$Reg->CodDestinoDesc,
-            "3"=>$Reg->Destino,
+            "0"=> ($Reg->Estado)?'<button class="btn btn-warning" onclick="Mostrar('.$Reg->IdPrecio.')"><i class="fa fa-pencil"></i></button>'.
+            ' <button class="btn btn-danger" onclick="Desactivar('.$Reg->IdPrecio.')"><i class="fa fa-close"></i></button>':
+            '<button class="btn btn-warning" onclick="Mostrar('.$Reg->IdPrecio.')"><i class="fa fa-pencil"></i></button>'.
+            ' <button class="btn btn-success" onclick="Activar('.$Reg->IdPrecio.')"><i class="fa fa-check"></i></button>',
+            "1"=>$Reg->DescProd,
+            "2"=>$Reg->Precio,
+            "3"=>$Reg->NumSemana,
             "4"=>($Reg->Estado)?'<span class="label bg-green">Activado</span>':
             '<span class="label bg-red">Desactivado</span>'
         
@@ -86,16 +86,16 @@ case 'Listar':
 
 break;
 
-case "SelectDestino":
+case "SelectDescProd":
 
-    require_once "../Modelos/MDestino.php";
-    $MDestino = new MDestino();
+    require_once "../Modelos/MDescProd.php";
+    $MDescProd = new MDescProd();
 
-    $Rspta=$MDestino->Select();
+    $Rspta=$MDescProd->Select();
 
     while($Reg = $Rspta->fetch_object()){
 
-        echo '<option value=' .$Reg->IdDestino.'>'.$Reg->Destino.'</option>';
+        echo '<option value=' .$Reg->IdDescProd.'>'.$Reg->DescProd.'</option>';
 
     }
 

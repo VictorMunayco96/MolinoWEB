@@ -269,7 +269,8 @@ session_start();
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="ConsulBalanza.php"><i class="fa fa-circle-o"></i> Consulta Balanza</a></li>                
+                <li><a href="ConsulBalanza.php"><i class="fa fa-circle-o"></i> Consulta Balanza 2</a></li> 
+                <li><a href="ConsultaBalanza1.php"><i class="fa fa-circle-o"></i> Consulta Balanza 1</a></li>               
               </ul>
             </li>';
             }

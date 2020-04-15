@@ -51,7 +51,7 @@ if($_SESSION["ConsulProd"]==1){
                     <option value="SELECCIONAR">SELECCIONAR</option>
                     <option value="DESTINO">DESTINO</option>
                     <option value="PRODUCTO">PRODUCTO</option>
-                    <option value="PROVEEDOR">PROVEEODR</option>
+                    <option value="PROVEEDOR">PROVEEDOR</option>
                     <option value="CHOFER">CHOFER</option>
                 
                     
@@ -136,7 +136,7 @@ require 'NoAcceso.php';
 require 'Footer.php';
 ?>
 
-<script type="text/javascript" src="Scripts/ConsulBalanza.js"></script>
+<script type="text/javascript" src="Scripts/Balanza1.js"></script>
 
 <?php 
 
