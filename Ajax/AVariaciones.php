@@ -19,7 +19,7 @@ switch ($_GET["Op"]){
 case 'GuardaryEditar':
 if(empty($IdVariaciones)){
 
-  echo "<javascript>alert '".$IdPedidoSemanal."'</javascript>";
+
 $Rspta=$MVariaciones->Insertar($IdPedidoSemanal, $CantidadBatch,$Motivo, $Detalle, $IdUsuario);
 
 echo $Rspta ? "REGISTRADO" : "NO SE PUDO REGISTRAR";

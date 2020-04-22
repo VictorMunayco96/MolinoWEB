@@ -115,9 +115,13 @@ if($_SESSION["Transporte"]==1){
                     <option value="SELECCIONAR" selected>SELECCIONAR</option>
                     <option value="CORRECTO" >CORRECTO</option>
                     <option value="MECANICA_ELECTRICA">MECANICA ELECTRICA</option>
+                    <option value="TRANSPORTE">TRANSPORTE</option>
                     <option value="ENERGIA">ENERGIA</option>
                     <option value="PANEL">PANEL</option>
                     <option value="PRODUCCION">PRODUCCION</option>
+                    <option value="REPROCESO">OTROS</option>
+                    <option value="OTROS">OTROS</option>
+                    
                     
 
 

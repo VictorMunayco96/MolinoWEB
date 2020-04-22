@@ -71,7 +71,7 @@ require "../Config/Conexion.php";
 
             $Sql=" SELECT P.IdPedido, DD.DestinoDes, DB.DestinoBloq, DP.DescProd,P.TipoTransporte, P.CantidadBatch, P.TipoTransporte,
             ifnull((select sum(PA.CantidadBatch) from Panel PA where PA.IdPedido=P.IdPedido and Estado=1 and PA.NumSemana=$NumSemana  ),0) as Avance,  
-            U.Usuario, P.Estado, P.EstadoP from Pedido P
+            U.Usuario, P.Estado, P.Observacion ,P.EstadoP from Pedido P
             inner join PedidoSemanal PS on PS.IdPedidoSemanal=P.IdPedidoSemanal
             inner join DestinoBloq DB on DB.IdDestinoBloq=PS.IdDestinoBloq
             inner join DestinoDesc DD on DD.IdDestinoDesc=DB.IdDestinoDesc
@@ -96,7 +96,7 @@ require "../Config/Conexion.php";
             inner join DescProd DP on DP.IdDescProd=PS.IdDescProd
             inner join Usuario U on U.IdUsuario=PA.IdUsuario
              
-             where PA.Estado=1 limit 100;";
+             where PA.Estado=1 order by PA.IdPanel desc limit 100;";
             
             return EjecutarConsulta($Sql);
 
@@ -120,7 +120,7 @@ require "../Config/Conexion.php";
             
             
             from CabeceraPedido CP 
-            inner join DestinoDesc DD on DD.IdDestinoDesc=CP.IdDestinoDesc order by CP.OrdenEnvio asc;
+            inner join DestinoDesc DD on DD.IdDestinoDesc=CP.IdDestinoDesc where CP.Estado=1 order by CP.OrdenEnvio asc;
                                 "
                                 ;
             

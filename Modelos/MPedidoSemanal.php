@@ -21,7 +21,7 @@ require "../Config/Conexion.php";
         
         public function Editar($IdPedidoSemanal,$IdCabeceraPedido, $IdDescProd, $CantidadBatch, $CantidadKG, $NumSemana, $Observacion, $IdUsuario){
 
-            $Sql=" Update PedidoSemanal set IdCabeceraPedido='$IdCabeceraPedido', IdDescProd='$IdDescProd', CantidadBatch='$CantidadBatch', CantidadKG='$CantidadKG', NumSemana='$NumSemana', Observacion='$Observacion', IdUsuario='$IdUsuario'
+            $Sql=" Update PedidoSemanal set IdCabeceraPedido='$IdCabeceraPedido', IdDescProd='$IdDescProd', CantidadBatch='$CantidadBatch', CantidadKG='$CantidadKG', NumSemana='$NumSemana', Observacion='$Observacion', IdUsuario='$IdUsuario', EstadoPS=0, Fecha=(SELECT NOW())
              where IdPedidoSemanal='$IdPedidoSemanal';";
             
             return EjecutarConsulta($Sql);

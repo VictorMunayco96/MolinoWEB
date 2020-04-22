@@ -95,10 +95,11 @@ if($_SESSION["Panel"]==1){
 
                         <th>Opciones</th>
                         <th>Sector</th>
-                        <th>Tipo Transporte</th>
+                       
                         <th>Orden Envio</th>
-                        <th>Pendientes</th>
-                        <th>Estado</th>
+                        <th>Programado</th>
+                        <th>Avance</th>
+                        <th>Restante</th>
                         <th>Estado</th>
 
                         </thead>
@@ -108,12 +109,13 @@ if($_SESSION["Panel"]==1){
 </tbody>
                       <tfoot>
 
-                        <th>Opciones</th>
+                      <th>Opciones</th>
                         <th>Sector</th>
-                        <th>Tipo Transporte</th>
+                       
                         <th>Orden Envio</th>
-                        <th>Pendientes</th>
-                        <th>Estado</th>
+                        <th>Programado</th>
+                        <th>Avance</th>
+                        <th>Restante</th>
                         <th>Estado</th>
 
                     </tfoot>
@@ -138,6 +140,7 @@ if($_SESSION["Panel"]==1){
                         <th>Carro</th>
                         <th>Total </th>
                         <th>Falta Producir</th>
+                        <th>Observacion</th>
                         <th>Usuario</th>
                         <th>Estado Pedido</th>
                       
@@ -159,6 +162,7 @@ if($_SESSION["Panel"]==1){
                         <th>Carro</th>
                         <th>Total </th>
                         <th>Falta Producir</th>
+                        <th>Observacion</th>
                         <th>Usuario</th>
                         <th>Estado Pedido</th>
                       

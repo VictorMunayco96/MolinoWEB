@@ -137,12 +137,12 @@ $IdCabeceraPedido=$_REQUEST['IdCabeceraPedido'];
             "5"=>$RegP->CantidadBatch,
             "6"=>(($RegP->CantidadBatch-$RegP->Avance)==0)?'<span class="label bg-green">PEDIDO CUMPLIDO</span>':
             '<span class="label bg-orange">'.($RegP->CantidadBatch-$RegP->Avance).'</span>',
-            
-            "7"=>$RegP->Usuario,
-            "8"=>($RegP->EstadoP)?'<span class="label bg-green">Activado</span>':
+            "7"=>$RegP->Observacion,
+            "8"=>$RegP->Usuario,
+            "9"=>($RegP->EstadoP)?'<span class="label bg-green">Activado</span>':
             '<span class="label bg-red">Desactivado</span>',
            
-            "9"=>($RegP->Estado)?'<span class="label bg-green">Activado</span>':
+            "10"=>($RegP->Estado)?'<span class="label bg-green">Activado</span>':
             '<span class="label bg-red">Desactivado</span>'
             
         

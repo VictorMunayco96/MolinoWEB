@@ -80,16 +80,17 @@ if($_SESSION["Pedido"]==1){
                       
                         <th>Sector</th>
                       
+                        <th>Bloque</th>
                         <th>Tipo Alimento</th>
-                        <th>Cantidad Mezclas</th>
-                        <th>Total KG</th>
+                        <th>Total Pedido</th>
+                        <th>Avance</th>
+                        <th>Restante</th>
                         <th>Observacion</th>
+                        <th>Fecha/Hora</th>
                         <th>Usuario</th>
+                      
                         <th>Estado Pedido</th>
                         <th>Estado Registro</th>
-                        <th>Estado Pedido</th>
-                        <th>Estado Registro</th>
-                        <th>Estado Pedido</th>
                         </thead>
 
                         <tbody>
@@ -98,18 +99,20 @@ if($_SESSION["Pedido"]==1){
                       <tfoot>
 
                       <th>Opciones</th>
-                   
-                        <th>Sector</th>
-                        <th>Tipo Alimento</th>
-                        <th>Cantidad Mezclas</th>
-                        <th>Total KG</th>
-                        <th>Observacion</th>
-                        <th>Usuario</th>
-                        <th>Estado Pedido</th>
-                        <th>Estado Registro</th>
-                        <th>Estado Pedido</th>
-                        <th>Estado Registro</th>
-                        <th>Estado Pedido</th>
+                      
+                      <th>Sector</th>
+                    
+                      <th>Bloque</th>
+                      <th>Tipo Alimento</th>
+                      <th>Total Pedido</th>
+                      <th>Avance</th>
+                      <th>Restante</th>
+                      <th>Observacion</th>
+                      <th>Fecha/Hora</th>
+                      <th>Usuario</th>
+                    
+                      <th>Estado Pedido</th>
+                      <th>Estado Registro</th>
 
                     </tfoot>
                       

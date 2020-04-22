@@ -111,7 +111,7 @@ require "../Config/Conexion.php";
             
             PS.Observacion, PS.Fecha, 
             (Select count(VA.EstadoVA) from Variaciones VA 
-                        inner join PedidoSemanal PS on PS.IdPedidoSemanal=VA.IdPedidoSemanal
+                        
                         where VA.EstadoVA=0 and VA.Estado=1 and VA.IdPedidoSEmanal=PS.IdPedidoSemanal and PS.NumSemana=$NumSemana) as Pendiente, 
             U.Usuario,PS.Estado from PedidoSemanal PS 
                         inner join Usuario U on U.IdUsuario=PS.IdUsuario

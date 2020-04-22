@@ -97,7 +97,7 @@ require "../Config/Conexion.php";
                        inner join DescProd DP on DP.IdDescProd=PS.IdDescProd
                        inner join CabeceraPedido CP on CP.IdCabeceraPedido=PS.IdCabeceraPedido
                        inner join DestinoBloq DB on DB.IdDestinoBloq=PS.IdDestinoBloq
-                       inner join DestinoDesc DD on DD.IdDestinoDesc=CP.IdDestinoDesc where PS.NumSemana=$NumSemana and PS.IdCabeceraPedido=1;";
+                       inner join DestinoDesc DD on DD.IdDestinoDesc=CP.IdDestinoDesc where PS.NumSemana=$NumSemana and PS.IdCabeceraPedido=$IdCabeceraPedido;";
 
 
             return EjecutarConsulta($Sql);

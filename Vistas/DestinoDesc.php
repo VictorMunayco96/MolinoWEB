@@ -28,7 +28,7 @@ if($_SESSION["Destino"]==1){
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Producto
+                          <h1 class="box-title">Descripcion Destino
                             <button class="btn btn-success" onclick="MostrarForm(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
                         <div class="box-tools pull-right">
                         </div>
