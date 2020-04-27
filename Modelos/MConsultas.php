@@ -20,40 +20,40 @@ require "../Config/Conexion.php";
            if($Filtro=="PRODUCTO"){
 
             $Sql="SELECT
-            peso.IdPeso, 
-            peso.TipoMovimiento,
-             peso.NumGuia,
-             peso.FechaHoraSal,
-             peso.FechaHoraEnt,
-             peso.PesoCE,
-             peso.PesoCS,
-             peso.NetoC,
-             peso.ObservE,
-             peso.ObservS,
-             peso.IdUsuario,
-             proveclien.RazonSocial,
-             peso.Precinto,
-             vehiculo.Placa, 
-             conductor.Nombre,
-             conductor.Apellidos,
-           destino.destino as Dest,
-           destinodesc.DestinoDes,
-           destinoBloq.DestinoBloq,
-             DescProd.DescProd
+            P.IdPeso, 
+            P.TipoMovimiento,
+             P.NumGuia,
+             P.FechaHoraSal,
+             P.FechaHoraEnt,
+             P.PesoCE,
+             P.PesoCS,
+             P.NetoC,
+             P.ObservE,
+             P.ObservS,
+             P.IdUsuario,
+             PC.RazonSocial,
+             P.Precinto,
+             V.Placa, 
+             C.Nombre,
+             C.Apellidos,
+           D.Destino as Dest,
+           DD.DestinoDes,
+           DB.DestinoBloq,
+             DP.DescProd
         FROM
-             proveclien proveclien INNER JOIN peso peso ON proveclien.IdProveClien = peso.IdProveClien
-             INNER JOIN conductorvehiculo conductorvehiculo ON peso.IdConductorVehiculo = conductorvehiculo.IdConductorVehiculo
-             INNER JOIN destinobloq destinobloq ON peso.IdDestinobloq = destinobloq.IdDestinobloq
-             INNER JOIN DescProd DescProd ON peso.IdDescProd = DescProd.IdDescProd
-             INNER JOIN conductor conductor ON conductorvehiculo.IdConductor = conductor.IdConductor
-             INNER JOIN vehiculo vehiculo ON conductorvehiculo.IdPlaca = vehiculo.IdPlaca
-             INNER JOIN DestinoDesc destinodesc  ON destinobloq.IdDestinoDesc = destinodesc.IdDestinoDesc
-             INNER JOIN Destino destino  ON destinodesc.IdDestino = destino.IdDestino 
+             ProveClien PC INNER JOIN Peso P ON PC.IdProveClien = P.IdProveClien
+             INNER JOIN ConductorVehiculo CV ON P.IdConductorVehiculo = CV.IdConductorVehiculo
+             INNER JOIN DestinoBloq DB ON P.IdDestinobloq = DB.IdDestinobloq
+             INNER JOIN DescProd DP ON P.IdDescProd = DP.IdDescProd
+             INNER JOIN Conductor C ON CV.IdConductor = C.IdConductor
+             INNER JOIN Vehiculo V ON CV.IdPlaca = V.IdPlaca
+             INNER JOIN DestinoDesc DD  ON DB.IdDestinoDesc = DD.IdDestinoDesc
+             INNER JOIN Destino D  ON DD.IdDestino = D.IdDestino 
                       
-             where peso.Estado='D' and peso.FechaHoraSal>='$FechaInicio' and peso.FechaHoraSal<='$FechaFin' 
-             and  DescProd.DescProd like concat('%','$Busqueda','%') 
+             where P.Estado='D' and P.FechaHoraSal>='$FechaInicio' and P.FechaHoraSal<='$FechaFin' 
+             and  DP.DescProd like concat('%','$Busqueda','%') 
              
-             order by peso.IdPeso Desc limit 15000;";
+             order by P.IdPeso Desc limit 15000;";
 
 
 
@@ -62,40 +62,40 @@ require "../Config/Conexion.php";
            if($Filtro=="DESTINO"){
 
             $Sql="SELECT
-            peso.IdPeso, 
-            peso.TipoMovimiento,
-             peso.NumGuia,
-             peso.FechaHoraSal,
-             peso.FechaHoraEnt,
-             peso.PesoCE,
-             peso.PesoCS,
-             peso.NetoC,
-             peso.ObservE,
-             peso.ObservS,
-             peso.IdUsuario,
-             proveclien.RazonSocial,
-             peso.Precinto,
-             vehiculo.Placa, 
-             conductor.Nombre,
-             conductor.Apellidos,
-           destino.destino as Dest,
-           destinodesc.DestinoDes,
-           destinoBloq.DestinoBloq,
-             DescProd.DescProd
+            P.IdPeso, 
+            P.TipoMovimiento,
+             P.NumGuia,
+             P.FechaHoraSal,
+             P.FechaHoraEnt,
+             P.PesoCE,
+             P.PesoCS,
+             P.NetoC,
+             P.ObservE,
+             P.ObservS,
+             P.IdUsuario,
+             PC.RazonSocial,
+             P.Precinto,
+             V.Placa, 
+             C.Nombre,
+             C.Apellidos,
+           D.Destino as Dest,
+           DD.DestinoDes,
+           DB.DestinoBloq,
+             DP.DescProd
         FROM
-             proveclien proveclien INNER JOIN peso peso ON proveclien.IdProveClien = peso.IdProveClien
-             INNER JOIN conductorvehiculo conductorvehiculo ON peso.IdConductorVehiculo = conductorvehiculo.IdConductorVehiculo
-             INNER JOIN destinobloq destinobloq ON peso.IdDestinobloq = destinobloq.IdDestinobloq
-             INNER JOIN DescProd DescProd ON peso.IdDescProd = DescProd.IdDescProd
-             INNER JOIN conductor conductor ON conductorvehiculo.IdConductor = conductor.IdConductor
-             INNER JOIN vehiculo vehiculo ON conductorvehiculo.IdPlaca = vehiculo.IdPlaca
-             INNER JOIN DestinoDesc destinodesc  ON destinobloq.IdDestinoDesc = destinodesc.IdDestinoDesc
-             INNER JOIN Destino destino  ON destinodesc.IdDestino = destino.IdDestino 
+             ProveClien PC INNER JOIN Peso P ON PC.IdProveClien = P.IdProveClien
+             INNER JOIN ConductorVehiculo CV ON P.IdConductorVehiculo = CV.IdConductorVehiculo
+             INNER JOIN DestinoBloq DB ON P.IdDestinobloq = DB.IdDestinobloq
+             INNER JOIN DescProd DP ON P.IdDescProd = DP.IdDescProd
+             INNER JOIN Conductor C ON CV.IdConductor = C.IdConductor
+             INNER JOIN Vehiculo V ON CV.IdPlaca = V.IdPlaca
+             INNER JOIN DestinoDesc DD  ON DB.IdDestinoDesc = DD.IdDestinoDesc
+             INNER JOIN Destino D  ON DD.IdDestino = D.IdDestino 
                       
-             where peso.Estado='D' and peso.FechaHoraSal>='$FechaInicio' and peso.FechaHoraSal<='$FechaFin' 
-             and  destinodesc.DestinoDes like concat('%','$Busqueda','%') 
+             where P.Estado='D' and P.FechaHoraSal>='$FechaInicio' and P.FechaHoraSal<='$FechaFin' 
+             and  DD.DestinoDes like concat('%','$Busqueda','%') 
              
-             order by peso.IdPeso Desc limit 15000;";
+             order by P.IdPeso Desc limit 15000;";
 
 
            }
@@ -103,40 +103,40 @@ require "../Config/Conexion.php";
            if($Filtro=="PROVEEDOR"){
 
             $Sql="SELECT
-            peso.IdPeso, 
-            peso.TipoMovimiento,
-             peso.NumGuia,
-             peso.FechaHoraSal,
-             peso.FechaHoraEnt,
-             peso.PesoCE,
-             peso.PesoCS,
-             peso.NetoC,
-             peso.ObservE,
-             peso.ObservS,
-             peso.IdUsuario,
-             proveclien.RazonSocial,
-             peso.Precinto,
-             vehiculo.Placa, 
-             conductor.Nombre,
-             conductor.Apellidos,
-           destino.destino as Dest,
-           destinodesc.DestinoDes,
-           destinoBloq.DestinoBloq,
-             DescProd.DescProd
+            P.IdPeso, 
+            P.TipoMovimiento,
+             P.NumGuia,
+             P.FechaHoraSal,
+             P.FechaHoraEnt,
+             P.PesoCE,
+             P.PesoCS,
+             P.NetoC,
+             P.ObservE,
+             P.ObservS,
+             P.IdUsuario,
+             PC.RazonSocial,
+             P.Precinto,
+             V.Placa, 
+             C.Nombre,
+             C.Apellidos,
+           D.Destino as Dest,
+           DD.DestinoDes,
+           DB.DestinoBloq,
+             DP.DescProd
         FROM
-             proveclien proveclien INNER JOIN peso peso ON proveclien.IdProveClien = peso.IdProveClien
-             INNER JOIN conductorvehiculo conductorvehiculo ON peso.IdConductorVehiculo = conductorvehiculo.IdConductorVehiculo
-             INNER JOIN destinobloq destinobloq ON peso.IdDestinobloq = destinobloq.IdDestinobloq
-             INNER JOIN DescProd DescProd ON peso.IdDescProd = DescProd.IdDescProd
-             INNER JOIN conductor conductor ON conductorvehiculo.IdConductor = conductor.IdConductor
-             INNER JOIN vehiculo vehiculo ON conductorvehiculo.IdPlaca = vehiculo.IdPlaca
-             INNER JOIN DestinoDesc destinodesc  ON destinobloq.IdDestinoDesc = destinodesc.IdDestinoDesc
-             INNER JOIN Destino destino  ON destinodesc.IdDestino = destino.IdDestino 
-                      
-             where peso.Estado='D' and peso.FechaHoraSal>='$FechaInicio' and peso.FechaHoraSal<='$FechaFin' 
-             and  proveclien.RazonSocial like concat('%','$Busqueda','%') 
+             ProveClien PC INNER JOIN Peso P ON PC.IdProveClien = P.IdProveClien
+             INNER JOIN ConductorVehiculo CV ON P.IdConductorVehiculo = CV.IdConductorVehiculo
+             INNER JOIN DestinoBloq DB ON P.IdDestinobloq = DB.IdDestinobloq
+             INNER JOIN DescProd DP ON P.IdDescProd = DP.IdDescProd
+             INNER JOIN Conductor C ON CV.IdConductor = C.IdConductor
+             INNER JOIN Vehiculo V ON CV.IdPlaca = V.IdPlaca
+             INNER JOIN DestinoDesc DD  ON DB.IdDestinoDesc = DD.IdDestinoDesc
+             INNER JOIN Destino D  ON DD.IdDestino = D.IdDestino 
+
+             where P.Estado='D' and P.FechaHoraSal>='$FechaInicio' and P.FechaHoraSal<='$FechaFin' 
+             and  PC.RazonSocial like concat('%','$Busqueda','%') 
              
-             order by peso.IdPeso Desc limit 15000;";
+             order by P.IdPeso Desc limit 15000;";
 
 
            }
@@ -144,38 +144,38 @@ require "../Config/Conexion.php";
            if($Filtro=="CHOFER"){
 
             $Sql="SELECT
-            peso.IdPeso, 
-            peso.TipoMovimiento,
-             peso.NumGuia,
-             peso.FechaHoraSal,
-             peso.FechaHoraEnt,
-             peso.PesoCE,
-             peso.PesoCS,
-             peso.NetoC,
-             peso.ObservE,
-             peso.ObservS,
-             peso.IdUsuario,
-             proveclien.RazonSocial,
-             peso.Precinto,
-             vehiculo.Placa, 
-             conductor.Nombre,
-             conductor.Apellidos,
-           destino.destino as Dest,
-           destinodesc.DestinoDes,
-           destinoBloq.DestinoBloq,
-             DescProd.DescProd
+            P.IdPeso, 
+            P.TipoMovimiento,
+             P.NumGuia,
+             P.FechaHoraSal,
+             P.FechaHoraEnt,
+             P.PesoCE,
+             P.PesoCS,
+             P.NetoC,
+             P.ObservE,
+             P.ObservS,
+             P.IdUsuario,
+             PC.RazonSocial,
+             P.Precinto,
+             V.Placa, 
+             C.Nombre,
+             C.Apellidos,
+           D.Destino as Dest,
+           DD.DestinoDes,
+           DB.DestinoBloq,
+             DP.DescProd
         FROM
-             proveclien proveclien INNER JOIN peso peso ON proveclien.IdProveClien = peso.IdProveClien
-             INNER JOIN conductorvehiculo conductorvehiculo ON peso.IdConductorVehiculo = conductorvehiculo.IdConductorVehiculo
-             INNER JOIN destinobloq destinobloq ON peso.IdDestinobloq = destinobloq.IdDestinobloq
-             INNER JOIN DescProd DescProd ON peso.IdDescProd = DescProd.IdDescProd
-             INNER JOIN conductor conductor ON conductorvehiculo.IdConductor = conductor.IdConductor
-             INNER JOIN vehiculo vehiculo ON conductorvehiculo.IdPlaca = vehiculo.IdPlaca
-             INNER JOIN DestinoDesc destinodesc  ON destinobloq.IdDestinoDesc = destinodesc.IdDestinoDesc
-             INNER JOIN Destino destino  ON destinodesc.IdDestino = destino.IdDestino 
+             ProveClien PC INNER JOIN Peso P ON PC.IdProveClien = P.IdProveClien
+             INNER JOIN ConductorVehiculo CV ON P.IdConductorVehiculo = CV.IdConductorVehiculo
+             INNER JOIN DestinoBloq DB ON P.IdDestinobloq = DB.IdDestinobloq
+             INNER JOIN DescProd DP ON P.IdDescProd = DP.IdDescProd
+             INNER JOIN Conductor C ON CV.IdConductor = C.IdConductor
+             INNER JOIN Vehiculo V ON CV.IdPlaca = V.IdPlaca
+             INNER JOIN DestinoDesc DD  ON DB.IdDestinoDesc = DD.IdDestinoDesc
+             INNER JOIN Destino D  ON DD.IdDestino = D.IdDestino 
                       
-             where peso.Estado='D' and peso.FechaHoraSal>='$FechaInicio' and peso.FechaHoraSal<='$FechaFin' 
-             and   conductor.Nombre like concat('%','$Busqueda','%') 
+             where P.Estado='D' and P.FechaHoraSal>='$FechaInicio' and P.FechaHoraSal<='$FechaFin' 
+             and   C.Nombre like concat('%','$Busqueda','%') 
              
              order by peso.IdPeso Desc limit 15000;";
 
