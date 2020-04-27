@@ -140,8 +140,7 @@ array_push($Valores, $Per->IdPermiso);
         $logina=limpiarCadena($_POST['logina']);
         $clavea=limpiarCadena($_POST['clavea']);
  
-        //Hash SHA256 en la contraseña
-        $clavehash=hash("SHA256",$clavea);
+     
  
         $rspta=$MUsuario->verificar($logina, $clavea);
  
@@ -181,7 +180,7 @@ array_push($Valores, $Per->IdPermiso);
             in_array(4,$valores)?$_SESSION['Transporte']=1:$_SESSION['Transporte']=0;
             in_array(5,$valores)?$_SESSION['Destino']=1:$_SESSION['Destino']=0;
             in_array(6,$valores)?$_SESSION['Personal']=1:$_SESSION['Personal']=0;
-            in_array(7,$valores)?$_SESSION['Pedido']=1:$_SESSION['Compras']=0;
+            in_array(7,$valores)?$_SESSION['Pedido']=1:$_SESSION['Pedido']=0;
             in_array(8,$valores)?$_SESSION['Panel']=1:$_SESSION['Panel']=0;
             in_array(9,$valores)?$_SESSION['Acceso']=1:$_SESSION['Acceso']=0;
             in_array(10,$valores)?$_SESSION['ConsulProd']=1:$_SESSION['ConsulProd']=0;
