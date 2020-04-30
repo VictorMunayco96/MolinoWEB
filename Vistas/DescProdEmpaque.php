@@ -28,7 +28,7 @@ if($_SESSION["Almacen"]==1){
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Producto
+                          <h1 class="box-title">Producto Presentacion
                             <button class="btn btn-success" onclick="MostrarForm(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
                         <div class="box-tools pull-right">
                         </div>
@@ -42,8 +42,9 @@ if($_SESSION["Almacen"]==1){
 
                         <th>Opciones</th>
                         <th>Descripcion Producto</th>
-                        <th>Codigo</th>
-                        <th>Destino</th>
+                        <th>Presentacion</th>
+                        <th>Paquete</th>
+                        <th>Unidad</th>
                         <th>Estado</th>
 
                         </thead>
@@ -55,10 +56,10 @@ if($_SESSION["Almacen"]==1){
 
                       <th>Opciones</th>
                         <th>Descripcion Producto</th>
-                        <th>Codigo</th>
-                        <th>Destino</th>
+                        <th>Presentacion</th>
+                        <th>Paquete</th>
+                        <th>Unidad</th>
                         <th>Estado</th>
-
 
                     </tfoot>
                       
@@ -75,21 +76,36 @@ if($_SESSION["Almacen"]==1){
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Descripcion Producto:</label>
-                    <input type="hidden"  name="IdDescProd" id="IdDescProd" >
-                     <input type="text" class="form-control" placeholder="Descripcion" name="DescProd" id="DescProd" maxlength="50" required>
+                    <input type="hidden"  name="IdDescProdEmpaque" id="IdDescProdEmpaque" >
+                    <select id="IdDescProd" name ="IdDescProd" class="form-control selectpicker" data-live-search="true" required> </select>
                     </div>
 
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Producto:</label>
-                    <select id="IdProducto" name ="IdProducto" class="form-control selectpicker" data-live-search="true" required> </select>
+                    <label>Presentacion:</label>
+                    <select id="Presentacion" name ="Presentacion" class="form-control selectpicker" data-live-search="true" required> 
+                    
+                    <option value="SELECCION UN CAMPO" selected>SELECCIONE UN CAMPO</option>
+                    <option value="COSTALES">COSTALES</option>
+                    <option value="BIGBAG">BIGBAG</option>
+                    <option value="CAJA">CAJA</option>
+                    <option value="UNIDAD">UNIDAD</option>
+                    
+                    
+                    
+                    </select>
                     </div>
 
                   
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Codigo:</label>
-                    <input type="text" name="CodDescProd" class="form-control" id="CodDescProd" placeholder="Codigo" maxlength="15" required>
+                    <label>Paquete:</label>
+                    <input type="text" name="Paquete" class="form-control" id="Paquete" placeholder="Paquete"  required>
+                    </div>
+
+                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>Unidad:</label>
+                    <input type="text" name="Unidad" class="form-control" id="Unidad" placeholder="Unidad" required>
                     </div>
 
 
@@ -134,7 +150,7 @@ require 'NoAcceso.php';
 require 'Footer.php';
 ?>
 
-<script type="text/javascript" src="Scripts/DescProd.js"></script>
+<script type="text/javascript" src="Scripts/DescProdEmpaque.js"></script>
 
 <?php 
 
