@@ -47,7 +47,7 @@ require "../Config/Conexion.php";
         public function Mostrar($IdConductorVehiculo){
 
             $Sql="Select * from DescProd 
-            where $IdConductorVehiculo='$IdConductorVehiculo'";
+            where IdConductorVehiculo='$IdConductorVehiculo'";
             return EjecutarConsultaSImpleFila($Sql);
 
         }
