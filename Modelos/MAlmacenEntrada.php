@@ -86,7 +86,7 @@ require "../Config/Conexion.php";
 
 
 
-        public function ListarAlmacenEntrada ($IdDescProdEmpaque){
+        public function ListarAlmacenEntrada($IdDescProdEmpaque){
 
             $Sql="select AE.IdAlmacenEntrada, DP.DescProd, DPE.Presentacion, AE.Lote, AE.Cantidad, AE.Fecha, AE.Placa,  
             ifnull((select sum(SA.Cantidad) from SalidaAlmacen SA 

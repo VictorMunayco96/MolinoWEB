@@ -34,7 +34,7 @@ break;
 
 case 'Desactivar':
 
-$Rspta=$AlmacenEntrada->Desactivar($AlmacenEntrada);
+$Rspta=$MAlmacenEntrada->Desactivar($IdAlmacenEntrada);
 echo $Rspta ? "DESACTIVADO" : "NO SE PUDO DESACTIVAR";
 
 break;
@@ -72,7 +72,7 @@ break;
 
 case 'ListarDescProdEmpaque':
 
-    $Rspta=$->ListarDescProdEmpaque();
+    $Rspta=$MAlmacenEntrada->ListarDescProdEmpaque();
 
     $Data = Array();
 
@@ -80,8 +80,8 @@ case 'ListarDescProdEmpaque':
 
         $Data[]=array(
 
-            "0"=>'<button class="btn btn-success" onclick="AgregarEntrada('.$Reg->IdDescProdEmpaque.')"><i class="fa fa-plus"></i></button>
-            <button class="btn btn-warning" onclick="ListarProducto('.$Reg->IdDescProdEmpaque.')"><i class="fa fa-eye"></i></button>',
+            "0"=>'<button class="btn btn-success" onclick="AgregarAlmacenEntrada('.$Reg->IdDescProdEmpaque.')"><i class="fa fa-plus"></i></button>
+            <button class="btn btn-warning" onclick="ListarAlmacenEntrada('.$Reg->IdDescProdEmpaque.')"><i class="fa fa-eye"></i></button>',
        
             
             "1"=>$Reg->DescProd,
@@ -112,101 +112,57 @@ break;
 
 case 'ListarAlmacenEntrada':
 
-    $Rspta=$->ListarCabeceraPedido($_SESSION['NumSemana']);
+    $IdDescProdEmpaque=$_REQUEST['IdDescProdEmpaque'];
 
-    $Data = Array();
+    $Rspta=$MAlmacenEntrada->ListarAlmacenEntrada($IdDescProdEmpaque);
+   
+
+    $Data= Array();
 
     while($Reg=$Rspta->fetch_object()){
 
         $Data[]=array(
 
-            "0"=>'<button class="btn btn-success" onclick="AgregarPedidoSemanal('.$Reg->IdCabeceraPedido.')"><i class="fa fa-plus"></i></button>
-            <button class="btn btn-warning" onclick="ListarPedidoSemanal('.$Reg->IdCabeceraPedido.')"><i class="fa fa-eye"></i></button>',
-       
-            
-            "1"=>$Reg->DestinoDes,
-            "2"=>$Reg->OrdenEnvio,
-            "3"=>$Reg->TotalMezclas,
-            "4"=>$Reg->CantidadVA,
-            "5"=>$Reg->TotalFinal,
-            "6"=>($Reg->Pendiente>0)?'<span class="label bg-yellow">Pendiente</span>':
-            '<span class="label bg-green">Al Dia</span>',
+            "0"=>($Reg->Estado)?'<button class="btn btn-warning" onclick="Mostrar('.$Reg->IdAlmacenEntrada.')"><i class="fa fa-pencil"></i></button>'.
+            ' <button class="btn btn-danger" onclick="Desactivar('.$Reg->IdAlmacenEntrada.')"><i class="fa fa-close"></i></button>':
+            '<button class="btn btn-warning" onclick="Mostrar('.$Reg->IdAlmacenEntrada.')"><i class="fa fa-pencil"></i></button>'.
+            ' <button class="btn btn-success" onclick="Activar('.$Reg->IdAlmacenEntrada.')"><i class="fa fa-check"></i></button>',
 
-            "7"=>($Reg->Estado)?'<span class="label bg-green">Activado</span>':
+            "1"=>($Reg->EstadoL)?' <button class="btn btn-warning" onclick="Rechazar('.$Reg->IdAlmacenEntrada.')"><i class="fa fa-close"></i></button>':
+            ' <button class="btn btn-success" onclick="Aceptar('.$Reg->IdAlmacenEntrada.')"><i class="fa fa-check"></i></button>',
+            "2"=>$Reg->DescProd,
+            "3"=>$Reg->Presentacion,
+            "4"=>$Reg->Lote,
+            "5"=>$Reg->Placa,
+            "6"=>$Reg->Cantidad,
+            "7"=>$Reg->Salida,
+            "8"=>($Reg->Cantidad-$Reg->Salida),
+            "9"=>$Reg->Fecha,
+           
+            
+            "10"=>$Reg->Usuario,
+            "11"=>($Reg->EstadoL)?'<span class="label bg-green">Aceptado</span>':
+            '<span class="label bg-orange">Pendiente</span>',
+            "12"=>($Reg->Estado)?'<span class="label bg-green">Activado</span>':
             '<span class="label bg-red">Desactivado</span>'
         
         );
     }
 
     $Result = array(
-
+        
         "sEcho"=>1,
         "iTotalRecords"=>count($Data),
         "ITotalDisplayRecords"=>count($Data),
         "aaData"=>$Data);
 
         echo json_encode($Result);
-
-
-
-break;
-
-
-
-
-
-
-
-
-case "SelectCabeceraPedido":
-
-    require_once "../Modelos/MCabeceraPedido.php";
-    $MCabeceraPedido = new MCabeceraPedido();
-
-    $Rspta=$MCabeceraPedido->Select();
-
-    while($Reg = $Rspta->fetch_object()){
-
-        echo '<option value='.$Reg->IdCabeceraPedido.'>'.$Reg->DestinoDes.'</option>';
-
-    }
+     
 
 
 break;
 
-case "SelectDescProd":
 
-    require_once "../Modelos/MDescProd.php";
-    $MDescProd = new MDescProd();
-
-    $Rspta=$MDescProd->Select();
-
-    while($Reg = $Rspta->fetch_object()){
-
-        echo '<option value=' .$Reg->IdDescProd.'>'.$Reg->DescProd.'</option>';
-
-    }
-
-
-break;
-
-case "SelectBloqDesc":
-
-$IdCabeceraPedido=$_REQUEST['IdCabeceraPedido'];
-echo $IdCabeceraPedido;
-    require_once "../Modelos/MDestinoBloq.php";
-    $MDestinoBloq = new MDestinoBloq();
-
-    $Rspta=$MDestinoBloq->SelectBloqDesc($IdCabeceraPedido);
-
-    while($Reg = $Rspta->fetch_object()){
-
-        echo '<option value='.$Reg->IdDestinoBloq.'>'.$Reg->DestinoDes."-".$Reg->DestinoBloq.'</option>';
-
-    }
-
-
-break;
 
 
 
