@@ -51,8 +51,9 @@ if($_SESSION["ConsulProd"]==1){
                     <option value="SELECCIONAR">SELECCIONAR</option>
                     <option value="DESTINO">DESTINO</option>
                     <option value="PRODUCTO">PRODUCTO</option>
-                    <option value="PROVEEDOR">PROVEEODR</option>
+                    <option value="PROVEEDOR">PROVEEDOR</option>
                     <option value="CHOFER">CHOFER</option>
+                    <option value="TIPO_PRODUCTO">TIPO_PRODUCTO</option>
                 
                     
                     
@@ -82,6 +83,7 @@ if($_SESSION["ConsulProd"]==1){
                         <th>PESO INGR</th>
                         <th>PESO SALIDA</th>
                         <th>VALOR NETO</th>
+                        <th>OBSER ENTRADA</th>
                         <th>OBSER SALIDA</th>
 
                         </thead>
@@ -104,6 +106,7 @@ if($_SESSION["ConsulProd"]==1){
                         <th>PESO INGR</th>
                         <th>PESO SALIDA</th>
                         <th>VALOR NETO</th>
+                        <th>OBSER ENTRADA</th>
                         <th>OBSER SALIDA</th>
 
 

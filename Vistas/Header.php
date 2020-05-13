@@ -119,7 +119,7 @@ session_start();
               </a>
               <ul class="treeview-menu">
                 <li><a href="ProveClien.php"><i class="fa fa-circle-o"></i> Proveedor/Cliente</a></li>
-               
+                <li><a href="DescProdEmpaque.php"><i class="fa fa-circle-o"></i> Producto Empaque</a></li>
               </ul>
             </li>';
             }
@@ -142,6 +142,7 @@ session_start();
                 <li><a href="CategoriaProd.php"><i class="fa fa-circle-o"></i> Categoria </a></li>
                 <li><a href="Producto.php"><i class="fa fa-circle-o"></i> Producto </a></li>
                 <li><a href="DescProd.php"><i class="fa fa-circle-o"></i> Descripcion Producto </a></li>
+                <li><a href="Precio.php"><i class="fa fa-circle-o"></i> Precio Producto </a></li>
               </ul>
             </li>';
             }
@@ -270,7 +271,8 @@ session_start();
               </a>
               <ul class="treeview-menu">
                 <li><a href="ConsulBalanza.php"><i class="fa fa-circle-o"></i> Consulta Balanza 2</a></li> 
-                <li><a href="ConsultaBalanza1.php"><i class="fa fa-circle-o"></i> Consulta Balanza 1</a></li>               
+                <li><a href="ConsultaBalanza1.php"><i class="fa fa-circle-o"></i> Consulta Balanza 1</a></li>    
+                <li><a href="DiferenciaPesos.php"><i class="fa fa-circle-o"></i> Diferencia Pesos</a></li>              
               </ul>
             </li>';
             }
