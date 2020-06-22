@@ -12,7 +12,6 @@ if(!isset($_SESSION["IdUsuario"])){
 
 require 'Header.php';
 
-
 if($_SESSION["Pedido"]==1){
 ?>
 <!--Contenido-->
@@ -144,8 +143,15 @@ if($_SESSION["Pedido"]==1){
                     <select id="IdDescProd" name ="IdDescProd" class="form-control selectpicker" data-live-search="true" required> </select>
                     </div>
 
+                    <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>Sacos Diarios:</label>
+                    <input type="number" name="SacosDiarios" class="form-control" id="SacosDiarios" placeholder="SacosDiarios">
+                    <button class="btn btn-warning" onclick="CalcularDT()"><i class="fa fa-eye"></i></button>
 
-                   
+                    
+                    </div>
+
+
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Cantidad Mezclas:</label>
@@ -153,6 +159,9 @@ if($_SESSION["Pedido"]==1){
                     <input type="hidden" name="IdCabeceraPedido" id="IdCabeceraPedido">
                     <input type="number" class="form-control" placeholder="Cantidad Mezclas" name="CantidadBatch" id="CantidadBatch"  required>
                     </div>
+
+                    
+                  
 
                     <div class="form-group col-log-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Cantidad KG:</label>
@@ -211,6 +220,13 @@ require 'Footer.php';
 ?>
 
 <script type="text/javascript" src="Scripts/PedidoSemanal.js"></script>
+
+<script>
+function CalcularDT() {
+  var Sacos=document.getElementById("SacosDiarios").innerHTML;
+  alert(Sacos);
+}
+</script>
 
 <?php 
 

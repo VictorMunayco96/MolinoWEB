@@ -62,6 +62,17 @@ require "../Config/Conexion.php";
 
         }
 
+
+        public function Select(){
+
+            $Sql="select CV.IdConductorVehiculo, C.Nombre,C.Apellidos, V.Placa from ConductorVehiculo CV inner join
+            Vehiculo V on V.IdPlaca=CV.IdPlaca
+            inner join Conductor C on C.IdConductor=CV.IdConductor where CV.Estado=1;";
+            
+            return EjecutarConsulta($Sql);
+
+        }
+
 }
 
 

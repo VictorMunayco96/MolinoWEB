@@ -79,6 +79,17 @@ require "../Config/Conexion.php";
 
         }
 
+        public function SelectDescProdBal (){
+
+            $Sql="Select DB.IdDestinoBloq, DB.DestinoBloq, DD.DestinoDes, D.Destino from Destino D  inner join (DestinoDesc DD  inner join DestinoBloq DB
+            on DD.IdDestinoDesc=DB.IdDestinoDesc)
+             on D.IdDestino=DD.IdDestino     where DB.Estado=1
+            order by DB.IdDestinoBloq desc;";
+            
+            return EjecutarConsulta($Sql);
+
+        }
+
 
 }
 

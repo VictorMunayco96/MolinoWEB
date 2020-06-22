@@ -98,6 +98,9 @@ function Mostrar(IdPedidoSemanal)
 
 
 
+
+
+
 function AgregarPedidoSemanal(IdCabeceraPedido)
 {
 
@@ -117,13 +120,6 @@ function AgregarPedidoSemanal(IdCabeceraPedido)
 
 
 }
-
-
-
-
-
-
-
 
 
 function MostrarForm($Ventana){
