@@ -42,8 +42,10 @@ if($_SESSION["ConsulProd"]==1){
                     <select id="NumSemana" name ="NumSemana" class="form-control selectpicker" required> 
                 
                   
-                    <option value="19">19</option>
-                    <option value="20">20</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+
                   
                 
                     

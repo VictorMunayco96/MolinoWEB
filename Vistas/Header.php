@@ -167,6 +167,25 @@ session_start();
             </li>';
             }
             ?>
+
+<?php 
+            if($_SESSION['BTransporte']==1){ 
+              echo '<li class="treeview">
+              <a href="#">
+              <i class="fa fa-truck"></i>
+                <span>Transporte</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="BConductorVehiculo.php"><i class="fa fa-circle-o"></i> Conductor y Vehiculo</a></li>
+                <li><a href="BConductor.php"><i class="fa fa-circle-o"></i> Conductor </a></li>
+                <li><a href="BVehiculo.php"><i class="fa fa-circle-o"></i> Vehiculo </a></li>
+               
+                <li><a href="BEmpreTrans.php"><i class="fa fa-circle-o"></i> Empresa Transportista </a></li>
+              </ul>
+            </li>';
+            }
+            ?>
                    
 
 
@@ -272,7 +291,7 @@ session_start();
               <ul class="treeview-menu">
                 <li><a href="ConsulBalanza.php"><i class="fa fa-circle-o"></i> Consulta Balanza 2</a></li> 
                 <li><a href="ConsultaBalanza1.php"><i class="fa fa-circle-o"></i> Consulta Balanza 1</a></li>    
-                <li><a href="DiferenciaPesos.php"><i class="fa fa-circle-o"></i> Diferencia Pesos</a></li>              
+                      
               </ul>
             </li>';
             }
@@ -287,10 +306,13 @@ session_start();
               </a>
               <ul class="treeview-menu">
                 <li><a href="consultaventas.php"><i class="fa fa-circle-o"></i> Consulta Ventas</a></li>                
-              </ul>
+                <li><a href="DiferenciaPesos.php"><i class="fa fa-circle-o"></i> Diferencia Pesos</a></li>    
+                </ul>
             </li>';
             }
             ?>
+
+
                    
             
                          

@@ -161,7 +161,7 @@ require "../Config/Conexion.php";
              V.Placa, 
              C.Nombre,
              C.Apellidos,
-           D.Destino as Dest,
+           D.Destino as Dest, 
            DD.DestinoDes,
            DB.DestinoBloq,
              DP.DescProd
@@ -320,11 +320,11 @@ ifnull((select (sum(PA.PesoPanel)/1000) from Panel PA
 inner join Pedido PED on PED.IdPedido=PA.IdPedido
 inner join PedidoSemanal PEDS on PEDS.IdPedidoSemanal=PED.IdPedidoSemanal
 inner join DescProd DP on DP.IdDescProd=PEDS.IdDescProd
-inner join Producto PR on PR.IdProducto=DP.IdProducto where PR.IdProducto=P.IdProducto and PA.NumSemana='$NumSemana'),0) as PesoP,
+inner join Producto PR on PR.IdProducto=DP.IdProducto where PR.IdProducto=P.IdProducto and PA.NumSemana='$NumSemana' and PA.Estado=1),0) as PesoP,
 
 ifnull((select Sum((PE.NetoC/1000)* (select Precio from Precio where IdDescProd=PE.IdDescProd and NumSemana='$NumSemana')) from Peso PE 
 inner join DescProd DP on DP.IdDescProd=PE.IdDescProd
-inner join Producto PR on PR.IdProducto=DP.IdProducto where PR.IdProducto=P.IdProducto and PE.NumSemana='$NumSemana'),0) as Costo
+inner join Producto PR on PR.IdProducto=DP.IdProducto where PR.IdProducto=P.IdProducto and PE.NumSemana='$NumSemana' and PE.Estado='D'),0) as Costo
 
 
 from Producto P inner join CategoriaProd CP on CP.IdCategoriaProd=P.IdCategoriaProd

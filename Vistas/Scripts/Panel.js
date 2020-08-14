@@ -298,7 +298,7 @@ tablaP=$("#tbllistadoP").dataTable(
     },
     "bDestroy":true,
     "iDisplayLength":5,
-    "order":[[0,"desc"]]
+    "order":[[6,"asc"]]
 
 }).DataTable(); 
 

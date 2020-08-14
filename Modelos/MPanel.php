@@ -96,7 +96,7 @@ require "../Config/Conexion.php";
             inner join DescProd DP on DP.IdDescProd=PS.IdDescProd
             inner join Usuario U on U.IdUsuario=PA.IdUsuario
              
-             where PA.Estado=1 order by PA.IdPanel desc limit 100;";
+             where PA.Estado=1 order by PA.IdPanel desc limit 300;";
             
             return EjecutarConsulta($Sql);
 
